@@ -156,3 +156,52 @@ input, select, textarea {
   border-top: 1px dashed var(--border);
 }
 .meal-slot-items li:first-child { border-top: none; }
+
+/* ---------- Atlet mandiri: paket, Coach AI, setup ---------- */
+button.mini { width: auto; min-height: 36px; padding: 6px 12px; font-size: 0.85rem; }
+button.mini.secondary { background: var(--surface-2); color: var(--text); border: 1px solid var(--border); }
+.toast-ok {
+  background: rgba(34, 197, 94, 0.12); border: 1px solid rgba(34, 197, 94, 0.35);
+  color: #bbf7d0; padding: 10px 12px; border-radius: 10px; margin-bottom: 12px;
+}
+.plan-banner {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  background: var(--primary-dim); border: 1px solid rgba(14, 165, 233, 0.35);
+  padding: 10px 12px; border-radius: 12px; margin-bottom: 12px; font-size: 0.88rem;
+}
+.plan-banner.free, .plan-banner.warn { background: rgba(245, 158, 11, 0.12); border-color: rgba(245, 158, 11, 0.35); color: #fde68a; }
+.lock-card { border-style: dashed; background: var(--surface-2); }
+.lock-card .session-title { color: var(--muted); }
+.ai-card { border-color: rgba(14, 165, 233, 0.45); background: linear-gradient(135deg, rgba(14, 165, 233, 0.14), var(--surface) 70%); }
+.ai-head { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+.ai-avatar {
+  width: 28px; height: 28px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center;
+  background: var(--primary); color: #041018; font-weight: 800; font-size: 0.9rem;
+}
+.ai-label { font-weight: 700; font-size: 0.85rem; }
+.ai-text { margin: 0; line-height: 1.55; min-height: 1.5em; }
+.typing::after { content: '▍'; color: var(--primary); animation: blink 0.9s steps(1) infinite; margin-left: 2px; }
+@keyframes blink { 50% { opacity: 0; } }
+.choice-card {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 4px; text-align: left;
+  background: var(--surface); color: var(--text); border: 1.5px solid var(--border);
+  padding: 16px; margin-bottom: 10px; border-radius: var(--radius);
+}
+.choice-card:hover, .choice-card:focus { border-color: var(--primary); }
+.choice-title { font-size: 1rem; font-weight: 700; }
+.choice-desc { font-size: 0.85rem; font-weight: 500; color: var(--muted); }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+details.guide { margin-top: 10px; border-top: 1px dashed var(--border); padding-top: 8px; }
+details.guide summary { cursor: pointer; color: var(--primary); font-weight: 700; font-size: 0.9rem; }
+.guide-block { margin-top: 8px; }
+.guide-title { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); }
+.guide-list { margin: 4px 0 0; padding-left: 18px; font-size: 0.9rem; line-height: 1.5; }
+.chip-btn { width: auto; min-height: 0; border: 1px solid var(--border); font-weight: 500; text-align: left; }
+.qa-q { font-weight: 700; margin-bottom: 6px; }
+.qa-a { margin: 0; line-height: 1.55; color: var(--text); white-space: pre-wrap; }
+.plan-card.featured { border-color: var(--primary); }
+.plan-row { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 10px; }
+.plan-price { font-weight: 800; font-size: 1.15rem; }
+@media (prefers-reduced-motion: reduce) { .typing::after { animation: none; } }
+/* 6 tab (atlet mandiri punya tab Coach AI) harus muat di HP 360px */
+.bottom-nav button { padding: 6px 2px; min-width: 0; line-height: 1.15; }

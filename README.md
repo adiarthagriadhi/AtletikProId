@@ -220,3 +220,61 @@ biaya/API eksternal, tidak ada yang disimpan permanen.
 - **HTTPS** tidak disediakan aplikasi ini sendiri — aktifkan lewat panel Hostinger.
 - **Reset password lewat email** belum ada.
 - **Langganan berulang (bulanan)** — saat ini hanya Lifetime one-time.
+
+## 12. Akun Atlet Mandiri, Selling Page & Coach AI
+
+### Atlet mandiri (sport enthusiast tanpa pelatih)
+- Portal atlet (`/athlete`) kini punya dua jalur: **berlatih mandiri** atau
+  **kode undangan pelatih** (jalur lama, tidak berubah).
+- Atlet mandiri memakai struktur data yang sama: satu baris `athletes`
+  (`coachId: null`, `selfCoached: true`, `ownerAthleteUserId`) + satu
+  `athleteLinks` aktif (`selfCoached: true`). Semua endpoint portal atlet
+  lama langsung berlaku. Pelatih tidak melihat atlet mandiri; admin melihatnya
+  berlabel "Atlet mandiri".
+- Profil dibuat dari kuesioner (`lib/selfProfile.js`): kategori/nomor, level,
+  tanggal lomba (atau siklus 12 minggu), catatan waktu (lari menengah/jauh) atau
+  waktu 100 m (sprint/lompat). Bila atlet belum tahu, dipakai estimasi dari
+  level dan ditandai `estimated`.
+- Paket (`lib/athleteAccess.js`): coba Premium `ATHLETE_TRIAL_DAYS` hari →
+  **Gratis** (ringkasan sesi, target nutrisi, catat latihan, 1 tanya Coach/hari)
+  atau **Premium** bulanan/tahunan via Midtrans (detail sesi + panduan
+  pemanasan–inti–pendinginan, menu mingguan, 5 tanya Coach/hari). Detail
+  berbayar dipotong di server, bukan hanya disembunyikan di tampilan.
+- Endpoint: `POST /api/athlete/self/setup`, `GET|PUT /api/athlete/self/profile`,
+  `POST /api/payments/athlete/create-snap`, `GET /api/payments/athlete/my-status`.
+  Webhook Midtrans yang sama (`/api/payments/notification`) mengenali order
+  atlet dari prefix `ATPRO-AM-` / `ATPRO-AA-`.
+
+### Selling page (halaman depan)
+- Pengunjung pertama melihat funnel kuesioner (`public/funnel.js`): hero →
+  7 pertanyaan → animasi "menyusun program" → hasil. Hasil memuat sesi pertama
+  lengkap + contoh sarapan (gratis), sisanya terkunci, analisis Coach AI,
+  form daftar (langsung membuat akun + profil), kirim ke email, dan harga.
+- Landing lama khusus pelatih tetap ada: menu **Untuk Pelatih** atau `/?pelatih=1`.
+  `/?masuk=1` / `/?daftar=1` tetap membuka form pelatih.
+- Endpoint publik: `GET /api/public/quiz-options`, `POST /api/public/trial-plan`
+  (atlet virtual di memori — tidak menyimpan apa pun), `POST /api/public/trial-insight`,
+  `POST /api/public/trial-email`, `GET /api/public/trial-lead/:token`.
+- **Kirim ke email** memakai SMTP yang sudah ada. Email pengunjung disimpan di
+  koleksi baru `leads` (tabel `c_leads`, dibuat otomatis) beserta jawaban,
+  persetujuan marketing (`consentMarketing`), dan penanda bila kemudian
+  mendaftar (`convertedAthleteUserId`). Tautan di email (`/?program=TOKEN`)
+  membuka kembali hasilnya.
+
+### Coach AI (hemat token)
+- `lib/aiCoach.js` memanggil Claude lewat `@anthropic-ai/sdk`:
+  1. **Catatan harian** di beranda portal — maks. 1 panggilan per atlet per hari
+     (disimpan di `athletes[].aiDaily`).
+  2. **Tanya Coach** — kuota harian per paket (`AI_ASK_*_PER_DAY`), tanpa riwayat
+     percakapan (tiap pertanyaan berdiri sendiri).
+  3. **Analisis hasil kuesioner** di selling page — di-cache per profil jawaban.
+- Hemat token: konteks dikirim sebagai ringkasan beberapa baris, jawaban 2–4
+  kalimat, `effort: low`, cache hasil, plus batas total `AI_DAILY_LIMIT`.
+- Tanpa `ANTHROPIC_API_KEY`, semua kartu tetap tampil memakai teks berbasis aturan.
+- Khusus atlet mandiri; atlet binaan pelatih tidak mendapat Coach AI.
+
+### Setelah deploy
+1. Backup database MySQL dulu (phpMyAdmin).
+2. Upload kode, `npm install` (paket baru: `@anthropic-ai/sdk`), restart.
+3. Tambahkan env baru sesuai `.env.example` (semuanya opsional).
+4. Midtrans: tidak perlu URL notifikasi baru.

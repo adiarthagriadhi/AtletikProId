@@ -177,3 +177,22 @@ memetakan ke token itu — jangan tempel warna langsung di `.badge-<nama>`.
 5. [ ] Kalau fitur ini relevan untuk pelatih di lapangan: sudah dicek/ditambahkan padanannya di `renderCoachFieldMode()`.
 6. [ ] Kalau menambah komponen berulang (dipakai >1 tempat): dibuat sebagai fungsi helper baru di §3, bukan disalin-tempel.
 7. [ ] Dokumen ini diperbarui kalau menambah token/prefix/helper baru.
+
+---
+
+## Selling page & portal atlet mandiri (ditambahkan 24 Sep 2026)
+
+- **Selling page** ada di `public/funnel.js` (dimuat sebelum `app.js`, memakai
+  helper global `el`, `icon`, `api`, `state`, `render`, `brandMark`,
+  `formatIdr`). `renderLanding()` di `app.js` memilih `renderFunnel()`
+  (default) atau `renderCoachLanding()` (`state.landingMode === 'coach'`).
+  Semua class berprefiks `.funnel-*` di `style.css`, hanya memakai token.
+  Komponen: `.funnel-choice` (kartu pilihan besar), `.funnel-chip` (pilihan
+  multi), `.funnel-locked` (baris terkunci + tag Premium), `.funnel-insight`
+  (kartu Coach AI dengan kursor mengetik `.typing`), `.funnel-price`.
+- **Portal atlet mandiri** (`athlete.js` / `athlete.css`): `button.mini`
+  (tombol kecil inline), `.plan-banner` (status paket), `.lock-card` (konten
+  Premium terkunci), `.ai-card` (Coach AI harian), `.choice-card`,
+  `details.guide` + `.guide-list` (panduan sesi), `.qa-item` (Tanya Coach).
+  Konten terkunci SELALU dipotong di server; UI hanya menampilkan kartu kunci.
+- Efek mengetik (`typewriter`) menghormati `prefers-reduced-motion`.

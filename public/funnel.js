@@ -165,8 +165,11 @@ function autoAdvance() {
   const f = funnelState();
   const steps = funnelSteps();
   funnelSave();
-  if (f.idx < steps.length - 1) setTimeout(() => funnelGo('quiz', f.idx + 1), 160);
-  else render();
+  if (f.idx < steps.length - 1) {
+    // Kunci ke langkah saat ini: tap ganda tidak boleh melompati langkah.
+    const from = f.idx;
+    setTimeout(() => { if (f.step === 'quiz' && f.idx === from) funnelGo('quiz', from + 1); }, 160);
+  } else render();
 }
 
 function renderFunnelStep(stepId) {

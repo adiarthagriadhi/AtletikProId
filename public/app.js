@@ -2685,7 +2685,7 @@ function renderAthleteList() {
         el('div', { class: 'avatar-circle' }, [initials(a.profile.nama)]),
         a.profile.nama,
       ])]),
-      showCoachCol ? el('td', {}, [coachNameById(a.coachId)]) : null,
+      showCoachCol ? el('td', {}, [a.selfCoached ? 'Atlet mandiri' : coachNameById(a.coachId)]) : null,
       el('td', {}, [el('span', { class: `badge badge-cat-${a.profile.kategori}` }, [icon(CATEGORY_ICON[a.profile.kategori]), categoryLabel(a.profile.kategori)])]),
       el('td', {}, [a.profile.event]),
       el('td', {}, [fmtDate(a.periodization.startDate)]),
