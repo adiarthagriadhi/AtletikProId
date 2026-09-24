@@ -79,6 +79,7 @@ const resetPasswordRateLimit = createRateLimit({
 });
 
 module.exports = {
+  createRateLimit,
   loginRateLimit,
   registerRateLimit,
   adminSetupRateLimit,

@@ -8,6 +8,7 @@ const {
   getActiveLink,
 } = require('../middleware/athleteAuth');
 const { loginRateLimit, registerRateLimit, inviteRateLimit } = require('../middleware/rateLimit');
+const { getAthleteAccess } = require('../lib/athleteAccess');
 
 const router = express.Router();
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -42,6 +43,13 @@ router.post('/register', registerRateLimit, (req, res) => {
   };
   data.athleteUsers = data.athleteUsers || [];
   data.athleteUsers.push(user);
+  // Pengunjung selling page yang sebelumnya minta hasil dikirim ke email →
+  // tandai lead-nya sudah jadi akun (untuk evaluasi konversi).
+  const lead = (data.leads || []).find((l) => l.email === cleanEmail && !l.convertedAthleteUserId);
+  if (lead) {
+    lead.convertedAthleteUserId = user.id;
+    lead.convertedAt = user.createdAt;
+  }
   db.save(data);
   issueAthleteToken(res, user);
   res.status(201).json({ id: user.id, name: user.name, email: user.email, role: 'athlete' });
@@ -80,8 +88,13 @@ router.get('/me', requireAthlete, (req, res) => {
       };
     }
   }
+  const selfCoached = !!(link && link.selfCoached);
+  const fullUser = (data.athleteUsers || []).find((u) => u.id === req.athleteUser.id);
   res.json({
     ...req.athleteUser,
+    selfCoached,
+    // Paket hanya berlaku untuk atlet mandiri; atlet binaan diatur pelatihnya.
+    access: link && !selfCoached ? null : getAthleteAccess(fullUser),
     link: link
       ? {
           id: link.id,
@@ -89,6 +102,7 @@ router.get('/me', requireAthlete, (req, res) => {
           coachId: link.coachId,
           programAccess: link.programAccess || 'reminding',
           status: link.status,
+          selfCoached,
         }
       : null,
     athlete: athleteSummary,

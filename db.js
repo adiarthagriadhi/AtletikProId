@@ -9,7 +9,7 @@ const SQLITE_PATH = process.env.SQLITE_PATH
 const COLLECTIONS = [
   'users', 'athletes', 'tests', 'monitoringLogs', 'payments',
   'athleteUsers', 'athleteLinks', 'wellnessLogs', 'injuryReports',
-  'sessionOverrides', 'nutritionWeekPlans',
+  'sessionOverrides', 'nutritionWeekPlans', 'leads',
 ];
 
 const EMPTY_DB = {
@@ -24,10 +24,12 @@ const EMPTY_DB = {
   injuryReports: [],
   sessionOverrides: [],
   nutritionWeekPlans: [],
+  // Email pengunjung selling page yang minta hasil program dikirim (lead).
+  leads: [],
   seq: {
     users: 0, athletes: 0, tests: 0, monitoringLogs: 0, payments: 0,
     athleteUsers: 0, athleteLinks: 0, wellnessLogs: 0, injuryReports: 0,
-    sessionOverrides: 0, nutritionWeekPlans: 0,
+    sessionOverrides: 0, nutritionWeekPlans: 0, leads: 0,
   },
 };
 

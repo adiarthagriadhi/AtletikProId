@@ -6,6 +6,8 @@ const { computeACWR } = require('../lib/acwr');
 const { computeNutritionPlan } = require('../lib/nutritionEngine');
 const { getOrCreateWeekPlan, summarizeForClient } = require('../lib/nutritionWeekPlan');
 const { localDateKey } = require('../lib/dateUtil');
+const { getAthleteAccess } = require('../lib/athleteAccess');
+const { buildSessionGuide } = require('../lib/sessionGuide');
 
 const router = express.Router();
 
@@ -26,6 +28,22 @@ function summarizeSession(s) {
     volume: s.volume != null ? s.volume : null,
     mode: s.mode || null,
   };
+}
+
+/** Status paket atlet mandiri; null untuk atlet binaan pelatih. */
+function selfAccessFor(req) {
+  if (!req.athleteLink || !req.athleteLink.selfCoached) return null;
+  const user = (req.dbData.athleteUsers || []).find((u) => u.id === req.athleteUser.id);
+  return getAthleteAccess(user);
+}
+
+// Detail lengkap sesi (reps, jarak, pace, istirahat) + panduan pelaksanaan —
+// hanya untuk Premium/trial atlet mandiri. Paket gratis cuma dapat ringkasan.
+function detailSession(s, prog) {
+  const out = { ...s };
+  delete out.pace; // angka mentah detik/km; yang dipakai UI paceLabel/repTimeLabel
+  out.guide = buildSessionGuide(s, { phase: prog.phase && prog.phase.phase, strengthBank: prog.strengthBank });
+  return out;
 }
 
 /** GET /api/athlete/today */
@@ -68,6 +86,8 @@ router.get('/today', requireAthlete, requireActiveLink, (req, res) => {
       event: athlete.profile.event,
     },
     programAccess: link.programAccess || 'reminding',
+    selfCoached: !!link.selfCoached,
+    access: selfAccessFor(req),
     phase: prog.phase || null,
     sessions: list,
     nutritionToday: nutritionPlan.available ? nutritionPlan.ringkasanSingkat : null,
@@ -100,9 +120,14 @@ router.get('/nutrition', requireAthlete, requireActiveLink, (req, res) => {
   const athlete = req.linkedAthlete;
   const data = req.dbData;
   const base = computeNutritionPlan(athlete, data);
+  const selfAccess = selfAccessFor(req);
+  if (selfAccess && !selfAccess.premium) {
+    // Paket gratis: target harian saja; menu mingguan terkunci (tidak dibuat).
+    return res.json({ ...base, weekMenu: null, weekMenuLocked: true, selfCoached: true, access: selfAccess });
+  }
   try {
     const { plan } = getOrCreateWeekPlan(athlete, data, { today: localDateKey(new Date()) });
-    res.json({ ...base, weekMenu: summarizeForClient(plan) });
+    res.json({ ...base, weekMenu: summarizeForClient(plan), selfCoached: !!selfAccess, access: selfAccess });
   } catch (err) {
     console.error('athlete week menu error', err);
     res.json({ ...base, weekMenu: null });
@@ -115,6 +140,24 @@ router.get('/program', requireAthlete, requireActiveLink, (req, res) => {
   const link = req.athleteLink;
   const data = req.dbData;
   const prog = assembleProgram(athlete, data.tests, data.monitoringLogs, new Date());
+  const selfAccess = selfAccessFor(req);
+  if (selfAccess) {
+    const premium = selfAccess.premium;
+    return res.json({
+      programAccess: 'full',
+      selfCoached: true,
+      premium,
+      access: selfAccess,
+      phase: prog.phase || null,
+      weekPlan: prog.weekPlan || null,
+      sessions: (prog.sessions || []).map((s) => (premium ? detailSession(s, prog) : { ...summarizeSession(s), locked: true })),
+      strengthBank: premium ? prog.strengthBank || null : null,
+      techniqueChecklist: premium ? prog.techniqueChecklist || null : null,
+      racePrediction: premium ? prog.racePrediction || null : null,
+      periodization: athlete.periodization,
+      note: prog.note || null,
+    });
+  }
   const access = link.programAccess || 'reminding';
   let sessions = (prog.sessions || prog.weekSessions || []).map(summarizeSession).filter(Boolean);
   if (access === 'reminding') {
@@ -330,3 +373,4 @@ router.patch('/injuries/:id', requireAthlete, requireActiveLink, (req, res) => {
 });
 
 module.exports = router;
+

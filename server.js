@@ -21,6 +21,9 @@ const adminRoutes = require('./routes/admin');
 const paymentsRoutes = require('./routes/payments');
 const athleteAuthRoutes = require('./routes/athleteAuth');
 const athleteAppRoutes = require('./routes/athleteApp');
+const athleteSelfRoutes = require('./routes/athleteSelf');
+const athleteAiRoutes = require('./routes/athleteAi');
+const publicRoutes = require('./routes/public');
 const sessionOverridesRoutes = require('./routes/sessionOverrides');
 
 const app = express();
@@ -66,6 +69,7 @@ app.use('/api/auth', requireSameOrigin);
 app.use('/api/athletes', requireSameOrigin);
 app.use('/api/admin', requireSameOrigin);
 app.use('/api/athlete', requireSameOrigin);
+app.use('/api/public', requireSameOrigin);
 
 app.use('/api/auth', authRoutes);
 app.use('/api/athletes', athletesRoutes);
@@ -76,25 +80,15 @@ app.use('/api/athletes', nutritionRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/payments', paymentsRoutes);
 app.use('/api/athlete/auth', athleteAuthRoutes);
+app.use('/api/athlete/self', athleteSelfRoutes);
+app.use('/api/athlete/ai', athleteAiRoutes);
 app.use('/api/athlete', athleteAppRoutes);
 app.use('/api/athletes/:athleteId', sessionOverridesRoutes);
 // Alias param :id (beberapa proxy/router Hostinger lebih stabil dengan pola ini)
 app.use('/api/athletes/:id', sessionOverridesRoutes);
 
-const { load: loadDb } = require('./db');
-
-// Statistik publik untuk landing page (hanya jumlah, tanpa data pribadi)
-app.get('/api/public/stats', (req, res) => {
-  try {
-    const data = loadDb();
-    const coachCount = (data.users || []).filter((u) => u.role === 'coach').length;
-    const athleteCount = (data.athletes || []).length;
-    res.json({ coachCount, athleteCount });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: 'Gagal memuat statistik' });
-  }
-});
+// Endpoint publik tanpa login: statistik landing, opsi & hasil trial kuesioner
+app.use('/api/public', publicRoutes);
 
 app.get(['/athlete', '/athlete.html'], (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'athlete.html'));
