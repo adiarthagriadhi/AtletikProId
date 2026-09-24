@@ -1,0 +1,47 @@
+Atletik Pro Id — paket update 24 Sep 2026
+=========================================
+
+Isi: akun atlet mandiri, selling page kuesioner, paket Premium atlet,
+Coach AI, kirim hasil program ke email. Lihat README.md bagian 12.
+
+Zip ini TIDAK berisi: node_modules, .env, data/db.json, data/app.sqlite.
+Data live (MySQL) tidak disentuh.
+
+Sebelum upload
+--------------
+1. Backup database MySQL (hPanel → Database → phpMyAdmin → Export).
+2. Backup folder aplikasi lama (…/hbuilds/versions/<id>/nodejs/).
+
+Upload
+------
+1. Extract isi zip ke folder Node yang berisi server.js
+   (timpa file lama; JANGAN hapus .env dan node_modules yang sudah ada).
+   Harus terlihat: server.js, package.json, lib/, routes/, public/, data/foods-id.json
+2. npm install        (paket baru: @anthropic-ai/sdk)
+3. Restart / Rebuild di hPanel
+4. Hard refresh browser (Ctrl+F5)
+
+Tabel baru `c_leads` dibuat otomatis saat server start (tanpa migrasi manual).
+
+Environment variables baru (semua opsional)
+--------------------------------------------
+  ATHLETE_TRIAL_DAYS=7             coba Premium setelah atlet membuat profil
+  ATHLETE_MONTHLY_PRICE_IDR=29000
+  ATHLETE_ANNUAL_PRICE_IDR=199000
+
+  ANTHROPIC_API_KEY=...            aktifkan Coach AI (tanpa ini: teks otomatis)
+  AI_MODEL=                        default claude-opus-5; hemat: claude-haiku-4-5
+  AI_EFFORT=low
+  AI_DAILY_LIMIT=500               batas panggilan AI per hari
+  AI_ASK_PREMIUM_PER_DAY=5
+  AI_ASK_FREE_PER_DAY=1
+
+Kirim program ke email memakai SMTP_* yang sudah ada.
+Midtrans memakai key & URL notifikasi yang sudah ada (tidak ada URL baru).
+
+Cek setelah deploy
+------------------
+- https://atletikpro.id/            → selling page kuesioner
+- https://atletikpro.id/?pelatih=1  → landing pelatih (lama)
+- https://atletikpro.id/athlete     → portal atlet (pilih mandiri / kode pelatih)
+- Log server: [db] backend= mysql …
