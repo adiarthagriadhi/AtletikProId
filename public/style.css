@@ -6489,3 +6489,24 @@ a.landing-brand { text-decoration: none; color: var(--text); }
 @media (max-width: 860px) {
   .funnel-trust { align-items: center; }
 }
+/* Sakelar Bulanan ⇄ Tahunan (kartu Premium selling page) */
+.funnel-switch {
+  position: relative; display: grid; grid-template-columns: 1fr 1fr; margin: 8px 0 10px;
+  background: var(--surface-2); border: 1px solid var(--border); border-radius: 999px; padding: 3px;
+  touch-action: pan-y; user-select: none;
+}
+.funnel-switch-thumb {
+  position: absolute; top: 3px; bottom: 3px; left: 3px; width: calc(50% - 3px);
+  background: var(--primary); border-radius: 999px; box-shadow: var(--shadow-sm);
+  transition: transform 0.22s ease;
+}
+.funnel-switch.annual .funnel-switch-thumb { transform: translateX(100%); }
+.funnel-switch-opt {
+  position: relative; z-index: 1; background: none; color: var(--text); box-shadow: none;
+  justify-content: center; padding: 8px 10px; border-radius: 999px; font-size: 0.9rem; gap: 6px;
+}
+.funnel-switch-opt:hover { background: none; transform: none; box-shadow: none; }
+.funnel-switch-opt[aria-pressed="true"] { color: var(--on-primary); }
+.funnel-switch-save { font-size: 0.7rem; font-weight: 800; padding: 1px 6px; border-radius: 999px; background: var(--success-bg); color: var(--success); }
+.funnel-price-sub { min-height: 1.3em; }
+@media (prefers-reduced-motion: reduce) { .funnel-switch-thumb { transition: none; } }

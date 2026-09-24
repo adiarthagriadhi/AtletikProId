@@ -585,6 +585,49 @@ function renderFunnelEmail() {
   ]);
 }
 
+// Sakelar geser Bulanan ⇄ Tahunan di kartu Premium. Diperbarui di tempat
+// (tanpa render ulang) supaya form daftar di halaman hasil tidak terhapus.
+function renderBillingSwitch(monthly, annual, saving) {
+  const f = funnelState();
+  // Default Tahunan — tapi jangan dikunci sebelum data harga termuat.
+  if (!f.billing && annual) f.billing = 'annual';
+  const amount = el('div', { class: 'funnel-price-amount' });
+  const sub = el('div', { class: 'muted funnel-price-sub' });
+  const paint = () => {
+    const isAnnual = f.billing === 'annual' && annual;
+    const plan = isAnnual ? annual : monthly;
+    amount.innerHTML = '';
+    amount.appendChild(document.createTextNode(plan ? formatIdr(plan.priceIdr) : '—'));
+    amount.appendChild(el('span', { class: 'muted' }, [isAnnual ? ' /tahun' : ' /bulan']));
+    sub.textContent = isAnnual
+      ? `≈ ${formatIdr(Math.round(annual.priceIdr / 12))} per bulan${saving > 0 ? ` · hemat ${saving}%` : ''}`
+      : (annual ? `Pilih Tahunan untuk hemat ${saving > 0 ? saving + '%' : ''}`.trim() : 'Bisa berhenti kapan saja');
+    sw.classList.toggle('annual', !!isAnnual);
+    btnM.setAttribute('aria-pressed', String(!isAnnual));
+    btnA.setAttribute('aria-pressed', String(!!isAnnual));
+  };
+  const pick = (v) => { f.billing = v; paint(); };
+  const btnM = el('button', { type: 'button', class: 'funnel-switch-opt', onclick: () => pick('monthly') }, ['Bulanan']);
+  const btnA = el('button', { type: 'button', class: 'funnel-switch-opt', onclick: () => pick('annual') }, [
+    'Tahunan', saving > 0 ? el('span', { class: 'funnel-switch-save' }, [`-${saving}%`]) : null,
+  ]);
+  const sw = el('div', { class: 'funnel-switch', role: 'group', 'aria-label': 'Pilih periode tagihan' }, [
+    el('span', { class: 'funnel-switch-thumb' }), btnM, btnA,
+  ]);
+  // Geser (swipe) kiri/kanan di sakelar juga mengganti pilihan.
+  let x0 = null;
+  sw.addEventListener('touchstart', (e) => { x0 = e.touches[0].clientX; }, { passive: true });
+  sw.addEventListener('touchend', (e) => {
+    if (x0 == null) return;
+    const dx = e.changedTouches[0].clientX - x0;
+    if (Math.abs(dx) > 24) pick(dx > 0 ? 'annual' : 'monthly');
+    x0 = null;
+  });
+  const wrap = el('div', {}, annual && monthly ? [sw, amount, sub] : [amount, sub]);
+  paint();
+  return wrap;
+}
+
 function renderFunnelPricing(compact) {
   const f = funnelState();
   const plans = (f.options && f.options.plans) || [];
@@ -607,8 +650,7 @@ function renderFunnelPricing(compact) {
       el('div', { class: 'funnel-price card featured' }, [
         el('span', { class: 'funnel-price-flag' }, ['Paling lengkap']),
         el('div', { class: 'funnel-price-name' }, ['Premium']),
-        el('div', { class: 'funnel-price-amount' }, [monthly ? formatIdr(monthly.priceIdr) : '—', el('span', { class: 'muted' }, [' /bulan'])]),
-        annual ? el('div', { class: 'muted' }, [`atau ${formatIdr(annual.priceIdr)} /tahun${saving > 0 ? ` (hemat ${saving}%)` : ''}`]) : null,
+        renderBillingSwitch(monthly, annual, saving),
         el('div', { class: 'muted funnel-small', style: 'margin-top:4px;' }, ['Semua fitur Gratis, plus:']),
         featureList(premiumFeatures, true),
         el('button', {
