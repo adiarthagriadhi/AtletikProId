@@ -133,6 +133,8 @@ const ICON_SHAPES = {
   timer: [['line', { x1: 10, y1: 2, x2: 14, y2: 2 }], ['line', { x1: 12, y1: 14, x2: 15, y2: 11 }], ['circle', { cx: 12, cy: 14, r: 8 }]],
   'map-pin': [['path', { d: 'M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z' }], ['circle', { cx: 12, cy: 10, r: 3 }]],
   sparkles: [['path', { d: 'M12 3l1.5 5.5L19 10l-5.5 1.5L12 17l-1.5-5.5L5 10l5.5-1.5L12 3z' }], ['path', { d: 'M5 19l.8 2.2L8 22l-2.2.8L5 25l-.8-2.2L2 22l2.2-.8L5 19z' }]],
+  lock: [['rect', { x: 3, y: 11, width: 18, height: 11, rx: 2, ry: 2 }], ['path', { d: 'M7 11V7a5 5 0 0 1 10 0v4' }]],
+  mail: [['path', { d: 'M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z' }], ['polyline', { points: '22,6 12,13 2,6' }]],
   utensils: [['path', { d: 'M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2' }], ['path', { d: 'M7 2v20' }], ['path', { d: 'M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7' }]], // Nutrisi — garpu & pisau
 };
 const CATEGORY_ICON = { sprint: 'zap', menengah: 'trending-up', jauh: 'compass', lompat: 'arrow-up-circle', renang_gaya_bebas: 'wind', renang_gaya_punggung: 'wind', renang_gaya_dada: 'wind', renang_gaya_kupu: 'zap', renang_gaya_ganti: 'layers' };
@@ -494,6 +496,20 @@ async function bootstrap() {
       state.authMode = params.has('daftar') ? 'register' : 'login';
     } else {
       state.view = 'landing';
+      if (params.has('pelatih')) state.landingMode = 'coach';
+      // Tautan "Buka program lengkap" dari email hasil kuesioner.
+      if (params.get('program')) {
+        render();
+        funnelOpenFromLead(params.get('program'));
+        return;
+      }
+      // Atlet yang sudah login tidak perlu melihat selling page lagi.
+      if (!params.has('beranda') && !params.has('pelatih')) {
+        try {
+          const me = await api('GET', '/athlete/auth/me');
+          if (me && me.id) { location.replace('/athlete'); return; }
+        } catch (_) { /* belum login sebagai atlet */ }
+      }
     }
   }
   render();
@@ -573,7 +589,15 @@ const WA_NUMBER = '081999636899';
 const WA_LINK = `https://wa.me/62${WA_NUMBER.replace(/^0/, '')}`;
 const IG_LINK = `https://instagram.com/${IG_HANDLE}`;
 
+// Halaman depan: pengunjung umum melihat selling page kuesioner atlet
+// (public/funnel.js); landing lama khusus pelatih tetap ada lewat menu
+// "Untuk Pelatih" atau tautan /?pelatih=1.
 function renderLanding() {
+  if (state.landingMode === 'coach') return renderCoachLanding();
+  return renderFunnel();
+}
+
+function renderCoachLanding() {
   try {
     document.documentElement.setAttribute('data-ui', 'landing');
     document.documentElement.removeAttribute('data-drawer');
@@ -584,6 +608,7 @@ function renderLanding() {
     el('div', { class: 'landing-nav-inner' }, [
       el('div', { class: 'landing-brand' }, [brandMark(32), el('span', { class: 'brand', html: 'Atletik <span class="accent">Pro Id</span>' })]),
       el('nav', { class: 'landing-nav-links' }, [
+        el('a', { href: '#', onclick: (e) => { e.preventDefault(); state.landingMode = null; render(); window.scrollTo(0, 0); } }, ['Untuk Atlet']),
         el('a', { href: '#fitur' }, ['Fitur']),
         el('a', { href: '#tim' }, ['Tim']),
         el('a', { href: '#kontak' }, ['Kontak']),
