@@ -1,0 +1,53 @@
+Atletik Pro Id — Patch 2026-09-04
+=================================
+
+Isi zip ini HANYA file yang berubah/baru. Jangan timpa data/db.json.
+
+Cara pasang
+-----------
+1. Backup production + data/db.json
+2. Extract zip ini di folder aplikasi (timpa file yang sama)
+3. Tidak perlu npm install (tidak ada dependensi baru)
+4. Restart Node (pm2 restart ... / Restart di panel Hostinger)
+5. Hard refresh browser (Ctrl+F5) — cache JS/CSS diganti
+   ?v=20260904nexttest
+
+File
+----
+lib/testSchedule.js          BARU — jadwal tes berikutnya
+lib/nutritionWeekPlan.js     perbaiki status cedera aktif vs active
+routes/program.js            nextTest di /program dan /calendar
+public/app.js                filter atlet per pelatih (admin) + UI tes
+public/style.css             pill tes + kartu tes terlewat (redup)
+public/index.html            cache-buster
+PATCH-20260904.txt           file ini
+
+Perbaikan
+---------
+1. Menu pemulihan nutrisi 7 hari setelah cedera
+   Status di app: active | improving | resolved
+   Dulu dicek 'aktif' → tidak pernah nyala.
+   Sekarang: active/aktif/improving/membaik = berjalan.
+
+2. Filter atlet admin
+   Tombol "Lihat atlet" di Panel Admin sekarang
+   memanggil GET /athletes?coachId=...
+   (sebelumnya filter hanya ke portal-day).
+   Tanpa filter, admin melihat kolom Pelatih.
+
+3. Jadwal tes berikutnya
+   Interval (usulan, pelatih yang tentukan hari):
+     Sprint/lompat: Umum 28h, Khusus 21h, Puncak 14h, Transisi 42h
+     Time trial:    Umum 28h, Khusus 28h, Puncak 14h, Transisi 42h
+   5 hari terakhir kompetisi: tes baru ditunda.
+   Tampil di tab Jadwal, kalender, dan tab Tes.
+   Tes terlewat: badge abu-abu "Terlewat", kartu redup,
+   bukan peringatan merah.
+
+Tidak termasuk di patch ini
+---------------------------
+Audit keamanan yang belum dikerjakan:
+- cek role di JWT pelatih vs atlet
+- cascade hapus relasi saat atlet dihapus
+- tolak tanggal monitoring masa depan di portal atlet
+- verifikasi gross_amount webhook Midtrans

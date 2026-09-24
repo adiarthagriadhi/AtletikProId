@@ -1,0 +1,6303 @@
+:root {
+  /* Brand */
+  --primary: #4f46e5;
+  --primary-dark: #4338ca;
+  --primary-light: #eef2ff;
+  --on-primary: #ffffff;
+
+  /* Neutrals */
+  --bg: #f4f5f8;
+  --surface: #ffffff;
+  --surface-2: #f8f9fc;
+  --border: #e4e7ec;
+  --text: #1c2230;
+  --text-muted: #6b7280;
+
+  /* Status */
+  --success: #0d9488;
+  --success-bg: #e6fbf8;
+  --warn: #b45309;
+  --warn-bg: #fef3e2;
+  --danger: #dc2626;
+  --danger-bg: #fdecec;
+
+  /* Phase badges */
+  --umum: #6d28d9;
+  --umum-bg: #ede9fe;
+  --khusus: #4338ca;
+  --khusus-bg: #e0e7ff;
+  --puncak: #d97706;
+  --puncak-bg: #fef3e2;
+  --transisi: #6b7280;
+  --transisi-bg: #f1f2f5;
+
+  /* Category accents (athlete list badges, calendar pills) */
+  --cat-sprint: #e11d48;
+  --cat-sprint-bg: #ffe4e6;
+  --cat-menengah: #0284c7;
+  --cat-menengah-bg: #e0f2fe;
+  --cat-jauh: #059669;
+  --cat-jauh-bg: #d1fae5;
+  --cat-lompat: #7c3aed;
+  --cat-lompat-bg: #ede9fe;
+
+  /* ACWR gauge zones */
+  --acwr-low: #94a3b8;
+  --acwr-safe: #10b981;
+  --acwr-caution: #f59e0b;
+  --acwr-risk: #dc2626;
+
+  --shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.06), 0 1px 1px rgba(16, 24, 40, 0.04);
+  --shadow-md: 0 6px 16px rgba(16, 24, 40, 0.08), 0 2px 6px rgba(16, 24, 40, 0.04);
+
+  --radius: 10px;
+  --radius-lg: 16px;
+  --sidebar-width: 248px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --primary: #818cf8;
+    --primary-dark: #a5b4fc;
+    --primary-light: #1e1b4b;
+    --on-primary: #0f1117;
+
+    --bg: #0f1117;
+    --surface: #171a23;
+    --surface-2: #1e222d;
+    --border: #2b2f3b;
+    --text: #e7e9f0;
+    --text-muted: #9298a8;
+
+    --success: #2dd4bf;
+    --success-bg: #052e2b;
+    --warn: #fbbf24;
+    --warn-bg: #422006;
+    --danger: #f87171;
+    --danger-bg: #450a0a;
+
+    --umum: #c4b5fd;
+    --umum-bg: #2e1065;
+    --khusus: #a5b4fc;
+    --khusus-bg: #1e1b4b;
+    --puncak: #fbbf24;
+    --puncak-bg: #422006;
+    --transisi: #9298a8;
+    --transisi-bg: #22262f;
+
+    --cat-sprint: #fb7185;
+    --cat-sprint-bg: #4c0519;
+    --cat-menengah: #38bdf8;
+    --cat-menengah-bg: #082f49;
+    --cat-jauh: #34d399;
+    --cat-jauh-bg: #022c22;
+    --cat-lompat: #c4b5fd;
+    --cat-lompat-bg: #2e1065;
+
+    --acwr-low: #64748b;
+    --acwr-safe: #34d399;
+    --acwr-caution: #fbbf24;
+    --acwr-risk: #f87171;
+
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+    --shadow-md: 0 8px 20px rgba(0, 0, 0, 0.45);
+  }
+}
+
+:root[data-theme="dark"] {
+  --primary: #818cf8;
+  --primary-dark: #a5b4fc;
+  --primary-light: #1e1b4b;
+  --on-primary: #0f1117;
+
+  --bg: #0f1117;
+  --surface: #171a23;
+  --surface-2: #1e222d;
+  --border: #2b2f3b;
+  --text: #e7e9f0;
+  --text-muted: #9298a8;
+
+  --success: #2dd4bf;
+  --success-bg: #052e2b;
+  --warn: #fbbf24;
+  --warn-bg: #422006;
+  --danger: #f87171;
+  --danger-bg: #450a0a;
+
+  --umum: #c4b5fd;
+  --umum-bg: #2e1065;
+  --khusus: #a5b4fc;
+  --khusus-bg: #1e1b4b;
+  --puncak: #fbbf24;
+  --puncak-bg: #422006;
+  --transisi: #9298a8;
+  --transisi-bg: #22262f;
+
+  --cat-sprint: #fb7185;
+  --cat-sprint-bg: #4c0519;
+  --cat-menengah: #38bdf8;
+  --cat-menengah-bg: #082f49;
+  --cat-jauh: #34d399;
+  --cat-jauh-bg: #022c22;
+  --cat-lompat: #c4b5fd;
+  --cat-lompat-bg: #2e1065;
+
+  --acwr-low: #64748b;
+  --acwr-safe: #34d399;
+  --acwr-caution: #fbbf24;
+  --acwr-risk: #f87171;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 8px 20px rgba(0, 0, 0, 0.45);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+#app { min-height: 100vh; }
+
+a { color: var(--primary); }
+
+.container {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 24px 28px 64px;
+}
+
+.center-screen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: var(--bg);
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
+}
+
+.card + .card { margin-top: 16px; }
+
+h1, h2, h3 { margin-top: 0; }
+
+.brand {
+  font-weight: 700;
+  font-size: 1.3rem;
+  letter-spacing: -0.02em;
+}
+
+.brand .accent { color: var(--primary); }
+
+form { display: flex; flex-direction: column; gap: 12px; }
+
+label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  display: block;
+  margin-bottom: 4px;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 9px 11px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  font-size: 0.95rem;
+  background: var(--surface);
+  color: var(--text);
+  font-family: inherit;
+  transition: border-color 0.12s ease, box-shadow 0.12s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 20%, transparent);
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 9px;
+  padding: 10px 16px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  background: var(--primary);
+  color: var(--on-primary);
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  transition: background 0.12s ease, transform 0.08s ease, box-shadow 0.12s ease;
+  /* Penguatan pencegahan di SATU tempat untuk semua tombol (Command Center
+     & Mode Lapangan berbagi file ini) — bukan menambal restriksi yang
+     ditemukan (dicek: tidak ada touch-action/preventDefault di app ini
+     sama sekali). manipulation izinkan pan/scroll normal tapi matikan
+     delay deteksi double-tap-to-zoom, supaya swipe yang mendarat di atas
+     tombol (mis. .field-card yang bertumpuk rapat) tetap responsif di
+     berbagai Android/Chrome. Tidak ada kebutuhan double-tap-zoom di app
+     berbasis tombol seperti ini. */
+  touch-action: manipulation;
+}
+button:hover { background: var(--primary-dark); transform: translateY(-1px); box-shadow: var(--shadow-sm); }
+button:active { transform: translateY(0); }
+button.secondary { background: var(--surface); color: var(--text); border: 1px solid var(--border); }
+button.secondary:hover { background: var(--surface-2); }
+button.danger { background: var(--danger); color: #fff; }
+button.link { background: none; color: var(--primary); padding: 0; font-weight: 500; box-shadow: none; }
+button.link:hover { background: none; transform: none; box-shadow: none; text-decoration: underline; }
+
+.icon-btn {
+  background: none;
+  color: var(--text-muted);
+  border: 1px solid transparent;
+  padding: 8px;
+  border-radius: 9px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.icon-btn:hover { background: var(--surface-2); color: var(--text); transform: none; box-shadow: none; }
+
+.icon { width: 17px; height: 17px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+.icon-lg { width: 22px; height: 22px; }
+
+.error-box {
+  background: var(--danger-bg);
+  color: var(--danger);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 0.9rem;
+}
+
+/* ---------- App shell (sidebar fixed + main scroll) ---------- */
+.app-shell {
+  display: flex;
+  min-height: 100vh;
+  position: relative;
+}
+
+.sidebar {
+  width: var(--sidebar-width);
+  flex-shrink: 0;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  padding: 16px 14px;
+  gap: 14px;
+  /* Tetap di tempat — tidak ikut scroll konten utama */
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 20;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 6px;
+  flex-shrink: 0;
+}
+
+/* Identitas pelatih + tema di bagian atas (setelah brand) */
+.sidebar-user {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px 8px 12px;
+  border-radius: 12px;
+  background: var(--surface-2);
+  flex-shrink: 0;
+}
+.sidebar-user-actions {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+.sidebar-user-actions button { flex: 1; justify-content: center; }
+.sidebar-user-actions .icon-btn { flex: 0 0 auto; }
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 10px 12px;
+  border-radius: 9px;
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 0.92rem;
+  cursor: pointer;
+  border: none;
+  background: none;
+  text-align: left;
+  width: 100%;
+}
+.nav-item:hover { background: var(--surface-2); color: var(--text); transform: none; box-shadow: none; }
+.nav-item.active { background: var(--primary-light); color: var(--primary); }
+
+/* legacy class — tetap didukung jika ada referensi lama */
+.sidebar-footer { display: flex; flex-direction: column; gap: 8px; border-top: 1px solid var(--border); padding-top: 14px; }
+.sidebar-footer-actions { display: flex; gap: 6px; }
+.sidebar-footer-actions button { flex: 1; justify-content: center; }
+
+.user-card { display: flex; align-items: center; gap: 10px; padding: 2px 2px; min-width: 0; }
+.user-card .avatar-circle { width: 34px; height: 34px; font-size: 0.85rem; flex-shrink: 0; }
+.user-card-info { display: flex; flex-direction: column; line-height: 1.25; overflow: hidden; min-width: 0; }
+.user-card-name { font-weight: 600; font-size: 0.88rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.user-card-role { font-size: 0.76rem; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+.sidebar-hamburger { display: none; }
+
+.drawer-overlay { display: none; }
+
+/* Main bergeser ke kanan agar tidak tertutup sidebar fixed */
+.main {
+  flex: 1;
+  min-width: 0;
+  margin-left: var(--sidebar-width);
+  min-height: 100vh;
+}
+
+.main-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 28px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.main-header h2 { margin: 0; font-size: 1.15rem; }
+
+@media (max-width: 860px) {
+  .sidebar {
+    position: fixed;
+    top: 0; left: 0; bottom: 0;
+    z-index: 40;
+    transform: translateX(-100%);
+    transition: transform 0.18s ease;
+    box-shadow: var(--shadow-md);
+  }
+  .sidebar.open { transform: translateX(0); }
+  .sidebar-hamburger { display: inline-flex; }
+  .main { margin-left: 0; }
+  .drawer-overlay.open {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 17, 23, 0.45);
+    z-index: 30;
+  }
+  .container { padding: 20px 16px 48px; }
+  .main-header { padding: 14px 16px; }
+  .card { padding: 16px; }
+}
+
+/* ---------- Legacy topbar (auth-adjacent, unused in main shell but kept) ---------- */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+.topbar .user-info { display: flex; align-items: center; gap: 12px; font-size: 0.9rem; color: var(--text-muted); }
+
+.tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--border); margin-bottom: 16px; flex-wrap: wrap; }
+.tab-btn {
+  background: none; color: var(--text-muted); font-weight: 600; border-radius: 0;
+  padding: 10px 14px; border-bottom: 2px solid transparent; box-shadow: none;
+}
+
+.export-word-row { display: flex; justify-content: flex-end; margin-bottom: 12px; }
+.tab-btn.active { color: var(--primary); border-bottom-color: var(--primary); }
+.tab-btn:hover { background: none; color: var(--primary); transform: none; box-shadow: none; }
+
+.table-wrap { overflow-x: auto; }
+.table-wrap table { width: auto; min-width: 100%; }
+table { width: 100%; border-collapse: collapse; }
+th, td { text-align: left; padding: 11px 10px; border-bottom: 1px solid var(--border); font-size: 0.9rem; white-space: nowrap; }
+th { color: var(--text-muted); font-weight: 600; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.03em; }
+tbody tr:hover { background: var(--surface-2); }
+.row-clickable { cursor: pointer; }
+
+.row { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.row-actions { display: flex; gap: 8px; align-items: center; }
+
+.phase-header { display: flex; align-items: center; justify-content: flex-start; gap: 16px; flex-wrap: wrap; }
+.phase-header h3 { margin: 0; }
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+.badge-large { padding: 6px 18px; font-size: 1.15rem; }
+.badge .icon { width: 12px; height: 12px; }
+.badge-umum { background: var(--umum-bg); color: var(--umum); }
+.badge-khusus { background: var(--khusus-bg); color: var(--khusus); }
+.badge-puncak { background: var(--puncak-bg); color: var(--puncak); }
+.badge-transisi { background: var(--transisi-bg); color: var(--transisi); }
+.badge-risk { background: var(--danger-bg); color: var(--danger); }
+.badge-ok { background: var(--success-bg); color: var(--success); }
+
+.badge-cat-sprint { background: var(--cat-sprint-bg); color: var(--cat-sprint); }
+.badge-cat-menengah { background: var(--cat-menengah-bg); color: var(--cat-menengah); }
+.badge-cat-jauh { background: var(--cat-jauh-bg); color: var(--cat-jauh); }
+.badge-cat-lompat { background: var(--cat-lompat-bg); color: var(--cat-lompat); }
+
+.avatar-circle {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--primary-light);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.athlete-name-cell { display: flex; align-items: center; gap: 10px; }
+
+.muted { color: var(--text-muted); font-size: 0.88rem; }
+
+.session-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px;
+  margin-bottom: 10px;
+  background: var(--surface-2);
+}
+.session-card h4 { margin: 0 0 4px; }
+
+.multiplier-breakdown {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 10px;
+  margin: 12px 0;
+}
+.multiplier-item {
+  background: var(--surface-2);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.multiplier-item .item-label { display: flex; align-items: center; gap: 6px; color: var(--text-muted); font-size: 0.82rem; }
+.multiplier-item .value { font-size: 1.3rem; font-weight: 700; }
+
+.pill-list { display: flex; flex-wrap: wrap; gap: 6px; }
+.pill { background: var(--surface-2); border-radius: 999px; padding: 4px 10px; font-size: 0.82rem; }
+.pill-sm { padding: 2px 7px; font-size: 0.72rem; display: block; margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+/* ---------- Dashboard stat cards ---------- */
+.stat-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.stat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 16px 18px;
+  box-shadow: var(--shadow-sm);
+}
+.stat-card .stat-value { font-size: 1.6rem; font-weight: 700; }
+.stat-card .stat-label { color: var(--text-muted); font-size: 0.82rem; margin-top: 2px; display: flex; align-items: center; gap: 6px; }
+
+/* ---------- Periodization timeline ---------- */
+.periodization-timeline { margin: 14px 0 6px; }
+.timeline-track {
+  position: relative;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--surface-2);
+  overflow: visible;
+}
+.timeline-fill { position: absolute; top: 0; left: 0; bottom: 0; border-radius: 999px; }
+.timeline-marker {
+  position: absolute;
+  top: 50%;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 3px solid var(--surface);
+  transform: translate(-50%, -50%);
+  box-shadow: var(--shadow-sm);
+}
+.timeline-labels { display: flex; justify-content: space-between; margin-top: 8px; font-size: 0.78rem; color: var(--text-muted); }
+
+/* ---------- ACWR gauge ---------- */
+.acwr-gauge { margin: 10px 0 4px; }
+.acwr-gauge-track {
+  position: relative;
+  height: 10px;
+  border-radius: 999px;
+  background: linear-gradient(to right,
+    var(--acwr-low) 0%, var(--acwr-low) 40%,
+    var(--acwr-safe) 40%, var(--acwr-safe) 65%,
+    var(--acwr-caution) 65%, var(--acwr-caution) 75%,
+    var(--acwr-risk) 75%, var(--acwr-risk) 100%);
+}
+.acwr-gauge-marker {
+  position: absolute;
+  top: 50%;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 3px solid var(--text);
+  transform: translate(-50%, -50%);
+  box-shadow: var(--shadow-sm);
+}
+.acwr-gauge-labels { display: flex; justify-content: space-between; margin-top: 8px; font-size: 0.74rem; color: var(--text-muted); }
+
+.empty-state { text-align: center; padding: 40px 16px; color: var(--text-muted); display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.empty-illustration { width: 108px; height: 108px; margin-bottom: 10px; }
+
+.footer-link { text-align: center; margin-top: 16px; font-size: 0.85rem; color: var(--text-muted); }
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 4px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.calendar-header { margin-bottom: 6px; }
+.calendar-head-cell {
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding-bottom: 4px;
+}
+.calendar-cell {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 6px;
+  min-height: 80px;
+  cursor: default;
+}
+.calendar-cell-empty { border-color: transparent; }
+.calendar-cell-has-session { background: var(--surface-2); cursor: pointer; }
+.calendar-cell-has-session:hover { background: var(--primary-light); }
+.calendar-cell-selected { border-color: var(--primary); border-width: 2px; }
+.calendar-cell-today .calendar-cell-date {
+  background: var(--primary);
+  color: var(--on-primary);
+  border-radius: 999px;
+  width: 22px;
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.calendar-cell-date { font-size: 0.85rem; font-weight: 600; margin-bottom: 4px; }
+.calendar-cell-badges { display: flex; flex-direction: column; gap: 2px; }
+
+/* ---------- Responsive overrides ----------
+   Ditaruh di akhir file dengan sengaja: beberapa selector di sini (.tabs,
+   .badge-large, .calendar-cell, dst) juga punya definisi dasar di atas
+   dengan spesifisitas yang sama — pada CSS, kalau spesifisitas sama, aturan
+   yang letaknya belakangan di file yang menang, terlepas dari ada/tidaknya
+   @media. Taruh SEMUA override responsive di sini supaya selalu menang. */
+@media (max-width: 860px) {
+  /* Tab sub-navigasi atlet (Program/Kalender/Tes/Monitoring) — di layar
+     sempit jadi strip geser satu baris, bukan bungkus 3 baris berantakan. */
+  .tabs { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; margin-left: -16px; margin-right: -16px; padding: 0 16px 2px; }
+  .tab-btn { white-space: nowrap; flex-shrink: 0; }
+
+  .export-word-row { justify-content: stretch; }
+  .export-word-row button { width: 100%; justify-content: center; }
+}
+
+/* Layar sangat sempit (HP) — kalender 7 kolom tidak muat menampilkan nama
+   sesi penuh di tiap sel; ganti jadi titik indikator saja, detail lengkap
+   tetap tersedia di kartu bawah begitu tanggalnya diketuk. */
+@media (max-width: 480px) {
+  .calendar-cell { min-height: 46px; padding: 4px; }
+  .calendar-cell-badges { display: none; }
+  .calendar-cell-has-session { position: relative; }
+  .calendar-cell-has-session::after {
+    content: '';
+    position: absolute;
+    bottom: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--primary);
+  }
+  .badge-large { padding: 5px 12px; font-size: 0.95rem; }
+}
+
+/* ---------- Charts (line/bar) ---------- */
+.chart-scroll { overflow-x: auto; }
+/* min-width:480px menjaga grafik tetap terbaca di layar lebar (bukan
+   diperas jadi terlalu rapat) — TAPI itu memaksa lebar minimum tetap
+   dalam piksel di SEMUA konteks, termasuk container yang memang lebih
+   sempit dari 480px (mis. field-embed Mode Lapangan). Karena min-width
+   SELALU menang atas width/max-width (termasuk yang !important, lihat
+   .mod-chart-card .chart-wrap di bawah), grafik jadi kepotong permanen
+   di layar sempit walau SVG-nya sendiri sudah viewBox+width:100%.
+   min(480px, 100%) menjaga perilaku lama persis sama di container ≥480px,
+   tapi izinkan menyusut penuh mengikuti container di bawah itu — berlaku
+   otomatis untuk SEMUA pemakai buildLineChart/buildBarChart, bukan cuma
+   ditambal di satu tempat. */
+.chart-wrap { position: relative; min-width: min(480px, 100%); }
+.chart-svg { width: 100%; height: auto; display: block; }
+.chart-svg text { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+.chart-gridline { stroke: var(--border); stroke-width: 1; }
+.chart-tick-label, .chart-axis-label { fill: var(--text-muted); font-size: 10px; }
+.chart-end-label { fill: var(--text); font-size: 12px; font-weight: 700; }
+.chart-crosshair { stroke: var(--text-muted); stroke-width: 1; opacity: 0; transition: opacity 0.08s; }
+.chart-crosshair.visible { opacity: 0.5; }
+.chart-hover-dot { fill: var(--primary); stroke: var(--surface); stroke-width: 2; opacity: 0; transition: opacity 0.08s; }
+.chart-hover-dot.visible { opacity: 1; }
+.chart-hit { fill: transparent; cursor: crosshair; }
+.chart-bar { transition: filter 0.1s; }
+.chart-bar-hover { filter: brightness(1.2); }
+.chart-tooltip {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  background: color-mix(in srgb, var(--surface) 55%, transparent);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  border: none;
+  border-radius: 4px;
+  padding: 1px 6px;
+  box-shadow: none;
+  white-space: nowrap;
+  font-size: 0.68rem;
+  font-weight: 650;
+  line-height: 1.3;
+  letter-spacing: 0.01em;
+  transition: opacity 0.08s;
+  z-index: 5;
+}
+.chart-tooltip-date { color: var(--text-muted); font-size: 0.65rem; }
+.chart-tooltip-value { font-weight: 700; font-size: 0.68rem; }
+.chart-empty { color: var(--text-muted); font-size: 0.85rem; padding: 24px 4px; text-align: center; }
+
+/* ---------- Panduan Istilah (glosarium in-app) ---------- */
+code { font-family: ui-monospace, 'SF Mono', 'Cascadia Code', Menlo, Consolas, monospace; background: var(--surface-2); padding: 1px 6px; border-radius: 4px; font-size: 0.88em; }
+.guide-faq-q { font-weight: 700; margin-bottom: 6px; }
+.guide-term-head { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
+.guide-term-name { font-size: 1.05rem; font-weight: 700; }
+.guide-tag { font-size: 0.7rem; font-weight: 700; color: var(--text-muted); background: var(--bg); padding: 3px 9px; border-radius: 999px; }
+.guide-figure {
+  display: flex; gap: 6px; flex-wrap: wrap; font-size: 0.85rem;
+  background: var(--success-bg); color: var(--success); border-radius: 8px; padding: 9px 13px; margin-top: 10px;
+}
+.guide-figure.warn { background: var(--warn-bg); color: var(--warn); }
+.guide-figure code { background: transparent; color: inherit; font-weight: 700; padding: 0; }
+.guide-zone-row { display: flex; gap: 10px; font-size: 0.88rem; margin-top: 6px; color: var(--text); }
+.guide-zone-key { font-family: ui-monospace, 'SF Mono', 'Cascadia Code', Menlo, Consolas, monospace; font-weight: 700; color: var(--primary); flex-shrink: 0; min-width: 2.4em; }
+.guide-phase-row { display: grid; grid-template-columns: 150px 1fr; gap: 12px; padding: 9px 0; border-top: 1px solid var(--border); font-size: 0.88rem; }
+.guide-phase-row:first-child { border-top: none; }
+.guide-phase-when { color: var(--primary); font-weight: 700; font-size: 0.76rem; }
+.guide-phase-desc { color: var(--text-muted); }
+@media (max-width: 480px) {
+  .guide-phase-row { grid-template-columns: 1fr; gap: 3px; }
+}
+
+.row-chevron { width: 1%; white-space: nowrap; color: var(--text-muted); }
+.row-chevron .icon { width: 15px; height: 15px; }
+
+/* Badge klasifikasi prestasi (tierBadgeClass di app.js) — badge-ok dipakai
+   ulang dari status ACWR ("aman"), dua kelas baru di bawah untuk tingkat
+   menengah/dasar. Bukan warna risiko — ini level kemampuan. */
+.badge-dev { background: var(--warn-bg); color: var(--warn); }
+.badge-low { background: var(--transisi-bg); color: var(--transisi); }
+
+.level-ref-note { font-size: 0.76rem; color: var(--text-muted); font-style: italic; margin-top: 3px; line-height: 1.4; }
+
+/* ---------- Landing page ---------- */
+.landing { background: var(--bg); min-height: 100vh; min-height: 100dvh; }
+
+/* Landing & auth harus bisa di-scroll di HP. UI command memaksa
+   html/body overflow:hidden + height:100dvh — jangan sampai aturan itu
+   menempel ke halaman publik. */
+html[data-ui="landing"],
+html[data-ui="auth"],
+html[data-ui="landing"] body,
+html[data-ui="auth"] body {
+  height: auto !important;
+  max-height: none !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  position: static !important;
+}
+html[data-ui="landing"] #app,
+html[data-ui="auth"] #app {
+  height: auto !important;
+  min-height: 100dvh;
+  overflow: visible !important;
+}
+html[data-ui="landing"] .landing {
+  overflow: visible;
+  -webkit-overflow-scrolling: touch;
+}
+.brand-mark { flex-shrink: 0; border-radius: 22%; box-shadow: var(--shadow-sm); }
+
+.landing-nav { position: sticky; top: 0; z-index: 20; background: var(--surface); border-bottom: 1px solid var(--border); }
+.landing-nav-inner {
+  max-width: 1120px; margin: 0 auto; padding: 14px 24px;
+  display: flex; align-items: center; justify-content: space-between; gap: 20px;
+}
+.landing-brand { display: flex; align-items: center; gap: 10px; }
+.landing-nav-links { display: flex; gap: 26px; flex: 1; justify-content: center; }
+.landing-nav-links a { color: var(--text-muted); font-weight: 600; font-size: 0.92rem; text-decoration: none; }
+.landing-nav-links a:hover { color: var(--primary); }
+
+.eyebrow {
+  display: inline-block; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.04em;
+  color: var(--primary); background: var(--primary-light); padding: 5px 12px; border-radius: 999px; margin-bottom: 18px;
+}
+
+.landing-hero {
+  max-width: 1120px; margin: 0 auto; padding: 64px 24px;
+  display: grid; grid-template-columns: 1.1fr 1fr; gap: 56px; align-items: center;
+}
+.landing-hero h1 { font-size: 2.3rem; line-height: 1.2; letter-spacing: -0.01em; margin: 0 0 18px; }
+.landing-lede { font-size: 1.05rem; color: var(--text-muted); line-height: 1.6; margin: 0 0 28px; max-width: 52ch; }
+.landing-cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
+.landing-hero-preview { max-width: 380px; justify-self: center; }
+.landing-hero-preview .phase-header h3 { font-size: 1rem; }
+
+.landing-section { max-width: 1120px; margin: 0 auto; padding: 56px 24px; border-top: 1px solid var(--border); }
+.landing-section h2 { font-size: 1.6rem; text-align: center; margin: 0 auto 10px; letter-spacing: -0.01em; }
+.landing-section-intro { text-align: center; max-width: 56ch; margin: 0 auto 36px; }
+
+.landing-feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; margin-top: 32px; }
+.landing-feature-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 22px; box-shadow: var(--shadow-sm); }
+.landing-feature-icon {
+  width: 42px; height: 42px; border-radius: 12px; background: var(--primary-light); color: var(--primary);
+  display: flex; align-items: center; justify-content: center; margin-bottom: 14px;
+}
+.landing-feature-card h3 { font-size: 1.02rem; margin: 0 0 6px; }
+.landing-feature-card p { margin: 0; font-size: 0.9rem; line-height: 1.55; }
+
+.landing-team-grid { display: flex; flex-direction: column; gap: 20px; margin-top: 32px; max-width: 480px; margin-left: auto; margin-right: auto; }
+.landing-team-card { display: flex; align-items: center; gap: 14px; }
+.landing-team-avatar { width: 44px; height: 44px; font-size: 0.92rem; background: transparent; border: 1.5px solid var(--primary); color: var(--primary); }
+.landing-team-name { font-weight: 600; font-size: 0.92rem; margin-bottom: 1px; }
+
+.landing-contact-grid { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-top: 32px; }
+.landing-contact-card {
+  display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--text);
+}
+.landing-contact-card:hover .landing-contact-icon,
+.landing-contact-card:hover .landing-team-name { color: var(--primary); }
+.landing-contact-icon { color: var(--text-muted); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: color 0.12s ease; }
+.landing-contact-icon .icon { width: 26px; height: 26px; }
+.landing-contact-card .landing-team-name { transition: color 0.12s ease; }
+
+.landing-footer {
+  max-width: 1120px; margin: 0 auto; padding: 40px 24px 56px; border-top: 1px solid var(--border);
+  display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center;
+}
+.landing-footer-links { display: flex; gap: 24px; flex-wrap: wrap; justify-content: center; }
+.landing-footer-links a { display: inline-flex; align-items: center; gap: 6px; color: var(--text-muted); text-decoration: none; font-size: 0.88rem; font-weight: 600; }
+.landing-footer-links a:hover { color: var(--primary); }
+.landing-footer-copy { font-size: 0.8rem; }
+
+@media (max-width: 860px) {
+  .landing-nav-links { display: none; }
+  .landing-hero { grid-template-columns: 1fr; padding: 40px 20px; gap: 36px; text-align: center; }
+  .landing-lede { margin-left: auto; margin-right: auto; }
+  .landing-cta-row { justify-content: center; }
+  .landing-hero-preview { max-width: 100%; }
+  .landing-hero h1 { font-size: 1.8rem; }
+  .landing-section { padding: 44px 20px; }
+}
+
+/* ---- Batch 1 improvements: monitoring UX + ACWR feedback ---- */
+.badge-caution { background: color-mix(in srgb, #f59e0b 18%, transparent); color: #b45309; }
+.badge-muted { background: var(--surface-2, #f1f5f9); color: var(--text-muted); }
+
+.progress-bar-track {
+  height: 8px;
+  background: var(--surface-2, #e2e8f0);
+  border-radius: 999px;
+  overflow: hidden;
+  margin: 8px 0 4px;
+}
+.progress-bar-fill {
+  height: 100%;
+  background: var(--primary);
+  border-radius: 999px;
+  transition: width 0.25s ease;
+}
+
+.quick-presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.pill-btn {
+  font-size: 0.8rem !important;
+  padding: 4px 10px !important;
+  border-radius: 999px !important;
+}
+
+.load-preview-row { margin: 4px 0 8px; }
+.load-preview { font-size: 0.9rem; font-weight: 600; color: var(--primary); }
+
+.acwr-cta {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
+}
+.acwr-cta .row-actions,
+.acwr-cta button { margin-top: 6px; }
+
+/* ---- Batch 2: progress summary + session actions + callout ---- */
+.progress-summary-card .progress-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
+  margin-top: 8px;
+}
+.progress-stat-label {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+.progress-stat-value {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+.session-actions {
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px dashed var(--border);
+}
+.callout {
+  border-radius: 12px;
+  padding: 16px 18px;
+  margin-bottom: 16px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+.callout h4 {
+  margin: 0 0 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+}
+.callout-warning {
+  border-color: color-mix(in srgb, var(--acwr-caution) 45%, var(--border));
+  background: color-mix(in srgb, var(--acwr-caution) 10%, var(--surface));
+}
+.callout .row-actions,
+.callout button { margin-top: 10px; }
+
+/* ---- Batch 3: trial / access banner ---- */
+.access-banner {
+  border-radius: 12px;
+  padding: 12px 16px;
+  margin-bottom: 16px;
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.access-banner-info {
+  background: color-mix(in srgb, var(--primary) 8%, var(--surface));
+  border-color: color-mix(in srgb, var(--primary) 30%, var(--border));
+}
+.access-banner-warn {
+  background: color-mix(in srgb, var(--acwr-caution) 12%, var(--surface));
+  border-color: color-mix(in srgb, var(--acwr-caution) 40%, var(--border));
+}
+.access-banner-danger {
+  background: color-mix(in srgb, var(--danger) 10%, var(--surface));
+  border-color: color-mix(in srgb, var(--danger) 35%, var(--border));
+}
+
+.access-banner-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.access-banner-row button {
+  flex-shrink: 0;
+}
+
+.access-banner-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.plan-modal-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.45);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 9999; padding: 16px;
+}
+.plan-modal { max-width: 420px; width: 100%; margin: 0; }
+.plan-options { display: flex; flex-direction: column; gap: 12px; margin-top: 12px; }
+.plan-option {
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px;
+  align-items: center; padding: 12px; border: 1px solid var(--border);
+  border-radius: 10px; background: var(--surface);
+}
+.plan-option-right { text-align: right; display: flex; flex-direction: column; gap: 6px; align-items: flex-end; }
+.plan-price { font-weight: 700; font-size: 1.05rem; color: var(--primary); }
+
+/* Identitas atlet di halaman detail */
+.athlete-identity-card { margin-bottom: 16px; }
+.athlete-identity-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.athlete-identity-main {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+}
+.athlete-identity-avatar {
+  width: 52px;
+  height: 52px;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+.athlete-identity-name {
+  margin: 0 0 4px;
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+.athlete-identity-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+.athlete-identity-actions {
+  flex-shrink: 0;
+}
+
+/* Perataan tombol aksi di tabel admin */
+td.row-actions {
+  vertical-align: middle;
+}
+td.row-actions .row-actions,
+.table-wrap td.row-actions {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  vertical-align: middle;
+}
+button.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  line-height: 1.3;
+  vertical-align: middle;
+}
+th, td {
+  vertical-align: middle;
+}
+
+/* Sidebar: label Pelatih */
+.sidebar-section-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  padding: 0 4px 2px;
+}
+.nav-item-logout { margin-top: 8px; color: var(--text-muted); }
+.nav-item-logout:hover { color: var(--danger); }
+
+/* Banner akses — satu baris teks */
+.access-banner-text {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 6px;
+  min-width: 0;
+  flex: 1;
+}
+
+/* Modal paket — rapi & stack di mobile */
+.plan-modal-overlay {
+  position: fixed; inset: 0;
+  background: rgba(15, 17, 23, 0.5);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 9999; padding: 16px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.plan-modal {
+  max-width: 400px;
+  width: 100%;
+  margin: auto;
+  padding: 20px 18px 16px;
+}
+.plan-modal h3 { margin: 0 0 4px; }
+.plan-modal-sub { margin: 0 0 16px; font-size: 0.88rem; }
+.plan-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.plan-option {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 14px 14px 12px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+}
+.plan-option-featured {
+  border-color: color-mix(in srgb, var(--primary) 45%, var(--border));
+  background: color-mix(in srgb, var(--primary) 6%, var(--surface));
+}
+.plan-option-top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+}
+.plan-option-title { font-weight: 700; font-size: 1rem; }
+.plan-price {
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--primary);
+  white-space: nowrap;
+}
+.plan-option-desc { font-size: 0.84rem; line-height: 1.35; }
+.plan-option-btn { width: 100%; justify-content: center; margin-top: 2px; }
+.plan-modal-cancel { width: 100%; margin-top: 12px; justify-content: center; }
+
+/* ---------- Tablet & Android friendly ---------- */
+@media (max-width: 1024px) {
+  .container { padding: 20px 18px 40px; }
+  .field-row {
+    flex-direction: column;
+  }
+  .field-row > div { width: 100%; }
+  .multiplier-breakdown {
+    grid-template-columns: 1fr !important;
+  }
+  .progress-stats-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .athlete-identity-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .athlete-identity-actions {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+  .access-banner-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .access-banner-actions {
+    width: 100%;
+  }
+  .access-banner-actions button,
+  .access-banner-row > button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 860px) {
+  .progress-stats-grid {
+    grid-template-columns: 1fr;
+  }
+  .tabs {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    flex-wrap: nowrap;
+  }
+  .tab-btn {
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+  .table-wrap {
+    margin: 0 -4px;
+  }
+  .session-card {
+    padding: 12px;
+  }
+  .quick-presets {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .pill-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  button, .nav-item {
+    min-height: 44px; /* touch target Android */
+  }
+  .icon-btn {
+    min-width: 44px;
+    min-height: 44px;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-header h2 { font-size: 1rem; }
+  .athlete-identity-name { font-size: 1.15rem; }
+  .plan-modal { padding: 16px 14px 12px; }
+  .stat-cards, .row {
+    gap: 10px;
+  }
+}
+
+/* Override + invite + athlete feed */
+.override-eval {
+  margin-top: 10px; padding: 10px 12px; border-radius: 10px;
+  font-size: 0.9rem; border: 1px solid var(--border);
+}
+.override-eval-confirm, .override-eval-live.override-eval-confirm {
+  background: color-mix(in srgb, var(--success, #22c55e) 12%, var(--surface));
+  border-color: color-mix(in srgb, var(--success, #22c55e) 35%, var(--border));
+}
+.override-eval-neutral, .override-eval-live.override-eval-neutral { background: var(--surface-2, #f1f5f9); }
+.override-eval-warn, .override-eval-live.override-eval-warn {
+  background: color-mix(in srgb, #f59e0b 12%, var(--surface));
+  border-color: color-mix(in srgb, #f59e0b 40%, var(--border));
+}
+.override-eval-risk, .override-eval-live.override-eval-risk {
+  background: color-mix(in srgb, var(--danger) 12%, var(--surface));
+  border-color: color-mix(in srgb, var(--danger) 40%, var(--border));
+}
+.override-eval-live { padding: 10px 12px; border-radius: 10px; border: 1px solid var(--border); font-size: 0.88rem; }
+.override-modal select, .override-modal textarea {
+  width: 100%; margin-bottom: 10px; padding: 8px 10px; border-radius: 10px;
+  border: 1px solid var(--border); background: var(--bg, var(--surface)); color: var(--text); font-family: inherit;
+}
+.override-modal select { min-height: 44px; }
+.override-detail { font-size: 0.88rem; margin-bottom: 12px; padding: 10px; border-radius: 10px; background: var(--surface-2, #f1f5f9); }
+.invite-copy-modal input[readonly] { cursor: text; user-select: all; margin-bottom: 6px; }
+.callout-ok {
+  border-color: color-mix(in srgb, var(--success, #22c55e) 40%, var(--border));
+  background: color-mix(in srgb, var(--success, #22c55e) 8%, var(--surface));
+}
+.callout-danger {
+  border-color: color-mix(in srgb, var(--danger) 40%, var(--border));
+  background: color-mix(in srgb, var(--danger) 8%, var(--surface));
+}
+.feed-flag-list { margin: 8px 0 0; padding-left: 0; list-style: none; }
+.feed-flag-list li {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+  padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 0.92rem;
+}
+.feed-flag-list li:last-child { border-bottom: none; }
+.plan-modal-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: 100;
+  display: flex; align-items: center; justify-content: center; padding: 16px;
+}
+.plan-modal { max-width: 480px; width: 100%; max-height: 90vh; overflow: auto; }
+.calendar-cell-has-extra { box-shadow: inset 0 0 0 2px color-mix(in srgb, #f59e0b 50%, transparent); }
+.pill-extra { background: color-mix(in srgb, #f59e0b 20%, transparent); color: #b45309; }
+.calendar-cell-has-test { box-shadow: inset 0 0 0 2px color-mix(in srgb, #6366f1 55%, transparent); }
+.pill-test { background: color-mix(in srgb, #6366f1 18%, transparent); color: #4338ca; }
+.session-card-test { border-left: 3px solid #6366f1; }
+.next-test-card-overdue {
+  border-left: 3px solid color-mix(in srgb, #94a3b8 70%, transparent);
+  opacity: 0.88;
+}
+.next-test-card-overdue h3 { color: var(--text-muted, #64748b); font-weight: 600; }
+.calendar-cell { cursor: pointer; }
+
+/* Penanda kalender: mulai, kompetisi, hari ini */
+.calendar-cell-start {
+  box-shadow: inset 0 0 0 2px #16a34a;
+  background: color-mix(in srgb, #16a34a 8%, var(--surface));
+}
+.calendar-cell-comp {
+  box-shadow: inset 0 0 0 2px #dc2626;
+  background: color-mix(in srgb, #dc2626 10%, var(--surface));
+}
+.calendar-cell-today {
+  outline: 2px solid var(--primary);
+  outline-offset: -2px;
+}
+.calendar-cell-markers {
+  display: flex; flex-wrap: wrap; gap: 2px; margin-bottom: 2px;
+}
+.cal-marker {
+  display: inline-block;
+  font-size: 0.62rem;
+  font-weight: 700;
+  line-height: 1.2;
+  padding: 1px 4px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+.cal-marker-today {
+  background: var(--primary);
+  color: #fff;
+}
+.cal-marker-start {
+  background: #16a34a;
+  color: #fff;
+}
+.cal-marker-comp {
+  background: #dc2626;
+  color: #fff;
+}
+.calendar-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  margin: 10px 0 4px;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+.cal-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+@media (max-width: 640px) {
+  .cal-marker { font-size: 0.55rem; padding: 1px 3px; }
+  .calendar-cell-markers { max-height: 1.2rem; overflow: hidden; }
+}
+
+
+/* ========== calendar + layout overflow (final) ========== */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+.app-shell,
+.main,
+.container,
+.card,
+.calendar-wrap {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.main {
+  overflow-x: hidden;
+  min-width: 0;
+}
+.container {
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 1080px;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.calendar-wrap {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow: hidden !important;
+  padding: 12px !important;
+}
+.calendar-grid {
+  display: grid !important;
+  grid-template-columns: repeat(7, minmax(0, 1fr)) !important;
+  gap: 3px !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+}
+.calendar-header.calendar-grid {
+  margin-bottom: 6px !important;
+}
+.calendar-head-cell {
+  min-width: 0 !important;
+  max-width: 100% !important;
+  overflow: hidden !important;
+  text-align: center;
+  font-size: clamp(0.55rem, 2.2vw, 0.75rem) !important;
+  padding: 2px 0 !important;
+  white-space: nowrap;
+}
+.calendar-cell {
+  min-width: 0 !important;
+  width: auto !important;
+  max-width: 100% !important;
+  overflow: hidden !important;
+  padding: 3px !important;
+  min-height: 0 !important;
+  aspect-ratio: 1 / 1.05;
+  height: auto !important;
+  cursor: pointer;
+}
+.calendar-cell-empty {
+  border-color: transparent !important;
+  background: transparent !important;
+  pointer-events: none;
+}
+.calendar-cell-date {
+  font-size: clamp(0.65rem, 2.5vw, 0.85rem) !important;
+  line-height: 1.2;
+  margin: 0 0 2px !important;
+}
+.calendar-cell-badges {
+  display: none !important; /* detail sesi di panel bawah; sel tetap kompak */
+}
+.calendar-cell-markers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1px;
+  max-width: 100%;
+  overflow: hidden;
+}
+.cal-marker {
+  font-size: 0.5rem !important;
+  padding: 0 3px !important;
+  line-height: 1.3;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.calendar-cell-has-session {
+  background: var(--surface-2);
+}
+.calendar-cell-has-session::after {
+  content: '';
+  display: block;
+  width: 5px;
+  height: 5px;
+  margin: 2px auto 0;
+  border-radius: 50%;
+  background: var(--primary);
+}
+.calendar-legend {
+  flex-wrap: wrap;
+  gap: 6px 12px;
+  font-size: 0.78rem;
+  max-width: 100%;
+}
+
+@media (min-width: 900px) {
+  .calendar-cell {
+    aspect-ratio: auto;
+    min-height: 72px !important;
+  }
+  .calendar-cell-markers { display: flex; }
+  .cal-marker { font-size: 0.62rem !important; }
+}
+
+@media (max-width: 640px) {
+  .calendar-cell-markers { display: none !important; }
+  .calendar-cell {
+    aspect-ratio: 1;
+    min-height: 0 !important;
+    border-radius: 6px;
+  }
+  .container { padding-left: 12px; padding-right: 12px; }
+}
+
+
+/* ===== Coach portal + athlete status bar ===== */
+.coach-portal {
+  margin-bottom: 1.25rem;
+}
+.portal-header h2 {
+  margin: 0 0 0.25rem;
+  font-size: 1.35rem;
+}
+.portal-tiles {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin: 0.75rem 0 1rem;
+}
+.portal-tile {
+  background: var(--surface, #fff);
+  border: 1px solid var(--border, #e5e7eb);
+  border-radius: 12px;
+  padding: 0.85rem 1rem;
+}
+.portal-tile-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted, #6b7280);
+}
+.portal-tile-value {
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0.15rem 0;
+}
+.portal-tile-warn {
+  border-color: #f59e0b;
+  background: rgba(245, 158, 11, 0.08);
+}
+.portal-tile-risk {
+  border-color: #ef4444;
+  background: rgba(239, 68, 68, 0.08);
+}
+.portal-attention {
+  background: var(--surface, #fff);
+  border: 1px solid var(--border, #e5e7eb);
+  border-radius: 12px;
+  padding: 0.85rem 1rem;
+  margin-bottom: 0.75rem;
+}
+.portal-attention-ok { color: var(--muted, #6b7280); }
+.portal-attention-list {
+  list-style: none;
+  margin: 0.5rem 0 0;
+  padding: 0;
+}
+.portal-attention-item {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.55rem 0.35rem;
+  border-top: 1px solid var(--border, #e5e7eb);
+  cursor: pointer;
+}
+.portal-attention-item:hover { background: rgba(0,0,0,0.03); }
+.portal-attention-item .icon { margin-left: auto; opacity: 0.5; }
+.portal-near-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.portal-near-chip {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.15rem;
+  padding: 0.55rem 0.75rem;
+  border-radius: 10px;
+  border: 1px solid var(--border, #e5e7eb);
+  background: var(--surface, #fff);
+  cursor: pointer;
+  text-align: left;
+}
+.portal-near-chip:hover { border-color: var(--accent, #0ea5e9); }
+/* .portal-near-chip adalah <button>; sama seperti .field-card-body strong,
+   base style button global set color:var(--on-primary) (putih), dan chip
+   ini cuma menimpa background (bukan color) jadi tanpa color eksplisit di
+   sini nama atlet mewarisi putih-di-atas-terang. */
+.portal-near-name { font-weight: 600; font-size: 0.9rem; color: var(--text); }
+.portal-near-days { font-size: 0.8rem; color: var(--muted, #6b7280); }
+
+.athlete-status-bar {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.5rem;
+  margin: 0.75rem 0 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  padding: 0.5rem 0;
+  background: var(--bg, #f3f4f6);
+}
+.status-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.1rem;
+  padding: 0.55rem 0.65rem;
+  border-radius: 10px;
+  border: 1px solid var(--border, #e5e7eb);
+  background: var(--surface, #fff);
+  cursor: pointer;
+  text-align: left;
+  min-width: 0;
+}
+.status-tile:hover { border-color: var(--accent, #0ea5e9); }
+.status-tile-label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted, #6b7280);
+}
+.status-tile-value {
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+}
+.status-tile-sub {
+  font-size: 0.7rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+}
+.status-tile-warn {
+  border-color: #f59e0b;
+  background: rgba(245, 158, 11, 0.1);
+}
+.status-tile-risk {
+  border-color: #ef4444;
+  background: rgba(239, 68, 68, 0.1);
+}
+
+@media (max-width: 900px) {
+  .portal-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .athlete-status-bar {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    position: static;
+  }
+}
+@media (max-width: 560px) {
+  .portal-tiles { grid-template-columns: 1fr 1fr; }
+  .athlete-status-bar { grid-template-columns: 1fr 1fr; }
+}
+
+
+.app-toast {
+  position: fixed;
+  bottom: 1.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  padding: 0.65rem 1.1rem;
+  border-radius: 999px;
+  background: #111827;
+  color: #fff;
+  font-size: 0.9rem;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  max-width: 90vw;
+}
+.app-toast-ok { background: #065f46; }
+.app-toast-warn { background: #92400e; }
+.app-toast-error { background: #991b1b; }
+
+.portal-attention-item {
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.portal-attention-main {
+  flex: 1;
+  min-width: 12rem;
+  cursor: pointer;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  align-items: baseline;
+}
+.portal-attention-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+.portal-today-list { display: flex; flex-direction: column; gap: 0.5rem; }
+.portal-today-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.75rem;
+  align-items: baseline;
+  padding: 0.35rem 0;
+  border-bottom: 1px solid var(--border, #e5e7eb);
+}
+.portal-today-name { font-weight: 600; }
+
+.athlete-status-bar {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+
+.session-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+.session-actions .pill-btn:not(.secondary) {
+  font-weight: 600;
+}
+
+
+/* ========== Modal ringkas (PC) + densitas tampak jelas ========== */
+.plan-modal-overlay {
+  position: fixed !important;
+  inset: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 24px !important;
+  box-sizing: border-box !important;
+  overflow-y: auto !important;
+  z-index: 10000 !important;
+  background: rgba(0, 0, 0, 0.45) !important;
+}
+.plan-modal,
+.plan-modal.card,
+.override-modal,
+.invite-copy-modal {
+  width: 100% !important;
+  max-width: 400px !important;
+  margin: auto !important;
+  max-height: min(88vh, 640px) !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  box-sizing: border-box !important;
+  flex-shrink: 0 !important;
+}
+@media (min-width: 900px) {
+  .plan-modal,
+  .plan-modal.card,
+  .override-modal,
+  .invite-copy-modal {
+    max-width: 380px !important;
+  }
+}
+@media (max-width: 480px) {
+  .plan-modal,
+  .plan-modal.card,
+  .override-modal,
+  .invite-copy-modal {
+    max-width: 100% !important;
+  }
+  .plan-modal-overlay {
+    padding: 12px !important;
+    align-items: flex-end !important;
+  }
+}
+
+/* Mode densitas — perbedaan harus terasa */
+html[data-density="comfortable"] .container {
+  max-width: 960px;
+}
+html[data-density="comfortable"] .card {
+  padding: 1.2rem 1.35rem;
+  margin-bottom: 1rem;
+}
+html[data-density="comfortable"] .session-card {
+  padding: 1rem 1.15rem;
+  margin-bottom: 0.85rem;
+}
+html[data-density="comfortable"] .portal-tiles {
+  gap: 1rem;
+  margin: 1rem 0 1.25rem;
+}
+html[data-density="comfortable"] .portal-tile {
+  padding: 1rem 1.15rem;
+}
+html[data-density="comfortable"] .portal-tile-value {
+  font-size: 1.75rem;
+}
+html[data-density="comfortable"] .status-tile {
+  padding: 0.65rem 0.75rem;
+}
+html[data-density="comfortable"] .tabs {
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+html[data-density="comfortable"] .tab-btn {
+  padding: 0.55rem 0.9rem;
+}
+html[data-density="comfortable"] .table-wrap td,
+html[data-density="comfortable"] .table-wrap th {
+  padding: 0.65rem 0.75rem;
+}
+html[data-density="comfortable"] .main-header {
+  padding-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+
+
+/* ========== CAROUSEL DREAM UI — maximized ========== */
+:root {
+  --radius-xl: 20px;
+  --radius-2xl: 24px;
+  --shadow-card: 0 8px 28px rgba(15, 23, 42, 0.07);
+  --shadow-lift: 0 12px 36px rgba(15, 23, 42, 0.1);
+}
+
+.coach-portal {
+  margin-bottom: 1.75rem;
+}
+.portal-header {
+  margin-bottom: 0.35rem;
+}
+.portal-header h2 {
+  font-size: clamp(1.45rem, 2.5vw, 1.85rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin: 0 0 0.35rem;
+  background: linear-gradient(135deg, var(--text) 0%, color-mix(in srgb, var(--primary) 55%, var(--text)) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+@supports not (background-clip: text) {
+  .portal-header h2 { color: var(--text); background: none; }
+}
+.portal-header .muted {
+  font-size: 0.95rem;
+  max-width: 42rem;
+}
+
+.portal-tiles {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1rem 0 1.25rem;
+}
+.portal-tile {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  background: var(--surface);
+  border: 1px solid color-mix(in srgb, var(--border) 80%, transparent);
+  border-radius: var(--radius-xl);
+  padding: 1.15rem 1.2rem;
+  box-shadow: var(--shadow-card);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  position: relative;
+  overflow: hidden;
+}
+/* Wrapper nilai+label (div polos, satu-satunya anak selain .portal-tile-icon
+   yang bertipe span) — flex item defaultnya min-width:auto, artinya lebar
+   minimumnya mengikuti konten (kata terpanjang), bukan 0. Di kartu sempit
+   (mis. grid nutrisi 5 kartu di kolom form yang cuma minmax(200px,1fr)),
+   itu memaksa wrapper ini menolak menyusut/wrap dan malah meluber ke luar
+   .portal-tile — yang lalu dipotong diam-diam oleh overflow:hidden di atas
+   (bukan di-wrap), persis gejala "PROTEIN" jadi "PROTEI". min-width:0 di
+   sini mengizinkan flex item menyusut sampai konten teksnya benar-benar
+   bisa wrap ke baris kedua alih-alih meluber lalu terpotong. */
+.portal-tile > div {
+  min-width: 0;
+}
+.portal-tile::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  opacity: 0.9;
+  background: var(--primary);
+}
+.portal-tile-blue::after { background: #2563eb; }
+.portal-tile-amber::after { background: #d97706; }
+.portal-tile-red::after { background: #dc2626; }
+.portal-tile-purple::after { background: #7c3aed; }
+.portal-tile:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lift);
+}
+.portal-tile-clickable { cursor: pointer; }
+.portal-tile-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.portal-tile-icon .icon { width: 22px; height: 22px; }
+.portal-tile-blue .portal-tile-icon { background: #dbeafe; color: #1d4ed8; }
+.portal-tile-amber .portal-tile-icon { background: #fef3c7; color: #b45309; }
+.portal-tile-red .portal-tile-icon { background: #fee2e2; color: #b91c1c; }
+.portal-tile-purple .portal-tile-icon { background: #ede9fe; color: #6d28d9; }
+.portal-tile-value {
+  font-size: clamp(1.65rem, 2.5vw, 2rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+}
+.portal-tile-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  overflow-wrap: break-word;
+}
+/* Tab Nutrisi: dulu satu grid rata 5 stat-card (kalori/karbo/protein/lemak/
+   air) — dipecah jadi 3 kelompok bermakna (kalori total, tiga makronutrien,
+   cairan), tiap kelompok .card sendiri (spacing antar-stack otomatis lewat
+   .card + .card di atas) + deskripsi bahasa awam di bawahnya. */
+.nutri-stack-desc {
+  margin: 0.65rem 0 0;
+  font-size: 0.78rem;
+  line-height: 1.45;
+}
+/* .portal-tiles dipakai ulang di banyak konteks lain (dashboard Markas,
+   Portal Atlet, dst.) yang masing-masing punya override grid-template-
+   columns sendiri per breakpoint (beberapa pakai !important). Selector
+   dua-class + !important di sini supaya "3 kartu berdampingan" tetap
+   berlaku di lebar layar manapun, tidak ketiban aturan breakpoint lain. */
+.portal-tiles.nutri-macro-tiles { grid-template-columns: repeat(3, 1fr) !important; gap: 0.5rem !important; }
+/* .portal-tile normalnya baris horizontal (ikon kiri, teks kanan) — pas
+   untuk kartu selebar penuh, tapi di sini 3 kartu berbagi kolom form yang
+   sendirinya sudah sempit (mis. ~1/3 lebar stage di mode tile-layout
+   Command Center), jadi tiap kartu cuma dapat sisa puluhan piksel — ikon+
+   teks berdampingan tidak muat, membuat tinggi kartu melar tidak keruan.
+   Susun vertikal (ikon di atas, rata tengah) supaya tetap ringkas & rapi
+   di kolom sesempit apa pun, alih-alih menambah breakpoint per lebar layar. */
+.nutri-macro-tiles .portal-tile {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.35rem;
+  padding: 0.75rem 0.5rem !important;
+}
+.nutri-macro-tiles .portal-tile-icon { width: 34px !important; height: 34px !important; }
+.nutri-macro-tiles .portal-tile-icon .icon { width: 18px; height: 18px; }
+.nutri-macro-tiles .portal-tile-value { font-size: 1.05rem !important; }
+/* Generalisasi pola di atas (ikon di atas, rata tengah) supaya statTile()
+   bisa dipakai di kolom sempit mana pun — Feed/Jadwal/Monitor, bukan cuma
+   grid 3-macro Nutrisi. Pasangkan .portal-tiles-stack (layout) dengan
+   .portal-tiles-2col/-3col/-4col (jumlah kolom) sesuai jumlah tile. */
+.portal-tiles-stack .portal-tile {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.35rem;
+  padding: 0.75rem 0.5rem !important;
+}
+.portal-tiles-stack .portal-tile-icon { width: 34px !important; height: 34px !important; }
+.portal-tiles-stack .portal-tile-icon .icon { width: 18px; height: 18px; }
+.portal-tiles-stack .portal-tile-value { font-size: 1.05rem !important; }
+.portal-tiles-stack .portal-tile-sub { font-size: 0.68rem; }
+.portal-tiles-2col { grid-template-columns: repeat(2, 1fr) !important; gap: 0.6rem !important; }
+.portal-tiles-3col { grid-template-columns: repeat(3, 1fr) !important; gap: 0.6rem !important; }
+/* Kalori ditonjolkan sebagai kartu tunggal (bukan lagi bagian grid kecil) —
+   angka & ikon lebih besar dari stat-card biasa. */
+.nutri-tile-big .portal-tile-value { font-size: clamp(2rem, 5vw, 2.5rem) !important; }
+.nutri-tile-big .portal-tile-icon { width: 56px !important; height: 56px !important; }
+.nutri-tile-big .portal-tile-icon .icon { width: 28px; height: 28px; }
+/* Kutipan sumber (Buku Pintar Gizi Bagi Atlet) — paling bawah tab Nutrisi,
+   di luar .card/.callout (itu untuk kotak status & peringatan, bukan
+   referensi tertulis) supaya gaya kutipan (border kiri + italic) beda
+   dari nada "kotak informasi" yang sudah dipakai .callout. */
+.nutri-citation {
+  margin: 1rem 0 0.5rem;
+  padding: 0.15rem 0 0.15rem 1rem;
+  border-left: 4px solid var(--border);
+}
+.nutri-citation p {
+  margin: 0;
+  font-size: 0.82rem;
+  font-style: italic;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+.nutri-citation cite {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 0.4rem;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+.nutri-citation cite .icon { width: 14px; height: 14px; flex-shrink: 0; }
+.portal-attention,
+.portal-today,
+.portal-near-comp {
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-card);
+  padding: 1.1rem 1.2rem;
+  background: var(--surface);
+}
+.portal-attention h3,
+.portal-today h3,
+.portal-near-comp h3 {
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.65rem;
+}
+.portal-attention-item {
+  border-radius: 12px;
+  padding: 0.65rem 0.5rem;
+  transition: background 0.12s ease;
+}
+.portal-attention-item:hover {
+  background: color-mix(in srgb, var(--primary) 6%, var(--surface));
+}
+.portal-near-chip {
+  border-radius: 14px;
+  padding: 0.7rem 0.9rem;
+  box-shadow: 0 2px 8px rgba(15,23,42,0.04);
+  transition: transform 0.12s ease, border-color 0.12s ease;
+}
+.portal-near-chip:hover {
+  transform: translateY(-1px);
+  border-color: var(--primary);
+}
+
+/* Program — slide 3 */
+.program-phase-card {
+  border-radius: var(--radius-xl);
+  padding: 1.35rem 1.4rem !important;
+  background:
+    radial-gradient(ellipse 80% 60% at 100% 0%, color-mix(in srgb, var(--primary) 12%, transparent), transparent 55%),
+    var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-card);
+}
+.program-phase-card .phase-header h3 {
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.program-phase-card .badge-large {
+  font-size: 0.88rem;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.program-sessions-card {
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-card);
+}
+.program-sessions-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.session-card {
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  padding: 1rem 1.1rem;
+  margin-bottom: 0.75rem;
+  background: var(--surface);
+  box-shadow: 0 3px 12px rgba(15,23,42,0.04);
+  transition: transform 0.12s ease, box-shadow 0.12s ease, border-color 0.12s ease;
+}
+.session-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(15,23,42,0.08);
+  border-color: color-mix(in srgb, var(--primary) 40%, var(--border));
+}
+.session-card h4 {
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+.session-actions .pill-btn:not(.secondary) {
+  border-radius: 999px;
+  padding: 0.4rem 0.85rem;
+  font-weight: 700;
+}
+
+/* ACWR — slide 6 */
+.acwr-panel {
+  border-radius: var(--radius-xl);
+  padding: 1.25rem 1.35rem !important;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--border);
+}
+.acwr-panel-title {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+.acwr-panel-value {
+  font-size: clamp(1.85rem, 3vw, 2.35rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
+}
+.acwr-gauge-track {
+  height: 14px !important;
+  border-radius: 999px;
+}
+.acwr-gauge-marker {
+  width: 20px !important;
+  height: 20px !important;
+  border-width: 3px !important;
+}
+.acwr-mini {
+  border-radius: 14px;
+  padding: 0.65rem 0.7rem;
+  background: color-mix(in srgb, var(--surface-2, #f8f9fc) 90%, var(--primary) 4%);
+  border: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
+}
+.acwr-mini-val {
+  font-size: 1.2rem;
+  font-weight: 900;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Status bar — premium chips */
+.athlete-status-bar {
+  gap: 0.55rem;
+  margin: 0.85rem 0 1.1rem;
+  padding: 0.35rem 0;
+}
+.status-tile {
+  border-radius: 14px;
+  padding: 0.65rem 0.75rem;
+  box-shadow: 0 2px 10px rgba(15,23,42,0.04);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+.status-tile:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(15,23,42,0.08);
+  border-color: color-mix(in srgb, var(--primary) 35%, var(--border));
+}
+.status-tile-value {
+  font-weight: 800;
+  font-size: 0.98rem;
+  letter-spacing: -0.02em;
+}
+.status-tile-label {
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+/* Feed + cards */
+.card {
+  border-radius: 16px;
+  box-shadow: var(--shadow-card);
+}
+.athlete-feed-summary {
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-card);
+  padding: 1.15rem 1.25rem !important;
+}
+.athlete-identity-card {
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-card);
+}
+.tabs {
+  gap: 0.35rem;
+  border-bottom: none;
+  margin-bottom: 1.1rem;
+  padding: 0.25rem;
+  background: color-mix(in srgb, var(--surface-2, #f1f5f9) 80%, transparent);
+  border-radius: 14px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.tab-btn {
+  border-radius: 10px !important;
+  border: none !important;
+  font-weight: 600 !important;
+  padding: 0.5rem 0.85rem !important;
+}
+.tab-btn.active {
+  background: var(--surface) !important;
+  box-shadow: 0 2px 8px rgba(15,23,42,0.08);
+  color: var(--primary) !important;
+}
+
+/* Periodization timeline thicker */
+.periodization-timeline .timeline-track {
+  height: 10px;
+  border-radius: 999px;
+  background: var(--border);
+}
+.periodization-timeline .timeline-fill {
+  border-radius: 999px;
+}
+.periodization-timeline .timeline-marker {
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--surface);
+  box-shadow: 0 0 0 2px currentColor;
+}
+
+@media (max-width: 900px) {
+  .portal-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; }
+}
+@media (max-width: 560px) {
+  .portal-tiles { grid-template-columns: 1fr; }
+  .portal-tile { padding: 1rem; }
+}
+
+/* Dark mode polish */
+html.dark .portal-tile,
+html[data-theme="dark"] .portal-tile,
+[data-theme="dark"] .portal-tile {
+  box-shadow: 0 8px 28px rgba(0,0,0,0.25);
+}
+html.dark .session-card:hover,
+[data-theme="dark"] .session-card:hover {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+}
+
+
+.phase-steps {
+  display: flex;
+  gap: 0.35rem;
+  margin: 0.85rem 0 0.5rem;
+  flex-wrap: wrap;
+}
+.phase-step {
+  flex: 1;
+  min-width: 5.5rem;
+  text-align: center;
+  padding: 0.5rem 0.35rem;
+  border-radius: 12px;
+  background: var(--surface-2, #f8f9fc);
+  border: 1px solid transparent;
+  opacity: 0.55;
+}
+.phase-step-done {
+  opacity: 0.85;
+  border-color: color-mix(in srgb, var(--success) 30%, var(--border));
+}
+.phase-step-active {
+  opacity: 1;
+  background: color-mix(in srgb, var(--primary) 10%, var(--surface));
+  border-color: color-mix(in srgb, var(--primary) 40%, var(--border));
+  box-shadow: 0 2px 10px rgba(15,23,42,0.06);
+}
+.phase-step-dot {
+  width: 26px;
+  height: 26px;
+  margin: 0 auto 0.25rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 800;
+  background: var(--border);
+  color: var(--text-muted);
+}
+.phase-step-active .phase-step-dot {
+  background: var(--primary);
+  color: var(--on-primary, #fff);
+}
+.phase-step-done .phase-step-dot {
+  background: var(--success);
+  color: #fff;
+}
+.phase-step-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--text-muted);
+}
+.phase-step-active .phase-step-label {
+  color: var(--text);
+}
+
+
+/* Sidebar: area atlet di bawah Meja kerja */
+.sidebar-section-athlete {
+  margin-top: 0.75rem;
+  margin-bottom: 0.15rem;
+  padding-top: 0.55rem;
+  border-top: 1px solid var(--border, #e5e7eb);
+}
+.nav-item-sub {
+  padding-left: 1.15rem !important;
+  font-size: 0.9rem !important;
+}
+.nav-item-sub.active {
+  font-weight: 700;
+}
+
+/* ACWR tombol bulat + skala lurus bergradasi */
+.acwr-dial-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.25rem 1.5rem;
+}
+.acwr-dial {
+  --acwr-pct: 50%;
+  --acwr-angle: 0deg;
+  position: relative;
+  width: 132px;
+  height: 132px;
+  flex-shrink: 0;
+}
+.acwr-dial-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  /* Gradasi zona pada busur skala 0→2.0 (linear di-map ke 270°) */
+  background: conic-gradient(
+    from -135deg,
+    #94a3b8 0deg,
+    #94a3b8 54deg,
+    #10b981 54deg,
+    #10b981 108deg,
+    #34d399 130deg,
+    #f59e0b 162deg,
+    #f59e0b 175deg,
+    #dc2626 175deg,
+    #dc2626 270deg,
+    #e5e7eb 270deg,
+    #e5e7eb 360deg
+  );
+  box-shadow:
+    0 6px 20px rgba(15, 23, 42, 0.12),
+    inset 0 0 0 1px rgba(255,255,255,0.35);
+}
+.acwr-dial-ring::after {
+  content: '';
+  position: absolute;
+  inset: 14px;
+  border-radius: 50%;
+  background: var(--surface, #fff);
+  box-shadow: inset 0 1px 3px rgba(15, 23, 42, 0.06);
+}
+.acwr-dial-needle {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 3px;
+  height: 48px;
+  margin-left: -1.5px;
+  margin-top: -48px;
+  transform-origin: bottom center;
+  transform: rotate(var(--acwr-angle));
+  background: linear-gradient(to top, transparent 0%, var(--text, #1c2230) 18%, var(--text, #1c2230) 100%);
+  border-radius: 2px;
+  z-index: 2;
+  pointer-events: none;
+}
+.acwr-dial-needle::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--text, #1c2230);
+  border: 2px solid var(--surface, #fff);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+}
+.acwr-dial-core {
+  position: absolute;
+  inset: 28px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  background: var(--surface, #fff);
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.06);
+}
+.acwr-dial-value {
+  font-size: 1.45rem;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  color: var(--text);
+}
+.acwr-dial-caption {
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: 0.2rem;
+}
+.acwr-dial-meta {
+  flex: 1;
+  min-width: 180px;
+}
+.acwr-dial-hint {
+  font-size: 0.78rem;
+  margin: 0.45rem 0 0.65rem;
+  line-height: 1.4;
+  max-width: 28rem;
+}
+.acwr-scale-linear {
+  margin-top: 0.25rem;
+}
+.acwr-scale-track {
+  position: relative;
+  height: 12px;
+  border-radius: 999px;
+  background: linear-gradient(
+    to right,
+    #94a3b8 0%,
+    #94a3b8 40%,
+    #10b981 40%,
+    #10b981 65%,
+    #f59e0b 65%,
+    #f59e0b 75%,
+    #dc2626 75%,
+    #dc2626 100%
+  );
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.08);
+}
+.acwr-scale-marker {
+  position: absolute;
+  top: 50%;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--surface, #fff);
+  border: 3px solid var(--text, #1c2230);
+  transform: translate(-50%, -50%);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+.acwr-scale-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.35rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 560px) {
+  .acwr-dial { width: 112px; height: 112px; }
+  .acwr-dial-ring::after { inset: 12px; }
+  .acwr-dial-core { inset: 24px; }
+  .acwr-dial-value { font-size: 1.25rem; }
+  .acwr-dial-needle { height: 40px; margin-top: -40px; }
+}
+
+
+/* Library ikon — badge & sesi */
+.icon-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: var(--surface-2, #f1f5f9);
+  color: var(--primary, #4f46e5);
+  flex-shrink: 0;
+}
+.icon-badge .icon { width: 16px; height: 16px; }
+.session-card-title {
+  display: flex !important;
+  align-items: center;
+  gap: 0.55rem;
+  flex-wrap: wrap;
+}
+.session-card-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--primary) 12%, var(--surface));
+  color: var(--primary);
+  flex-shrink: 0;
+}
+.session-card-icon .icon { width: 18px; height: 18px; }
+.status-tile-top {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  width: 100%;
+}
+.status-tile-icon {
+  display: inline-flex;
+  color: var(--primary);
+  opacity: 0.9;
+}
+.status-tile-icon .icon { width: 14px; height: 14px; }
+.portal-attention-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: #fff7ed;
+  color: #c2410c;
+  flex-shrink: 0;
+  margin-right: 0.35rem;
+}
+.portal-attention-icon .icon { width: 15px; height: 15px; }
+.portal-attention-main {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.35rem;
+}
+
+
+/* Info ringkas — satu pola display */
+.info-compact {
+  padding: 0.75rem 0.9rem !important;
+  margin-bottom: 0.75rem;
+}
+.info-compact-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.info-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 0.65rem;
+  border-radius: 12px;
+  background: var(--surface-2, #f8f9fc);
+  border: 1px solid var(--border);
+  min-width: 0;
+  flex: 1 1 7.5rem;
+  cursor: default;
+}
+.info-chip .icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  color: var(--primary);
+  opacity: 0.9;
+}
+.info-chip-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+}
+.info-chip-value {
+  font-size: 0.92rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+.info-chip-emphasis {
+  border-color: color-mix(in srgb, var(--primary) 35%, var(--border));
+  background: color-mix(in srgb, var(--primary) 8%, var(--surface));
+}
+/* Rekomendasi Cairan: dulu 2 .info-chip berdampingan (baris pendek label+
+   angka) — sekarang tiap opsi butuh ruang untuk narasi 1-3 kalimat di
+   bawahnya, jadi dijadikan blok tersendiri yang ditumpuk (bukan baris
+   sempit berdampingan). Warna/border sengaja sama seperti .info-chip biar
+   masih terasa satu keluarga visual, cuma bentuknya blok bukan chip baris. */
+.cairan-option {
+  background: var(--surface-2, #f8f9fc);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.6rem 0.75rem;
+}
+.cairan-option + .cairan-option { margin-top: 0.5rem; }
+.cairan-option-emphasis {
+  border-color: color-mix(in srgb, var(--primary) 35%, var(--border));
+  background: color-mix(in srgb, var(--primary) 8%, var(--surface));
+}
+.info-compact-single {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+}
+.info-compact-single .icon {
+  width: 18px;
+  height: 18px;
+  color: var(--primary);
+}
+
+/* Fase: garis + tanda (bukan tombol) */
+.phase-line-wrap { margin: 0.65rem 0 0.25rem; }
+.phase-line-track {
+  position: relative;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--border);
+  margin: 1.1rem 0.5rem 0.35rem;
+}
+.phase-line-fill {
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  border-radius: 999px;
+  opacity: 0.85;
+}
+.phase-line-now {
+  position: absolute;
+  top: 50%;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid var(--surface, #fff);
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 0 2px currentColor;
+  z-index: 2;
+}
+.phase-line-dot {
+  position: absolute;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--border);
+  border: 2px solid var(--surface, #fff);
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+.phase-line-dot.is-done { background: var(--success, #0d9488); }
+.phase-line-dot.is-active {
+  background: var(--primary);
+  width: 12px;
+  height: 12px;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 25%, transparent);
+}
+.phase-line-dot-label {
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.62rem;
+  font-weight: 700;
+  white-space: nowrap;
+  color: var(--text-muted);
+}
+.phase-line-dot.is-active .phase-line-dot-label { color: var(--text); }
+.phase-line-dates {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  margin-top: 1.35rem;
+  gap: 0.5rem;
+}
+.phase-line-dates .icon { width: 12px; height: 12px; vertical-align: -2px; }
+
+/* ACWR garis saja */
+.acwr-line {
+  margin: 0.55rem 0 0;
+  padding: 0.55rem 0.15rem 0.15rem;
+}
+.acwr-line-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 0.6rem;
+  margin-bottom: 0.45rem;
+  font-size: 0.9rem;
+}
+.acwr-line-head .icon {
+  width: 16px;
+  height: 16px;
+  color: var(--primary);
+}
+.acwr-scale-track {
+  position: relative;
+  height: 10px;
+  border-radius: 999px;
+  background: linear-gradient(
+    to right,
+    #94a3b8 0%,
+    #94a3b8 40%,
+    #10b981 40%,
+    #10b981 65%,
+    #f59e0b 65%,
+    #f59e0b 75%,
+    #dc2626 75%,
+    #dc2626 100%
+  );
+}
+.acwr-scale-marker {
+  position: absolute;
+  top: 50%;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--surface, #fff);
+  border: 2.5px solid var(--text);
+  transform: translate(-50%, -50%);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+}
+.acwr-scale-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.25rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+/* Sembunyikan sisa dial lama jika masih ada class */
+.acwr-dial, .acwr-dial-row, .phase-steps { display: none !important; }
+
+.program-phase-card {
+  padding: 1rem 1.1rem !important;
+}
+
+/* ========== Desktop: layout dinamis (scroll natural, bukan lock viewport) ========== */
+/* Catatan: layout lama .app-shell/.main sudah diganti cmd-shell.
+   Jangan lock overflow:hidden di html/body/#app — itu yang bikin
+   "tidak bisa scroll" + konten keluar layar di PC. */
+@media (min-width: 1100px) {
+  /* Identity mobile diganti context bar di command center */
+  html[data-ui="command"] .cmd-identity-mobile,
+  html[data-ui="command"] .athlete-status-bar {
+    display: none !important;
+  }
+
+  /* Program: dua kolom berdampingan, tinggi mengikuti konten */
+  html[data-ui="command"] .program-fit {
+    display: grid !important;
+    grid-template-columns: minmax(280px, 0.85fr) minmax(340px, 1.2fr);
+    gap: 0.75rem;
+    height: auto;
+    min-height: 0;
+    overflow: visible;
+  }
+  html[data-ui="command"] .program-fit-left,
+  html[data-ui="command"] .program-fit-right {
+    min-height: 0;
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+  html[data-ui="command"] .program-fit-left > .card,
+  html[data-ui="command"] .program-fit-right > .card {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+  .program-fit .card {
+    padding: 0.65rem 0.8rem !important;
+  }
+  .program-fit .info-compact {
+    padding: 0.5rem 0.65rem !important;
+  }
+  .program-fit .session-card {
+    padding: 0.5rem 0.65rem !important;
+    margin-bottom: 0.4rem !important;
+  }
+  .program-fit .session-card p {
+    margin: 0.1rem 0 !important;
+    font-size: 0.82rem;
+    line-height: 1.3;
+  }
+  .program-fit h3 {
+    font-size: 0.95rem !important;
+    margin: 0 0 0.35rem !important;
+  }
+  .program-fit .phase-line-dates {
+    margin-top: 1rem;
+  }
+  .program-fit .muted {
+    font-size: 0.78rem;
+  }
+  .export-word-row {
+    margin-bottom: 0 !important;
+  }
+
+  /* Kalender: tinggi mengikuti konten, tidak dipaksa viewport */
+  .calendar-fit {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    height: auto;
+    overflow: visible;
+    padding: 0.65rem !important;
+  }
+  .calendar-fit .calendar-grid {
+    flex: 0 1 auto;
+    min-height: 0;
+  }
+  .calendar-fit .calendar-cell {
+    min-height: 0 !important;
+    padding: 2px !important;
+    font-size: 0.75rem;
+  }
+  .calendar-fit .calendar-day-num {
+    font-size: 0.75rem;
+  }
+
+  /* Meja kerja: daftar atlet bisa scroll internal, header portal tetap */
+  .coach-portal {
+    flex-shrink: 0;
+  }
+  .athlete-list-fit {
+    flex: 1;
+    min-height: 0;
+    overflow: auto;
+  }
+
+  /* Kartu umum lebih padat di desktop */
+  .card {
+    padding: 0.85rem 1rem;
+  }
+  .athlete-status-bar {
+    margin: 0.4rem 0 0.55rem;
+  }
+  .status-tile {
+    padding: 0.4rem 0.55rem;
+  }
+}
+
+/* Tablet & HP: scroll halaman seperti biasa */
+@media (max-width: 1099px) {
+  .program-fit {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+  html, body {
+    overflow: auto;
+    height: auto;
+  }
+}
+
+/* ========== COMMAND CENTER UI (desain pelatih) ========== */
+html[data-ui="command"] {
+  --rail-w: 248px;
+  --rail-bg: #0f1419;
+  --rail-surface: #171c24;
+  --rail-border: rgba(255,255,255,0.08);
+  --rail-text: #c5cdd8;
+  --rail-muted: #7a8494;
+  --rail-active: #3b82f6;
+  --rail-active-bg: rgba(59, 130, 246, 0.14);
+  --stage-bg: #e8ebf0;
+}
+
+html[data-ui="command"][data-theme="dark"],
+html[data-ui="command"].dark {
+  --stage-bg: #0c0e12;
+}
+
+html[data-ui="command"] body {
+  background: var(--stage-bg);
+}
+
+.cmd-shell {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+}
+
+/* LEFT RAIL */
+.cmd-rail {
+  width: var(--rail-w);
+  flex-shrink: 0;
+  background: var(--rail-bg);
+  color: var(--rail-text);
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0; left: 0; bottom: 0;
+  z-index: 40;
+  border-right: 1px solid var(--rail-border);
+  overflow: hidden;
+}
+.cmd-rail-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 1rem 0.9rem 0.75rem;
+  flex-shrink: 0;
+}
+.cmd-logo {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  color: #fff;
+  font-weight: 900;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: -0.04em;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
+}
+.cmd-brand-title {
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: #f1f5f9;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+.cmd-brand-sub {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--rail-muted);
+}
+.rail-close { display: none; color: var(--rail-text); }
+
+.cmd-coach {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0 0.65rem 0.5rem;
+  padding: 0.55rem 0.6rem;
+  border-radius: 12px;
+  background: var(--rail-surface);
+  border: 1px solid var(--rail-border);
+  flex-shrink: 0;
+}
+.cmd-coach-av {
+  width: 32px; height: 32px;
+  font-size: 0.75rem;
+  background: #334155;
+  color: #e2e8f0;
+}
+.cmd-coach-name {
+  font-weight: 700;
+  font-size: 0.82rem;
+  color: #e2e8f0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.cmd-coach-role {
+  font-size: 0.68rem;
+  color: var(--rail-muted);
+}
+
+.cmd-rail-nav {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 0.35rem 0.55rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  scrollbar-width: thin;
+}
+
+.rail-section-label {
+  font-size: 0.62rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--rail-muted);
+  padding: 0.75rem 0.55rem 0.3rem;
+}
+
+.rail-item {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  width: 100%;
+  border: none;
+  background: transparent;
+  color: var(--rail-text);
+  padding: 0.48rem 0.55rem;
+  border-radius: 9px;
+  cursor: pointer;
+  text-align: left;
+  font-size: 0.86rem;
+  font-weight: 600;
+  transition: background 0.12s ease, color 0.12s ease;
+}
+.rail-item:hover {
+  background: rgba(255,255,255,0.06);
+  color: #fff;
+}
+.rail-item.active {
+  background: var(--rail-active-bg);
+  color: #93c5fd;
+  box-shadow: inset 3px 0 0 var(--rail-active);
+}
+.rail-ico {
+  display: flex;
+  width: 20px;
+  justify-content: center;
+  opacity: 0.9;
+}
+.rail-ico .icon { width: 16px; height: 16px; }
+.rail-hint {
+  margin-left: auto;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: var(--rail-muted);
+  opacity: 0.8;
+}
+.rail-item.active .rail-hint { color: #93c5fd; }
+
+.rail-roster .rail-avatar {
+  width: 24px; height: 24px;
+  border-radius: 7px;
+  background: #1e293b;
+  color: #94a3b8;
+  font-size: 0.62rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.rail-roster-name {
+  flex: 1;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 0.8rem;
+}
+.rail-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.rail-dot.risk { background: #f87171; box-shadow: 0 0 6px rgba(248,113,113,0.6); }
+.rail-dot.warn { background: #fbbf24; }
+.rail-roster.is-risk { border-left: 2px solid transparent; }
+.rail-logout { margin-top: 0.35rem; color: var(--rail-muted); }
+.rail-logout:hover { color: #fca5a5; }
+
+/* CENTER STAGE */
+.cmd-stage {
+  flex: 1;
+  margin-left: var(--rail-w);
+  min-width: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--stage-bg);
+}
+.cmd-stage-header {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.65rem 1.25rem;
+  background: var(--surface, #fff);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 1px 0 rgba(15,23,42,0.04);
+  z-index: 5;
+}
+.cmd-menu-btn { display: none; }
+.cmd-context {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.25rem;
+  flex: 1;
+  min-width: 0;
+}
+.cmd-context-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.cmd-context-sub { font-size: 0.85rem; }
+.cmd-context-athlete {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  min-width: 0;
+}
+.cmd-context-avatar {
+  width: 40px; height: 40px;
+  border-radius: 12px;
+  background: var(--primary-light, #eef2ff);
+  color: var(--primary);
+  font-weight: 800;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cmd-context-name {
+  font-weight: 800;
+  font-size: 1.05rem;
+  letter-spacing: -0.02em;
+}
+.cmd-context-meta { font-size: 0.78rem; }
+.cmd-context-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+.cmd-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.3rem 0.65rem;
+  border-radius: 999px;
+  background: var(--surface-2, #f1f5f9);
+  border: 1px solid var(--border);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+.cmd-pill .icon { width: 13px; height: 13px; }
+.cmd-context-actions {
+  margin-left: auto;
+  display: flex;
+  gap: 0.35rem;
+}
+
+.cmd-stage-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  padding: 0.85rem 1.25rem 1.5rem;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+}
+.cmd-stage-body > .athlete-detail-fit,
+.cmd-stage-body > .coach-portal,
+.cmd-stage-body > div {
+  min-height: 0;
+  flex-shrink: 0;
+}
+
+/* Identity card: di desktop command sudah ada context bar.
+   Layout dinamis: halaman boleh scroll; rail tetap fixed. */
+@media (min-width: 1100px) {
+  html[data-ui="command"],
+  html[data-ui="command"] body,
+  html[data-ui="command"] #app {
+    height: auto;
+    max-height: none;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  html[data-ui="command"] .cmd-shell {
+    min-height: 100vh;
+    height: auto;
+    overflow: visible;
+  }
+  html[data-ui="command"] .cmd-stage {
+    min-height: 100vh;
+    height: auto;
+    overflow: visible;
+  }
+  html[data-ui="command"] .cmd-stage-body {
+    overflow: visible;
+    flex: 1 1 auto;
+  }
+  html[data-ui="command"] .cmd-identity-mobile {
+    display: none !important;
+  }
+  html[data-ui="command"] .athlete-status-bar {
+    display: none; /* diganti context pills */
+  }
+  html[data-ui="command"] .program-fit {
+    flex: 0 1 auto;
+    min-height: 0;
+    height: auto;
+  }
+}
+
+/* Mobile: rail drawer */
+@media (max-width: 1099px) {
+  .cmd-rail {
+    transform: translateX(-105%);
+    transition: transform 0.2s ease;
+    box-shadow: 8px 0 32px rgba(0,0,0,0.35);
+  }
+  .cmd-rail.open { transform: translateX(0); }
+  .cmd-stage { margin-left: 0; }
+  .cmd-menu-btn { display: inline-flex; }
+  .rail-close { display: inline-flex; margin-left: auto; }
+  .cmd-rail-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    z-index: 35;
+  }
+  .cmd-rail-overlay.open { display: block; }
+  html[data-ui="command"] .cmd-stage-body {
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  html[data-ui="command"] body {
+    overflow: auto;
+    height: auto;
+  }
+}
+
+.cmd-rail-overlay { display: none; }
+
+/* Portal markas — mengalir dengan konten, tidak dipaksa isi sisa viewport */
+html[data-ui="command"] .coach-portal {
+  overflow: visible;
+  min-height: 0;
+  flex: 0 1 auto;
+}
+html[data-ui="command"] .portal-header h2 {
+  font-size: 1.25rem;
+}
+
+/* ========== HALAMAN PER NAVIGASI: rail fixed + stage page ========== */
+html[data-ui="command"] {
+  --rail-w: 252px;
+  --rail-bg: #0c1017;
+  --rail-surface: #151b24;
+  --rail-border: rgba(255,255,255,0.07);
+  --rail-text: #b8c0cc;
+  --rail-muted: #6b7585;
+  --rail-active: #3b82f6;
+  --rail-active-bg: rgba(59, 130, 246, 0.16);
+  --stage-bg: #dfe3ea;
+}
+
+html[data-ui="command"] *,
+html[data-ui="command"] *::before,
+html[data-ui="command"] *::after {
+  box-sizing: border-box;
+}
+
+/* Shell: dua zona, tanpa scroll dokumen di desktop */
+.cmd-shell {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.cmd-rail {
+  width: var(--rail-w);
+  flex-shrink: 0;
+  background: var(--rail-bg);
+  color: var(--rail-text);
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  height: 100vh;
+  z-index: 50;
+  border-right: 1px solid var(--rail-border);
+  overflow: hidden;
+}
+
+.cmd-rail-nav {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0.25rem 0.5rem 1rem;
+  overscroll-behavior: contain;
+}
+
+.cmd-stage {
+  margin-left: var(--rail-w);
+  flex: 1;
+  min-width: 0;
+  height: 100vh;
+  max-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--stage-bg);
+}
+
+.cmd-stage-header {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.55rem 1rem;
+  background: var(--surface, #fff);
+  border-bottom: 1px solid var(--border, #e5e7eb);
+  min-height: 56px;
+}
+
+.cmd-stage-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 0.65rem 0.85rem 0.75rem;
+}
+
+/* Setiap navigasi = satu page-frame yang mengisi stage */
+.page-frame {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  height: 100%;
+}
+
+.page-body.mini-win {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 14px;
+  background: transparent;
+}
+
+/* Desktop: program 2 kolom berdampingan, tinggi mengikuti konten (dinamis) */
+@media (min-width: 1100px) {
+  html[data-ui="command"],
+  html[data-ui="command"] body,
+  html[data-ui="command"] #app {
+    height: auto !important;
+    max-height: none !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+  }
+
+  html[data-ui="command"] .cmd-identity-mobile,
+  html[data-ui="command"] .athlete-status-bar {
+    display: none !important;
+  }
+
+  html[data-ui="command"] .program-fit {
+    display: grid !important;
+    grid-template-columns: minmax(280px, 0.9fr) minmax(320px, 1.2fr);
+    gap: 0.65rem;
+    flex: 0 1 auto;
+    min-height: 0;
+    height: auto;
+    overflow: visible;
+  }
+
+  html[data-ui="command"] .program-fit-left,
+  html[data-ui="command"] .program-fit-right {
+    min-height: 0;
+    overflow: visible;
+    border-radius: 14px;
+    background: var(--surface, #fff);
+    border: 1px solid var(--border, #e5e7eb);
+    padding: 0.65rem;
+    box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04);
+  }
+
+  /* HQ: portal + list mengalir vertikal, tidak dipotong 42vh */
+  html[data-ui="command"] .cmd-stage-body > div {
+    flex: 0 1 auto;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: visible;
+  }
+
+  html[data-ui="command"] .coach-portal {
+    flex: 0 1 auto;
+    max-height: none;
+    overflow: visible;
+    margin-bottom: 0.75rem;
+  }
+
+  html[data-ui="command"] .table-wrap,
+  html[data-ui="command"] .athlete-list-fit {
+    flex: 0 1 auto;
+    min-height: 0;
+    overflow: visible;
+  }
+
+  html[data-ui="command"] .calendar-fit,
+  html[data-ui="command"] .calendar-wrap {
+    flex: 0 1 auto;
+    min-height: 0;
+    overflow: visible;
+    height: auto;
+  }
+
+  html[data-ui="command"] .card {
+    margin-top: 0;
+  }
+  html[data-ui="command"] .card + .card {
+    margin-top: 0.5rem;
+  }
+}
+
+/* Android / tablet: scroll di dalam mini-window, rail fixed drawer */
+@media (max-width: 1099px) {
+  html[data-ui="command"] body {
+    overflow: hidden;
+    height: 100%;
+    height: 100dvh;
+  }
+  html[data-ui="command"] .cmd-shell {
+    height: 100dvh;
+    max-height: 100dvh;
+  }
+  .cmd-rail {
+    transform: translateX(-105%);
+    transition: transform 0.22s ease;
+    box-shadow: 12px 0 40px rgba(0,0,0,0.4);
+  }
+  .cmd-rail.open {
+    transform: translateX(0);
+  }
+  .cmd-stage {
+    margin-left: 0;
+    height: 100dvh;
+  }
+  .cmd-menu-btn {
+    display: inline-flex !important;
+  }
+  .rail-close {
+    display: inline-flex !important;
+    margin-left: auto;
+  }
+  .cmd-rail-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 45;
+  }
+  .cmd-rail-overlay.open {
+    display: block;
+  }
+  html[data-ui="command"] .page-body.mini-win {
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    padding-bottom: 1rem;
+  }
+  html[data-ui="command"] .program-fit {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+  html[data-ui="command"] .program-fit-left,
+  html[data-ui="command"] .program-fit-right {
+    border-radius: 14px;
+    background: var(--surface, #fff);
+    border: 1px solid var(--border);
+    padding: 0.75rem;
+  }
+}
+
+.cmd-menu-btn { display: none; }
+
+
+/* Jadwal: Hari | Minggu | Bulan */
+.sched-view-switch {
+  display: inline-flex;
+  gap: 2px;
+  padding: 3px;
+  border-radius: 10px;
+  background: var(--surface-2, #f1f5f9);
+  border: 1px solid var(--border);
+}
+.sched-view-btn {
+  border: none;
+  background: transparent;
+  padding: 0.35rem 0.75rem;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+.sched-view-btn.active {
+  background: var(--surface, #fff);
+  color: var(--primary);
+  box-shadow: 0 1px 4px rgba(15,23,42,0.08);
+}
+.sched-head-card {
+  padding: 0.65rem 0.85rem !important;
+  margin-bottom: 0.5rem;
+}
+.sched-head-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+.sched-timeline {
+  padding: 0.75rem 0.9rem !important;
+}
+.sched-timeline-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.55rem;
+}
+.sched-timeline-title {
+  font-weight: 800;
+  font-size: 0.88rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-right: 0.5rem;
+}
+.sched-timeline-title .icon { width: 14px; height: 14px; }
+.sched-timeline-track {
+  position: relative;
+  height: 10px;
+  border-radius: 999px;
+  background: var(--border);
+  margin: 0.5rem 0 0.35rem;
+}
+.sched-timeline-fill {
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--primary), color-mix(in srgb, var(--primary) 60%, #f59e0b));
+  opacity: 0.85;
+}
+.sched-timeline-marker {
+  position: absolute;
+  top: 50%;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--text);
+  border: 2px solid var(--surface, #fff);
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+.sched-timeline-start-dot,
+.sched-timeline-end-dot {
+  position: absolute;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--success, #0d9488);
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+.sched-timeline-start-dot { left: 0%; }
+.sched-timeline-end-dot { left: 100%; background: var(--danger, #dc2626); }
+.sched-timeline-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+.sched-day-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.75rem;
+}
+/* Tombol panah & "Hari ini" di sini pakai .pill-btn yang sama dengan
+   .quick-presets (form Monitoring) — tapi .quick-presets .pill-btn sengaja
+   dibuat width:100% & stack vertikal di layar sempit (@media max-width:860px,
+   lihat ~baris 1157). Karena .pill-btn dipakai bersama tanpa scoping, aturan
+   itu ikut menimpa tombol panah/"Hari ini" di sini juga — hasilnya 3 pil
+   selebar penuh bertumpuk, padahal seharusnya baris kompak horizontal.
+   Override balik ke ukuran kompak KHUSUS di dalam .sched-day-nav, tanpa
+   mengubah perilaku .quick-presets di tempat lain. */
+.sched-day-nav .pill-btn {
+  width: auto;
+  flex: 0 0 auto;
+}
+.sched-day-nav strong {
+  flex: 1 1 auto;
+  min-width: 0;
+  text-align: center;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+.sched-month-panel .row { margin-bottom: 0.5rem; }
+
+/* ========== HP: hilangkan penumpukan (prioritas kenyamanan) ========== */
+@media (max-width: 640px) {
+  html[data-ui="command"] {
+    --rail-w: min(86vw, 280px);
+  }
+
+  html[data-ui="command"] body {
+    overflow: hidden;
+    height: 100%;
+    height: 100dvh;
+  }
+
+  html[data-ui="command"] .cmd-shell {
+    height: 100dvh;
+    max-height: 100dvh;
+  }
+
+  html[data-ui="command"] .cmd-stage {
+    height: 100dvh;
+    max-height: 100dvh;
+    margin-left: 0;
+  }
+
+  /* Header context: satu kolom, tidak berdesakan */
+  html[data-ui="command"] .cmd-stage-header {
+    flex-wrap: wrap;
+    align-items: flex-start;
+    padding: 0.5rem 0.65rem;
+    gap: 0.4rem;
+    min-height: 0;
+  }
+
+  html[data-ui="command"] .cmd-context {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
+    width: 100%;
+  }
+
+  html[data-ui="command"] .cmd-context-athlete {
+    width: 100%;
+  }
+
+  html[data-ui="command"] .cmd-context-name {
+    font-size: 0.95rem;
+  }
+
+  html[data-ui="command"] .cmd-context-pills {
+    width: 100%;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 2px;
+  }
+
+  html[data-ui="command"] .cmd-pill {
+    flex-shrink: 0;
+    font-size: 0.72rem;
+    padding: 0.25rem 0.55rem;
+  }
+
+  html[data-ui="command"] .cmd-context-actions {
+    margin-left: 0;
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  html[data-ui="command"] .cmd-stage-body {
+    padding: 0.5rem 0.55rem 0.75rem;
+    /* overflow:hidden di sini (ditemukan lewat inspeksi computed style,
+       bukan cuma baca CSS) memaksa .cmd-stage-body jadi flex column
+       tinggi-tetap — anak langsungnya (kartu Panel Admin, lalu
+       .coach-portal.tile-markas) ikut di-flex-shrink di bawah tinggi
+       konten aslinya karena flex-shrink default (1), padahal keduanya
+       overflow:visible — hasilnya konten "meluber" keluar kotaknya dan
+       tumpang tindih dengan elemen berikutnya. Pola halaman Markas di
+       lebar ini pada dasarnya panjang & perlu scroll biasa (bukan
+       dashboard satu-layar seperti tile-markas di ≥900px), jadi ganti ke
+       overflow:auto — sama seperti perbaikan yang sudah ada untuk
+       641-1099px (lihat ~baris 3698). */
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  /* ...dan cegah flex-shrink-nya sendiri supaya overflow:auto di atas
+     benar-benar dipakai (scroll), bukan konten yang "diperas" lebih dulu
+     sebelum sempat overflow. */
+  html[data-ui="command"] .cmd-stage-body > * {
+    flex-shrink: 0;
+  }
+
+  html[data-ui="command"] .page-body.mini-win {
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    padding: 0;
+  }
+
+  /* Program/Jadwal: selalu stack, jangan grid sempit */
+  html[data-ui="command"] .program-fit {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.55rem;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  html[data-ui="command"] .program-fit-left,
+  html[data-ui="command"] .program-fit-right {
+    overflow: visible !important;
+    padding: 0.65rem !important;
+    max-height: none !important;
+  }
+
+  /* Chip progress: 2 kolom rapi, bukan 4 numpuk */
+  .info-compact-row,
+  .chips,
+  .progress-stats-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 2fr !important;
+    gap: 0.45rem !important;
+  }
+
+  .info-chip,
+  .progress-stat,
+  .chip {
+    flex: none !important;
+    min-width: 0 !important;
+    width: 100%;
+  }
+
+  .info-chip-value,
+  .progress-stat-value {
+    font-size: 0.88rem !important;
+  }
+
+  /* Portal tiles */
+  .portal-tiles {
+    grid-template-columns: 1fr 2fr !important;
+    gap: 0.45rem !important;
+  }
+
+  .portal-tile {
+    padding: 0.65rem 0.7rem !important;
+  }
+
+  .portal-tile-value {
+    font-size: 1.25rem !important;
+  }
+
+  .portal-tile-icon {
+    width: 32px !important;
+    height: 32px !important;
+  }
+
+  /* Jadwal switcher: full width, mudah disentuh */
+  .sched-head-row {
+    flex-direction: column;
+    align-items: stretch !important;
+  }
+
+  .sched-view-switch {
+    width: 100%;
+    display: flex !important;
+  }
+
+  .sched-view-btn {
+    flex: 1;
+    text-align: center;
+    padding: 0.55rem 0.35rem !important;
+    font-size: 0.78rem !important;
+  }
+
+  .sched-day-nav {
+    justify-content: space-between;
+  }
+
+  /* Kalender bulan: sel lebih rendah, teks lebih kecil */
+  .calendar-grid {
+    gap: 2px !important;
+  }
+
+  .calendar-cell {
+    min-height: 44px !important;
+    padding: 2px !important;
+    font-size: 0.65rem !important;
+  }
+
+  .calendar-day-num {
+    font-size: 0.7rem !important;
+  }
+
+  .cal-marker {
+    font-size: 0.5rem !important;
+    padding: 0 2px !important;
+  }
+
+  /* Sesi & kartu */
+  .session-card {
+    padding: 0.65rem 0.7rem !important;
+  }
+
+  .session-card-title {
+    font-size: 0.88rem !important;
+  }
+
+  .session-actions {
+    flex-direction: column;
+    align-items: stretch !important;
+  }
+
+  .session-actions .pill-btn,
+  .session-actions button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Tabel: scroll horizontal di dalam mini-win, jangan pecah layout */
+  .table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 0 -0.15rem;
+  }
+
+  .table-wrap table {
+    min-width: 480px;
+  }
+
+  /* Identity: di HP boleh tampil ringkas (command biasanya hide status bar) */
+  /* identity card: disembunyikan di HP via data-mobile — aksi di context bar */
+
+  /* Modal full-ish di HP */
+  .plan-modal-overlay {
+    align-items: flex-end !important;
+    padding: 0 !important;
+  }
+
+  .plan-modal,
+  .plan-modal.card,
+  .override-modal {
+    max-width: 100% !important;
+    width: 100% !important;
+    border-radius: 16px 16px 0 0 !important;
+    max-height: 88dvh !important;
+  }
+
+  /* Rail: jangan terlalu banyak item terasa sempit — padding ok */
+  .rail-item {
+    padding: 0.55rem 0.65rem !important;
+  }
+
+  .cmd-rail-nav {
+    padding-bottom: 2rem;
+  }
+
+  /* Timeline labels jangan numpuk */
+  .sched-timeline-labels,
+  .phase-line-dates {
+    flex-direction: column;
+    gap: 0.2rem;
+    align-items: flex-start;
+  }
+
+  .phase-line-dot-label {
+    font-size: 0.55rem !important;
+  }
+
+  /* Access banner */
+  .access-banner-row {
+    flex-direction: column;
+    align-items: stretch !important;
+  }
+}
+
+/* Phablet / HP besar: masih 2 chip, tablet tetap lega */
+@media (min-width: 641px) and (max-width: 1099px) {
+  .portal-tiles {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .info-compact-row {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem;
+  }
+  html[data-ui="command"] .program-fit {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  html[data-ui="command"] .cmd-stage-body {
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Mode HP: data-mobile=1 — kurangi densitas informasi */
+html[data-mobile="1"] .sched-timeline,
+html[data-mobile="1"] .phase-line-wrap,
+html[data-mobile="1"] .program-phase-card .muted,
+html[data-mobile="1"] .program-phase-card .weekPlan,
+html[data-mobile="1"] .portal-today .muted,
+html[data-mobile="1"] .acwr-dial-hint,
+html[data-mobile="1"] .info-chip-emphasis .muted {
+  /* timeline tetap ada tapi lebih kompak — hide teks bantu panjang */
+}
+
+html[data-mobile="1"] .sched-timeline {
+  padding: 0.55rem 0.7rem !important;
+}
+
+html[data-mobile="1"] .program-phase-card {
+  padding: 0.65rem 0.75rem !important;
+}
+
+html[data-mobile="1"] .program-phase-card > p.muted {
+  display: none;
+}
+
+html[data-mobile="1"] .portal-header .muted {
+  display: none;
+}
+
+html[data-mobile="1"] .coach-portal .portal-sub {
+  display: none;
+}
+
+/* Sembunyikan bank gerakan / checklist di HP (jarang dipakai lapangan) */
+html[data-mobile="1"] .program-fit-right .card h3 {
+  font-size: 0.9rem;
+}
+
+html[data-mobile="1"] .rail-section-label {
+  padding-top: 0.55rem;
+}
+
+html[data-mobile="1"] .cmd-brand-sub {
+  display: none;
+}
+
+html[data-mobile="1"] .sched-timeline-labels {
+  font-size: 0.68rem;
+}
+
+/* HP: tanpa duplikasi identitas + tanpa switcher H/M/B */
+html[data-mobile="1"] .cmd-identity-mobile,
+html[data-mobile="1"] .athlete-identity-card {
+  display: none !important;
+}
+
+html[data-mobile="1"] .athlete-status-bar {
+  display: none !important;
+}
+
+/* Jadwal di HP: hanya Daily — sembunyikan switcher */
+html[data-mobile="1"] .sched-view-switch {
+  display: none !important;
+}
+
+html[data-mobile="1"] .sched-head-row {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+html[data-mobile="1"] .sched-head-card h3::after {
+  content: " · Hari ini";
+  font-weight: 600;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+/* Context bar: aksi lebih ringkas di HP */
+html[data-mobile="1"] .cmd-context-actions .pill-btn {
+  min-width: 40px;
+  justify-content: center;
+}
+
+html[data-mobile="1"] .cmd-stage-header {
+  padding: 0.45rem 0.6rem;
+}
+
+/* Modul Tes / Monitor / Feed: scroll seperti Jadwal, tidak terpotong */
+html[data-ui="command"] .page-body.mini-win {
+  overflow: auto !important;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  display: block !important;
+  min-height: 0;
+  flex: 1 1 auto;
+}
+
+html[data-ui="command"] .page-frame.athlete-detail-fit {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  flex: 1;
+  overflow: hidden;
+}
+
+html[data-ui="command"] .module-scroll {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  padding-bottom: 1.25rem;
+  max-width: none;
+  width: 100%;
+}
+
+/* Jadwal: bukan 50:50 — kiri lebih sempit, kanan lebih lebar */
+@media (min-width: 1100px) {
+  html[data-ui="command"] .program-fit {
+    grid-template-columns: minmax(240px, 0.72fr) minmax(380px, 1.35fr) !important;
+    gap: 0.75rem;
+  }
+
+  html[data-ui="command"] .program-fit-left,
+  html[data-ui="command"] .program-fit-right {
+    overflow: auto !important;
+    overscroll-behavior: contain;
+  }
+
+  /* Form tes: grid 2 kolom di PC, tidak melebar penuh tak terkontrol */
+  html[data-ui="command"] .module-scroll .card {
+    max-width: 100%;
+  }
+
+  html[data-ui="command"] .module-scroll form .form-grid,
+  html[data-ui="command"] .module-scroll .form-row-3 {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem 1rem;
+  }
+}
+
+@media (max-width: 1099px) {
+  html[data-ui="command"] .page-body.mini-win {
+    overflow: auto !important;
+  }
+  html[data-ui="command"] .module-scroll {
+    max-width: none;
+  }
+}
+
+/* Multi-panel: isi penuh lebar stage, responsif */
+.mod-panels {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  min-height: 0;
+  width: 100%;
+  max-width: none;
+  flex: 1 1 auto;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.mod-panels-top {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.9fr) minmax(0, 1.4fr);
+  gap: 0.65rem;
+  min-height: 0;
+  flex: 1 1 auto;
+  width: 100%;
+  align-items: stretch;
+}
+
+.mod-panel-form {
+  min-width: 0;
+  min-height: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  width: 100%;
+}
+
+.mod-panel-form > .card {
+  margin: 0;
+  height: auto;
+  min-height: 100%;
+  box-sizing: border-box;
+}
+
+.mod-panel-side {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  min-width: 0;
+  min-height: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  width: 100%;
+}
+
+/* flex:1 1 0 dulu di sini — memaksa tiap kartu di .mod-panel-side (Cairan,
+   Contoh menu harian, Catatan khusus/peringatan ACWR, dst.) mendapat porsi
+   tinggi yang SAMA RATA, tanpa peduli berapa banyak isinya. Kartu tanpa
+   `overflow` sendiri di sini (beda dengan varian .tile-layout di bawah yang
+   punya overflow:hidden) berarti begitu isi satu kartu (mis. daftar menu 4
+   baris) lebih tinggi dari jatah rata-ratanya, kelebihannya tumpah ke luar
+   batas box kartu itu — dan karena kartu BERIKUTNYA (mis. peringatan ACWR)
+   digambar setelahnya dalam urutan DOM, latar kartu berikutnya itu menimpa
+   sisa teks yang tumpah tadi. Efeknya persis "kartu peringatan menutupi
+   Contoh menu harian" yang dilaporkan.
+   Perbaikan: flex:0 1 auto — tiap kartu tingginya mengikuti isi aslinya
+   (dengan lantai 160px), bukan dipaksa sama rata. Kalau total isi lebih
+   tinggi dari ruang yang ada, .mod-panel-side (overflow:auto di atas) yang
+   men-scroll SATU kolom itu — bukan tiap kartu saling menimpa. */
+.mod-chart-card {
+  flex: 0 1 auto;
+  min-height: 160px;
+  margin: 0 !important;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Chart SVG/canvas ikut lebar kartu */
+.mod-chart-card svg,
+.mod-chart-card canvas,
+.mod-chart-card .chart-wrap,
+.mod-chart-card [class*="chart"] {
+  max-width: 100% !important;
+  width: 100% !important;
+}
+
+.mod-panel-history {
+  flex: 0 1 auto;
+  width: 100%;
+  max-height: min(36vh, 320px);
+  min-height: 120px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.mod-panel-history > .card {
+  margin: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  max-height: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.mod-history-scroll {
+  overflow: auto !important;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  max-height: min(30vh, 280px);
+  flex: 1;
+  width: 100%;
+}
+
+.mod-history-scroll table {
+  width: 100%;
+  min-width: 640px;
+}
+
+/* Hapus batas max-width lama pada module-scroll saat ada panel */
+.module-scroll {
+  max-width: none !important;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.module-scroll:has(.mod-panels) {
+  max-width: none !important;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+  padding-bottom: 0;
+}
+
+.module-scroll:has(.mod-panels) > .mod-panels {
+  flex: 1 1 auto;
+  width: 100%;
+}
+
+/* Stage body: konten modul full width */
+html[data-ui="command"] .cmd-stage-body {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+html[data-ui="command"] .page-body.mini-win {
+  width: 100%;
+}
+
+/* Layar sangat lebar: tetap proporsional, form tidak terlalu lebar */
+@media (min-width: 1400px) {
+  .mod-panels-top {
+    grid-template-columns: minmax(300px, 0.75fr) minmax(0, 1.5fr);
+  }
+}
+
+@media (min-width: 1100px) and (max-width: 1399px) {
+  .mod-panels-top {
+    grid-template-columns: minmax(260px, 0.85fr) minmax(0, 1.35fr);
+  }
+}
+
+@media (max-width: 1099px) {
+  .mod-panels-top {
+    grid-template-columns: 1fr;
+  }
+  .mod-panel-history {
+    max-height: none;
+  }
+  .mod-history-scroll {
+    max-height: 45vh;
+  }
+  .module-scroll:has(.mod-panels) {
+    overflow: auto;
+    height: auto;
+  }
+}
+
+/* Command stage: full width — jangan dibatasi 960/1280 container lama */
+html[data-ui="command"] .cmd-stage-body,
+html[data-ui="command"] .cmd-stage-body > *,
+html[data-ui="command"] .page-frame,
+html[data-ui="command"] .page-body.mini-win {
+  max-width: none !important;
+  width: 100%;
+}
+html[data-ui="command"] .container {
+  max-width: none !important;
+}
+
+
+/* Komparasi grafis */
+.compare-frame { display: flex; flex-direction: column; min-height: 0; height: 100%; }
+.compare-toolbar {
+  display: flex; flex-wrap: wrap; gap: 0.75rem 1.25rem;
+  align-items: center; margin-bottom: 0.55rem; flex-shrink: 0;
+}
+.compare-legend { display: flex; align-items: center; gap: 0.4rem; font-size: 0.9rem; }
+.compare-dot {
+  width: 10px; height: 10px; border-radius: 50%; display: inline-block;
+}
+.compare-dot-a { background: var(--primary, #4f46e5); }
+.compare-dot-b { background: #0d9488; }
+.compare-body { flex: 1; min-height: 0; overflow: auto; }
+.compare-dual-charts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.65rem;
+}
+.compare-bar-row { margin-bottom: 0.75rem; }
+.compare-bar-label { font-size: 0.82rem; font-weight: 700; margin-bottom: 0.25rem; }
+.compare-bar-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 0.45rem; }
+.compare-bar-track {
+  position: relative;
+  height: 28px;
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--border) 55%, transparent);
+  overflow: hidden;
+}
+.compare-bar-fill {
+  height: 100%;
+  border-radius: 8px;
+  min-width: 0;
+  transition: width 0.25s ease;
+}
+.compare-bar-a .compare-bar-fill { background: color-mix(in srgb, var(--primary, #4f46e5) 75%, transparent); }
+.compare-bar-b .compare-bar-fill { background: color-mix(in srgb, #0d9488 75%, transparent); }
+.compare-bar-val {
+  position: absolute; right: 8px; top: 50%; transform: translateY(-50%);
+  font-size: 0.78rem; font-weight: 800; z-index: 1;
+}
+.compare-chart-card, .compare-bars-card { margin-bottom: 0.65rem; }
+@media (max-width: 899px) {
+  .compare-dual-charts, .compare-bar-pair { grid-template-columns: 1fr; }
+}
+
+/* ========== GRID SYSTEM (optimized) ========== */
+:root {
+  --grid-gap: 0.5rem;
+  --form-col: minmax(200px, 1fr);
+  --chart-col: minmax(0, 2fr);
+  --history-h: 25vh;
+  --chart-h: 160px;
+}
+
+/* --- Tes / Monitor / Feed: 1/3 form | 2/3 chart, history 25vh bottom --- */
+@media (min-width: 900px) {
+  html[data-ui="command"] .cmd-identity-mobile,
+  html[data-ui="command"] .athlete-identity-card {
+    display: none !important;
+  }
+
+  html[data-ui="command"] .page-frame.athlete-detail-fit,
+  html[data-ui="command"] .page-body.mini-win,
+  .module-scroll:has(.tile-layout) {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    min-height: 0;
+    height: 100%;
+    max-width: none;
+    width: 100%;
+    /* overflow:hidden dulu di sini menutup jalan scroll terakhir yang
+       tersisa. .mod-panels di dalamnya pakai grid-template-rows:
+       minmax(0, 1fr) — secara teori 1fr itu boleh menyusut sampai 0, TAPI
+       begitu .mod-panel-side (lihat perbaikan flex:0 1 auto di atas) benar-
+       benar butuh tinggi lebih dari yang tersedia (mis. Contoh menu harian
+       4 baris + peringatan ACWR sekaligus), baris grid 1fr itu malah ikut
+       melebar mengikuti kebutuhan konten (perilaku fallback grid saat
+       ukuran tersedia tidak sepenuhnya "definite" di rantai ukuran
+       bertingkat ini) — dan overflow:hidden di sini diam-diam memotong
+       kelebihannya tanpa cara mencapainya sama sekali (beda dari kartu di
+       dalamnya yang sekarang sudah scroll sendiri). overflow:auto di sini
+       jadi jaring pengaman terakhir: kalau .mod-panels genuinely lebih
+       tinggi dari satu layar, WADAH INI yang scroll — bukan konten hilang
+       diam-diam. */
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    box-sizing: border-box;
+  }
+
+  .module-scroll:has(.tile-layout) {
+    padding: 0;
+  }
+
+  .mod-panels.tile-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(0, 1fr) var(--history-h);
+    gap: var(--grid-gap);
+    flex: 1 1 auto;
+    min-height: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .tile-layout .mod-panels-top {
+    display: grid;
+    grid-template-columns: var(--form-col) var(--chart-col);
+    gap: var(--grid-gap);
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .tile-layout .mod-panel-form {
+    min-width: 0;
+    min-height: 0;
+    overflow: auto;
+    overscroll-behavior: contain;
+  }
+  .tile-layout .mod-panel-form > .card {
+    margin: 0;
+  }
+
+  .tile-layout .mod-panel-side {
+    display: flex;
+    flex-direction: column;
+    gap: var(--grid-gap);
+    min-width: 0;
+    min-height: 0;
+    /* overflow:hidden dulu di sini + flex:1 1 0 di bawah membagi tinggi
+       kolom ini rata ke tiap kartu tanpa peduli isinya — kartu berisi teks
+       panjang (mis. Contoh menu harian 4 baris) yang lebih tinggi dari jatah
+       rata-ratanya jadi terpotong diam-diam (overflow:hidden, tanpa cara
+       untuk mencapai sisanya) alih-alih menampilkan lengkap. Sama seperti
+       varian dasar .mod-panel-side di atas: overflow:auto di sini + kartu
+       yang tingginya mengikuti isi (lihat .mod-chart-card di bawah) berarti
+       kolom ini yang scroll kalau total kontennya lebih tinggi dari ruang
+       "satu layar", bukan tiap kartu saling menimpa/terpotong diam-diam. */
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .tile-layout .mod-chart-card {
+    flex: 0 1 auto;
+    min-height: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 0.5rem 0.7rem;
+    box-sizing: border-box;
+  }
+  .tile-layout .mod-chart-card h3,
+  .tile-layout .mod-chart-card > p {
+    flex-shrink: 0;
+    margin: 0 0 0.2rem;
+    font-size: 0.85rem;
+  }
+
+  .tile-layout .mod-chart-card .chart-scroll,
+  .tile-layout .mod-chart-card .chart-plot-fill,
+  .tile-layout .mod-chart-card .chart-wrap {
+    width: 100%;
+    min-width: 0;
+    height: var(--chart-h);
+    min-height: var(--chart-h);
+    max-height: var(--chart-h);
+    overflow: hidden;
+    margin: 0;
+  }
+  .tile-layout .mod-chart-card .chart-svg {
+    width: 100%;
+    height: var(--chart-h);
+    display: block;
+  }
+
+  .tile-layout .mod-panel-history {
+    height: var(--history-h);
+    max-height: var(--history-h);
+    min-height: var(--history-h);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+  }
+  .tile-layout .mod-panel-history > .card {
+    flex: 1;
+    min-height: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .tile-layout .mod-history-scroll {
+    flex: 1;
+    min-height: 0;
+    overflow: auto;
+    overscroll-behavior: contain;
+  }
+
+  /* Jadwal: 1/3 | 2/3 */
+  html[data-ui="command"] .program-fit.tile-jadwal,
+  html[data-ui="command"] .program-fit {
+    display: grid;
+    grid-template-columns: var(--form-col) var(--chart-col);
+    gap: var(--grid-gap);
+    height: 100%;
+    min-height: 0;
+    overflow: hidden;
+  }
+  html[data-ui="command"] .program-fit-left,
+  html[data-ui="command"] .program-fit-right {
+    min-width: 0;
+    min-height: 0;
+    overflow: auto;
+    overscroll-behavior: contain;
+  }
+
+  .split-handle { display: none !important; }
+
+  /* --- Markas --- */
+  html[data-ui="command"] .cmd-stage-body > .coach-portal,
+  html[data-ui="command"] .coach-portal.tile-markas {
+    height: 100%;
+    min-height: 0;
+  }
+
+  .coach-portal.tile-markas {
+    display: grid;
+    grid-template-rows: auto auto minmax(0, 1fr) minmax(0, 0.9fr);
+    gap: var(--grid-gap);
+    height: 100%;
+    min-height: 0;
+    overflow: hidden;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .tile-markas .markas-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.35rem 1rem;
+    margin: 0;
+    padding: 0;
+  }
+  .tile-markas .markas-header h2 {
+    margin: 0 0 0.1rem;
+    font-size: 1.12rem;
+  }
+  .tile-markas .markas-header .muted,
+  .tile-markas .portal-sub {
+    margin: 0;
+    font-size: 0.8rem;
+  }
+
+  .tile-markas .portal-tiles {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--grid-gap);
+    margin: 0;
+  }
+  .tile-markas .portal-tile {
+    margin: 0;
+    padding: 0.6rem 0.7rem;
+    min-width: 0;
+  }
+  .tile-markas .portal-tile-value {
+    font-size: 1.3rem;
+  }
+
+  .tile-markas .markas-mid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--grid-gap);
+    min-height: 0;
+    overflow: hidden;
+  }
+  .tile-markas .markas-mid-col {
+    min-width: 0;
+    min-height: 0;
+    overflow: auto;
+    overscroll-behavior: contain;
+  }
+  .tile-markas .markas-mid-col > * {
+    margin: 0;
+    height: 100%;
+    box-sizing: border-box;
+  }
+
+  .tile-markas .markas-bottom {
+    min-height: 0;
+    overflow: auto;
+    overscroll-behavior: contain;
+  }
+  .tile-markas .markas-bottom > * {
+    margin: 0;
+    height: 100%;
+    box-sizing: border-box;
+  }
+}
+
+/* Chart labels + compact tooltip */
+.chart-tick-label {
+  font-size: 11px;
+  font-weight: 600;
+  fill: var(--text-muted, #64748b);
+}
+.chart-axis-label {
+  font-size: 10px;
+  fill: var(--text-muted, #64748b);
+}
+.chart-tooltip {
+  padding: 1px 6px !important;
+  border-radius: 4px !important;
+  font-size: 0.68rem !important;
+  line-height: 1.3 !important;
+  max-width: none !important;
+  background: color-mix(in srgb, var(--surface) 55%, transparent) !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+.compare-narrative {
+  margin: 0.25rem 0 0.1rem;
+  font-size: 0.78rem;
+  line-height: 1.35;
+}
+
+@media (max-width: 899px) {
+  .mod-panels.tile-layout {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    overflow: visible;
+  }
+  .tile-layout .mod-panels-top {
+    display: flex;
+    flex-direction: column;
+  }
+  .tile-layout .mod-panel-history {
+    display: none;
+  }
+  .tile-layout .mod-chart-card .chart-wrap,
+  .tile-layout .mod-chart-card .chart-svg {
+    height: var(--chart-h);
+  }
+  .module-scroll:has(.tile-layout) {
+    height: auto;
+    overflow: auto;
+  }
+  .coach-portal.tile-markas {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    overflow: auto;
+  }
+  .tile-markas .portal-tiles {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .tile-markas .markas-mid {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+/* Mode Lapangan HP pelatih */
+html[data-ui="field"] body {
+  margin: 0;
+  background: var(--stage-bg, #f1f5f9);
+  /* Sama seperti .field-shell di bawah — dibatasi tinggi layar (bukan
+     min-height) supaya body tidak ikut jadi area scroll kedua di samping
+     .field-body. Dua scroller bertumpuk (body + .field-body) adalah
+     sumber bug "tidak bisa discroll di HP asli" yang sama persis. */
+  overflow: hidden;
+  height: 100%;
+  height: 100dvh;
+}
+/* .field-shell dulu pakai min-height:100vh — floor, bukan batas atas, jadi
+   kontainer bebas tumbuh melebihi satu layar begitu isi (form/riwayat tes)
+   lebih panjang dari itu. Efeknya, .field-body (flex:1) TIDAK PERNAH
+   benar-benar dibatasi tingginya (default min-height:auto pada flex item
+   membuatnya ikut memanjang mengikuti isi), sehingga overflow:auto di sana
+   tidak pernah aktif — yang scroll akhirnya cuma dokumen/body. Di Chrome
+   desktop (termasuk mode emulasi DevTools) ini masih kelihatan jalan karena
+   scroll dokumen tetap bekerja normal. Tapi di WebKit HP asli, elemen yang
+   overflow:auto + -webkit-overflow-scrolling:touch TAPI isinya sendiri
+   pas/tidak melebihi tingginya (persis kasus .field-body di sini) dikenal
+   "menelan" gestur sentuh alih-alih meneruskannya untuk men-scroll dokumen
+   di luarnya — makanya tombol/bagian bawah jadi tidak terjangkau, khusus di
+   perangkat sungguhan, bukan di emulator.
+   Perbaikannya: kunci .field-shell ke persis tinggi layar (height, bukan
+   min-height; 100dvh dengan fallback 100vh untuk browser lama yang belum
+   kenal dvh) + overflow:hidden, supaya .field-body (flex:1; min-height:0)
+   jadi SATU-SATUNYA area yang benar-benar dibatasi dan bisa discroll —
+   sesuai pola yang sama persis sudah dipakai .cmd-shell/.cmd-stage untuk
+   Command Center mobile-narrow (lihat @media (max-width:1099px) di atas).
+   Berlaku untuk SEMUA halaman lewat renderFieldShell() — bukan ditambal
+   per halaman (Log/Tes/Nutrisi/Feed dst. semua lewat titik ini). */
+.field-shell {
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  max-width: 480px;
+  margin: 0 auto;
+  background: var(--stage-bg, #f1f5f9);
+}
+.field-topbar {
+  flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.65rem 0.85rem;
+  background: var(--surface, #fff);
+  border-bottom: 1px solid var(--border);
+}
+.field-back, .field-menu-btn {
+  border: none;
+  background: transparent;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--primary, #4f46e5);
+  padding: 0.35rem 0.4rem;
+  cursor: pointer;
+}
+.field-title {
+  text-align: center;
+  font-size: 0.95rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.field-brand { font-weight: 800; font-size: 0.9rem; }
+.field-body {
+  flex: 1;
+  min-height: 0;
+  padding: 0.85rem 0.9rem 1.5rem;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.field-lead { margin: 0 0 0.75rem; font-size: 0.88rem; }
+.field-h {
+  margin: 1rem 0 0.45rem;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+}
+.field-card {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  text-align: left;
+  padding: 0.75rem 0.85rem;
+  /* margin-bottom dulu 0.4rem (~6.4px) — di bawah ambang ergonomis ~8px
+     untuk jari di HP. Kartu ini <button> bertumpuk (roster Skuat, menu
+     atlet, dst.) nyaris memenuhi seluruh layar tanpa jeda; jari pengguna
+     nyaris selalu mendarat DI ATAS sebuah kartu saat mencoba swipe,
+     bukan di celah kosong. Dinaikkan ke 0.65rem (~10.4px). */
+  margin-bottom: 0.65rem;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--surface, #fff);
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(15,23,42,0.04);
+}
+.field-card-ico {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: var(--primary-light, #eef2ff);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.field-card-body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+.field-card-body strong {
+  font-size: 0.95rem;
+  /* .field-card adalah <button>; base style button global set color:
+     var(--on-primary) (putih) untuk tombol berwarna solid. .field-card
+     menimpa background jadi terang tapi tidak menimpa balik color, jadi
+     strong (tanpa color sendiri) mewarisi putih-di-atas-terang — tidak
+     terlihat. Set eksplisit di sini supaya tidak bergantung ke urutan
+     cascade dari base style button. */
+  color: var(--text);
+}
+.field-card-body .muted {
+  font-size: 0.78rem;
+}
+.field-card-chevron {
+  color: var(--text-muted);
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+.field-context {
+  padding: 0.85rem 1rem;
+  margin-bottom: 0.5rem;
+}
+.field-context-name {
+  font-size: 1.15rem;
+  font-weight: 800;
+}
+.field-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.55rem;
+}
+.field-session-day { margin-bottom: 0.75rem; }
+.field-session-item {
+  padding: 0.65rem 0.8rem;
+  /* 0.35rem (~5.6px, margin collapse antar-sibling) — sama seperti
+     .field-card, di bawah ambang ergonomis ~8px. Dinaikkan ke 0.6rem. */
+  margin: 0.6rem 0;
+}
+.field-session-item p { margin: 0.2rem 0 0; font-size: 0.82rem; }
+.field-log-form label {
+  display: block;
+  margin: 0.55rem 0 0.2rem;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+.field-log-form input {
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 1rem;
+  padding: 0.65rem 0.75rem;
+  min-height: 44px;
+}
+.field-primary-btn {
+  width: 100%;
+  margin-top: 1rem;
+  min-height: 48px;
+  font-size: 1rem;
+  font-weight: 800;
+}
+.field-footer-actions {
+  margin-top: 1.25rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+}
+.field-footer-actions button { width: 100%; min-height: 44px; }
+.field-note { font-size: 0.8rem; margin-top: 0.75rem; }
+.field-embed .mod-panels.tile-layout,
+.field-embed .tile-layout .mod-panels-top {
+  display: flex !important;
+  flex-direction: column !important;
+  height: auto !important;
+  grid-template-rows: none !important;
+  grid-template-columns: none !important;
+}
+.field-embed .tile-layout .mod-panel-history {
+  display: block !important;
+  height: auto !important;
+  max-height: none !important;
+  min-height: 0 !important;
+}
+.field-embed .tile-layout .mod-chart-card .chart-wrap,
+.field-embed .tile-layout .mod-chart-card .chart-svg {
+  height: 140px !important;
+}
+
+/* ===== Palet warna ===== */
+/* Indigo = default :root (tidak perlu override) */
+
+html[data-palette="ocean"] {
+  --primary: #0d9488;
+  --primary-dark: #0f766e;
+  --primary-light: #ccfbf1;
+  --on-primary: #ffffff;
+  --success: #059669;
+  --khusus: #0e7490;
+  --khusus-bg: #cffafe;
+  --umum: #0f766e;
+  --umum-bg: #ccfbf1;
+}
+
+html[data-palette="ember"] {
+  --primary: #1e3a5f;
+  --primary-dark: #0f2744;
+  --primary-light: #e8eef5;
+  --on-primary: #ffffff;
+  --warn: #d97706;
+  --warn-bg: #fffbeb;
+  --puncak: #ea580c;
+  --puncak-bg: #fff7ed;
+  --khusus: #1e3a5f;
+  --khusus-bg: #e8eef5;
+  --umum: #b45309;
+  --umum-bg: #fef3c7;
+}
+
+html[data-palette="ocean"][data-theme="dark"],
+html[data-theme="dark"][data-palette="ocean"] {
+  --primary: #2dd4bf;
+  --primary-dark: #5eead4;
+  --primary-light: #134e4a;
+}
+
+html[data-palette="ember"][data-theme="dark"],
+html[data-theme="dark"][data-palette="ember"] {
+  --primary: #93c5fd;
+  --primary-dark: #bfdbfe;
+  --primary-light: #1e293b;
+}
+
+/* ===== Font ===== */
+html[data-font="system"],
+html:not([data-font]) {
+  --font-ui: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-num: ui-monospace, "SF Mono", "Cascadia Code", Menlo, Consolas, monospace;
+}
+html[data-font="modern"] {
+  --font-ui: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-num: "Inter", system-ui, sans-serif;
+}
+html[data-font="sport"] {
+  --font-ui: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-num: "DM Sans", system-ui, sans-serif;
+  letter-spacing: -0.01em;
+}
+html[data-font="sport"] .stat-value,
+html[data-font="sport"] .portal-tile-value,
+html[data-font="sport"] .cmd-context-name {
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+body {
+  font-family: var(--font-ui, system-ui, sans-serif);
+}
+.stat-value, .portal-tile-value, .chart-tick-label, .compare-bar-val {
+  font-family: var(--font-num, var(--font-ui, system-ui, sans-serif));
+}
+
+/* ============================================================
+   PHASE-1 FIX — Command Center PC: layout DINAMIS
+   Gejala yang diperbaiki: tidak bisa scroll, space kosong besar,
+   batas bawah keluar layar. Penyebab: rantai overflow:hidden +
+   height:100%/100vh di html/body/#app/shell/stage/body.
+   Solusi: halaman scroll natural; rail tetap fixed di kiri.
+   ============================================================ */
+@media (min-width: 1100px) {
+  html[data-ui="command"],
+  html[data-ui="command"] body {
+    height: auto !important;
+    max-height: none !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+  }
+  html[data-ui="command"] #app {
+    height: auto !important;
+    max-height: none !important;
+    min-height: 100vh;
+    overflow: visible !important;
+  }
+
+  html[data-ui="command"] .cmd-shell {
+    display: flex !important;
+    min-height: 100vh !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  html[data-ui="command"] .cmd-rail {
+    position: fixed !important;
+    top: 0; left: 0; bottom: 0;
+    height: 100vh;
+    height: 100dvh;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  html[data-ui="command"] .cmd-stage {
+    margin-left: var(--rail-w, 252px) !important;
+    min-height: 100vh !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  html[data-ui="command"] .cmd-stage-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    flex-shrink: 0;
+  }
+
+  html[data-ui="command"] .cmd-stage-body {
+    flex: 0 1 auto !important;
+    min-height: 0 !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    padding-bottom: 2rem !important;
+  }
+
+  html[data-ui="command"] .cmd-stage-body > *,
+  html[data-ui="command"] .cmd-stage-body > .coach-portal,
+  html[data-ui="command"] .cmd-stage-body > .athlete-detail-fit,
+  html[data-ui="command"] .cmd-stage-body > div {
+    flex: 0 1 auto !important;
+    flex-shrink: 0 !important;
+    min-height: 0 !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  html[data-ui="command"] .coach-portal,
+  html[data-ui="command"] .coach-portal.tile-markas {
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.75rem;
+  }
+
+  html[data-ui="command"] .page-frame.athlete-detail-fit,
+  html[data-ui="command"] .page-body.mini-win {
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    flex: 0 1 auto !important;
+  }
+
+  html[data-ui="command"] .program-fit,
+  html[data-ui="command"] .program-fit.tile-jadwal {
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    display: grid !important;
+    grid-template-columns: minmax(260px, 0.8fr) minmax(340px, 1.25fr) !important;
+    gap: 0.75rem !important;
+  }
+
+  html[data-ui="command"] .program-fit-left,
+  html[data-ui="command"] .program-fit-right {
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  html[data-ui="command"] .calendar-fit,
+  html[data-ui="command"] .calendar-wrap,
+  html[data-ui="command"] .athlete-list-fit,
+  html[data-ui="command"] .table-wrap {
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  html[data-ui="command"] .module-scroll,
+  html[data-ui="command"] .module-scroll:has(.tile-layout),
+  html[data-ui="command"] .module-scroll:has(.mod-panels) {
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  html[data-ui="command"] .mod-panels,
+  html[data-ui="command"] .mod-panels-top {
+    height: auto !important;
+    max-height: none !important;
+  }
+
+  /* Sembunyikan kartu identitas mobile di PC (sudah ada context bar) */
+  html[data-ui="command"] .cmd-identity-mobile,
+  html[data-ui="command"] .athlete-identity-card,
+  html[data-ui="command"] .athlete-status-bar {
+    display: none !important;
+  }
+}
+
+/* ============================================================
+   PATCH HP — Tes / Monitor / Nutrisi / Feed bisa di-scroll
+   (Mode Lapangan + Command Center di layar sempit)
+   Program sudah OK karena markup sederhana; modul lain pakai
+   .tile-layout / .mod-panels / .page-frame yang lock height+overflow.
+   ============================================================ */
+
+/* --- Mode Lapangan: konten di .field-embed harus tumbuh, scroll di .field-body --- */
+html[data-ui="field"] #app {
+  height: 100%;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+.field-embed {
+  width: 100%;
+  min-height: 0;
+  height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+.field-embed .mod-panels,
+.field-embed .mod-panels.tile-layout,
+.field-embed .tile-layout,
+.field-embed .mod-panels-top,
+.field-embed .mod-panel-form,
+.field-embed .mod-panel-side,
+.field-embed .mod-panel-history,
+.field-embed .module-scroll,
+.field-embed .page-body,
+.field-embed .page-body.mini-win,
+.field-embed .page-frame,
+.field-embed .card {
+  height: auto !important;
+  max-height: none !important;
+  min-height: 0 !important;
+  overflow: visible !important;
+  flex: 0 1 auto !important;
+}
+
+.field-embed .mod-panels.tile-layout,
+.field-embed .tile-layout .mod-panels-top,
+.field-embed .mod-panels-top {
+  display: flex !important;
+  flex-direction: column !important;
+  grid-template-columns: none !important;
+  grid-template-rows: none !important;
+  gap: 0.65rem !important;
+}
+
+.field-embed .mod-panel-history {
+  display: block !important;
+}
+
+.field-embed .mod-history-scroll {
+  max-height: none !important;
+  height: auto !important;
+  overflow: visible !important;
+}
+
+.field-embed .chart-wrap,
+.field-embed .chart-svg {
+  max-width: 100%;
+}
+
+/* Pastikan field-body tetap scroller utama + gesture touch */
+.field-body {
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  -webkit-overflow-scrolling: touch !important;
+  overscroll-behavior: contain;
+  touch-action: pan-y;
+}
+
+/* --- Command Center di HP/tablet (≤1099px): stage-body scroll modul --- */
+@media (max-width: 1099px) {
+  html[data-ui="command"] .cmd-stage {
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100dvh !important;
+    max-height: 100dvh !important;
+    overflow: hidden !important;
+  }
+
+  html[data-ui="command"] .cmd-stage-header {
+    flex-shrink: 0 !important;
+  }
+
+  html[data-ui="command"] .cmd-stage-body {
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    -webkit-overflow-scrolling: touch !important;
+    overscroll-behavior: contain;
+    touch-action: pan-y;
+    height: auto !important;
+    max-height: none !important;
+  }
+
+  html[data-ui="command"] .page-frame.athlete-detail-fit,
+  html[data-ui="command"] .page-frame {
+    height: auto !important;
+    max-height: none !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    flex: 0 1 auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  html[data-ui="command"] .page-body.mini-win {
+    flex: 0 1 auto !important;
+    height: auto !important;
+    max-height: none !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    display: block !important;
+  }
+
+  html[data-ui="command"] .module-scroll,
+  html[data-ui="command"] .module-scroll:has(.tile-layout),
+  html[data-ui="command"] .module-scroll:has(.mod-panels) {
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    flex: 0 1 auto !important;
+    padding-bottom: 2rem !important;
+  }
+
+  html[data-ui="command"] .mod-panels,
+  html[data-ui="command"] .mod-panels.tile-layout,
+  html[data-ui="command"] .mod-panels-top,
+  html[data-ui="command"] .mod-panel-form,
+  html[data-ui="command"] .mod-panel-side,
+  html[data-ui="command"] .mod-panel-history {
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    flex: 0 1 auto !important;
+  }
+
+  html[data-ui="command"] .mod-panels.tile-layout,
+  html[data-ui="command"] .mod-panels-top {
+    display: flex !important;
+    flex-direction: column !important;
+    grid-template-columns: 1fr !important;
+    grid-template-rows: none !important;
+  }
+
+  html[data-ui="command"] .mod-history-scroll {
+    max-height: none !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  /* Program tetap bisa scroll (sudah OK) — pastikan tidak dipecah */
+  html[data-ui="command"] .program-fit {
+    height: auto !important;
+    overflow: visible !important;
+  }
+}
+
+/* --- Landing: statistik & tim naratif --- */
+.landing-stats {
+  padding-top: 32px;
+  padding-bottom: 32px;
+  border-top: none;
+}
+.landing-stats-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem 3.5rem;
+  max-width: 520px;
+  margin: 0 auto;
+}
+.landing-stat {
+  text-align: center;
+  min-width: 120px;
+}
+.landing-stat-value {
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--primary);
+  line-height: 1.15;
+}
+.landing-stat-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-top: 0.25rem;
+}
+.landing-stats-note {
+  text-align: center;
+  font-size: 0.78rem;
+  margin: 1rem auto 0;
+  max-width: 40ch;
+}
+
+.landing-team-narrative {
+  padding-top: 28px;
+  padding-bottom: 28px;
+  border-top: 1px solid var(--border);
+}
+.landing-team-prose {
+  max-width: 62ch;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 0.9rem;
+  line-height: 1.65;
+  font-weight: 400;
+}
+.landing-team-prose strong {
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* Menu minggu: kartu slot makan — stack di HP, berjejer di PC */
+.nutri-meal-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin: 0.35rem 0 0.5rem;
+  width: 100%;
+}
+.nutri-meal-card {
+  margin: 0 !important;
+  padding: 0.75rem 0.85rem !important;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-width: 0;
+}
+.nutri-meal-head {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+.nutri-meal-title {
+  font-weight: 800;
+  font-size: 0.92rem;
+  letter-spacing: -0.01em;
+}
+.nutri-meal-time {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--primary);
+  text-transform: none;
+  letter-spacing: 0.01em;
+}
+.nutri-meal-hint {
+  font-size: 0.75rem;
+  line-height: 1.4;
+  margin: 0;
+}
+.nutri-meal-items {
+  list-style: none;
+  margin: 0.15rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.nutri-meal-items li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.05rem;
+  font-size: 0.86rem;
+  padding: 0.25rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.nutri-meal-items li:last-child { border-bottom: none; }
+.nutri-meal-item-name { font-weight: 600; }
+.nutri-meal-item-meta { font-size: 0.75rem; }
+.nutri-meal-foot {
+  font-size: 0.72rem;
+  font-weight: 600;
+  margin-top: 0.15rem;
+}
+
+@media (min-width: 900px) {
+  .nutri-meal-grid {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    gap: 0.65rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .nutri-meal-card {
+    flex: 1 1 0;
+    min-width: 160px;
+  }
+}
+
+@media (max-width: 899px) {
+  .nutri-meal-grid {
+    flex-direction: column;
+  }
+  .nutri-meal-card {
+    width: 100%;
+  }
+}
+
+/* ========== Nutrisi PC: kolom kanan padat (cairan + menu minggu) ========== */
+@media (min-width: 1100px) {
+  html[data-ui="command"] .module-scroll:has(.mod-panels) {
+    overflow: hidden !important;
+    height: 100% !important;
+    max-height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    padding-bottom: 0.5rem !important;
+  }
+
+  html[data-ui="command"] .module-scroll:has(.mod-panels) > .mod-panels {
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    height: 100% !important;
+    overflow: hidden !important;
+  }
+
+  html[data-ui="command"] .mod-panels.tile-layout {
+    height: 100% !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+  }
+
+  html[data-ui="command"] .tile-layout .mod-panels-top {
+    height: 100% !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+  }
+
+  html[data-ui="command"] .tile-layout .mod-panel-side {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.45rem !important;
+    min-height: 0 !important;
+    height: 100% !important;
+    overflow: auto !important;
+    padding-right: 2px;
+  }
+
+  /* Cairan: ringkas */
+  html[data-ui="command"] .mod-panel-side > .mod-chart-card:first-child {
+    flex: 0 0 auto !important;
+    padding: 0.55rem 0.7rem !important;
+    overflow: hidden;
+  }
+  html[data-ui="command"] .mod-panel-side > .mod-chart-card:first-child h4 {
+    font-size: 0.88rem;
+    margin: 0 0 0.35rem;
+  }
+  html[data-ui="command"] .cairan-option {
+    padding: 0.4rem 0.55rem !important;
+    margin: 0 !important;
+  }
+  html[data-ui="command"] .cairan-option + .cairan-option {
+    margin-top: 0.35rem !important;
+  }
+  html[data-ui="command"] .cairan-option .info-chip-label {
+    font-size: 0.68rem;
+  }
+  html[data-ui="command"] .cairan-option .info-chip-value {
+    font-size: 1.05rem;
+    margin: 0.1rem 0;
+  }
+  html[data-ui="command"] .cairan-option .nutri-stack-desc {
+    font-size: 0.7rem;
+    line-height: 1.35;
+    margin: 0.15rem 0 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Menu minggu: footer (pratinjau + tombol) selalu tampak */
+  html[data-ui="command"] .mod-panel-side > .mod-chart-card:has(.nutri-meal-grid),
+  html[data-ui="command"] .mod-panel-side > .nutri-week-card {
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
+    padding: 0.55rem 0.65rem !important;
+  }
+  html[data-ui="command"] .mod-panel-side > .mod-chart-card:has(.nutri-meal-grid) > h4 {
+    font-size: 0.88rem;
+    margin: 0 0 0.25rem;
+    flex-shrink: 0;
+  }
+  html[data-ui="command"] .mod-panel-side > .mod-chart-card:has(.nutri-meal-grid) > p,
+  html[data-ui="command"] .mod-panel-side > .mod-chart-card:has(.nutri-meal-grid) > .callout,
+  html[data-ui="command"] .mod-panel-side > .mod-chart-card:has(.nutri-meal-grid) > .muted {
+    flex-shrink: 0;
+  }
+  html[data-ui="command"] .mod-panel-side > .mod-chart-card:has(.nutri-meal-grid) > .callout {
+    padding: 0.35rem 0.5rem !important;
+    margin-bottom: 0.35rem !important;
+    font-size: 0.75rem;
+  }
+  html[data-ui="command"] .mod-panel-side > .mod-chart-card:has(.nutri-meal-grid) > .callout p {
+    font-size: 0.75rem !important;
+  }
+
+  html[data-ui="command"] .nutri-meal-grid {
+    flex: 1 1 auto;
+    min-height: 0;
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.45rem;
+    overflow: hidden;
+    align-content: stretch;
+  }
+  html[data-ui="command"] .nutri-meal-card {
+    min-width: 0 !important;
+    padding: 0.45rem 0.5rem !important;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+  html[data-ui="command"] .nutri-meal-title {
+    font-size: 0.8rem;
+  }
+  html[data-ui="command"] .nutri-meal-time {
+    font-size: 0.65rem;
+  }
+  html[data-ui="command"] .nutri-meal-hint {
+    font-size: 0.65rem;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  html[data-ui="command"] .nutri-meal-items {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow: auto;
+    gap: 0.15rem;
+  }
+  html[data-ui="command"] .nutri-meal-items li {
+    font-size: 0.75rem;
+    padding: 0.15rem 0;
+  }
+  html[data-ui="command"] .nutri-meal-item-meta {
+    font-size: 0.68rem;
+  }
+  html[data-ui="command"] .nutri-meal-foot {
+    font-size: 0.65rem;
+    flex-shrink: 0;
+  }
+
+  html[data-ui="command"] .nutri-week-foot {
+    flex: 0 0 auto;
+    margin-top: 0.35rem;
+  }
+  html[data-ui="command"] .mod-panel-side > .mod-chart-card:has(.nutri-meal-grid) .nutri-week-foot > button.secondary,
+  html[data-ui="command"] .nutri-week-foot > button.secondary {
+    flex-shrink: 0;
+    margin-top: 0.35rem !important;
+    padding: 0.35rem 0.5rem;
+    font-size: 0.78rem;
+    min-height: 0;
+    width: 100%;
+  }
+  html[data-ui="command"] .nutri-week-foot > p.muted {
+    font-size: 0.68rem;
+    margin-top: 0.25rem !important;
+    line-height: 1.3;
+  }
+  html[data-ui="command"] .nutri-week-preview,
+  html[data-ui="command"] .mod-panel-side > .mod-chart-card:has(.nutri-meal-grid) > details,
+  html[data-ui="command"] .mod-panel-side > .mod-chart-card:has(.nutri-meal-grid) .nutri-week-preview {
+    display: block !important;
+    flex-shrink: 0;
+    font-size: 0.8rem;
+  }
+}
+
+/* Layar PC sedang: 2x2 agar card tidak terlalu sempit/tinggi */
+@media (min-width: 1100px) and (max-width: 1399px) {
+  html[data-ui="command"] .nutri-meal-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+  }
+}
+
+
+/* ========== Nutrisi PC: layout dinamis (viewport-aware) ========== */
+@media (min-width: 1100px) {
+  /* Jangan kunci overflow hidden total — biarkan stage scroll jika benar-benar perlu */
+  html[data-ui="command"] .module-scroll:has(.mod-panels) {
+    overflow: auto !important;
+    height: 100% !important;
+    max-height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  html[data-ui="command"] .module-scroll:has(.mod-panels) > .mod-panels {
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  /* History/sumber: selalu cukup tinggi di PC */
+  html[data-ui="command"] .mod-panels.tile-layout {
+    grid-template-rows: minmax(0, 1fr) auto !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  html[data-ui="command"] .tile-layout .mod-panel-history {
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
+    flex: 0 0 auto !important;
+  }
+  html[data-ui="command"] .tile-layout .mod-panel-history > .card {
+    overflow: visible !important;
+    height: auto !important;
+    min-height: 0 !important;
+    padding: 0.45rem 0.75rem !important;
+  }
+  html[data-ui="command"] .nutri-footer-source {
+    display: block !important;
+  }
+
+  /* Kolom kiri: stack target menyusut mengikuti tinggi layar */
+  html[data-ui="command"] .tile-layout .mod-panels-top {
+    align-items: start !important;
+    overflow: visible !important;
+  }
+  html[data-ui="command"] .tile-layout .mod-panel-form {
+    overflow: visible !important;
+    max-height: none !important;
+  }
+  html[data-ui="command"] .tile-layout .mod-panel-form > .card {
+    height: auto !important;
+    min-height: 0 !important;
+    padding: clamp(0.5rem, 1.2vh, 0.9rem) clamp(0.65rem, 1vw, 1rem) !important;
+  }
+
+  html[data-ui="command"] .nutri-stacks {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(0.35rem, 1vh, 0.65rem);
+  }
+  html[data-ui="command"] .nutri-stacks > .card.nutri-stack {
+    margin: 0 !important;
+    padding: clamp(0.45rem, 1vh, 0.75rem) !important;
+  }
+  html[data-ui="command"] .nutri-stack-desc {
+    margin-top: 0.35rem !important;
+    font-size: clamp(0.68rem, 1.1vh, 0.78rem) !important;
+    line-height: 1.35 !important;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  html[data-ui="command"] .nutri-tile-big .portal-tile-value {
+    font-size: clamp(1.35rem, 3.2vh, 2.1rem) !important;
+  }
+  html[data-ui="command"] .nutri-tile-big .portal-tile-icon {
+    width: clamp(36px, 5vh, 52px) !important;
+    height: clamp(36px, 5vh, 52px) !important;
+  }
+  html[data-ui="command"] .nutri-macro-tiles .portal-tile {
+    padding: clamp(0.35rem, 0.9vh, 0.65rem) 0.4rem !important;
+  }
+  html[data-ui="command"] .nutri-macro-tiles .portal-tile-value {
+    font-size: clamp(0.85rem, 1.8vh, 1.05rem) !important;
+  }
+  html[data-ui="command"] .nutri-macro-tiles .portal-tile-icon {
+    width: clamp(28px, 3.5vh, 34px) !important;
+    height: clamp(28px, 3.5vh, 34px) !important;
+  }
+
+  html[data-ui="command"] .nutri-sumber-line {
+    font-size: clamp(0.7rem, 1.1vh, 0.78rem) !important;
+  }
+  html[data-ui="command"] .nutri-citation {
+    margin: 0.5rem 0 0 !important;
+    padding-left: 0.75rem !important;
+  }
+  html[data-ui="command"] .nutri-citation p {
+    font-size: clamp(0.7rem, 1.1vh, 0.8rem) !important;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Kolom kanan: cairan + menu — stack, tinggi mengikuti isi, stage boleh scroll */
+  html[data-ui="command"] .tile-layout .mod-panel-side {
+    overflow: visible !important;
+    height: auto !important;
+    max-height: none !important;
+    gap: clamp(0.35rem, 1vh, 0.55rem) !important;
+  }
+  html[data-ui="command"] .mod-panel-side > .mod-chart-card {
+    flex: 0 0 auto !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    padding: clamp(0.45rem, 1vh, 0.7rem) clamp(0.5rem, 0.9vw, 0.75rem) !important;
+  }
+
+  /* Grid slot: 4 kolom di layar lebar, 2x2 di sedang — tinggi card dinamis */
+  html[data-ui="command"] .nutri-meal-grid {
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: clamp(0.35rem, 0.8vw, 0.55rem) !important;
+    overflow: visible !important;
+    flex: none !important;
+    height: auto !important;
+  }
+  html[data-ui="command"] .nutri-meal-card {
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    padding: clamp(0.4rem, 0.9vh, 0.55rem) !important;
+  }
+  html[data-ui="command"] .nutri-meal-items {
+    overflow: visible !important;
+    flex: none !important;
+  }
+  html[data-ui="command"] .nutri-meal-hint {
+    -webkit-line-clamp: 2;
+  }
+  html[data-ui="command"] .mod-panel-side > .mod-chart-card:has(.nutri-meal-grid) > details {
+    display: block; /* boleh tampil; collapsible */
+  }
+  html[data-ui="command"] .cairan-option .nutri-stack-desc {
+    -webkit-line-clamp: 3;
+    font-size: clamp(0.68rem, 1.1vh, 0.75rem) !important;
+  }
+}
+
+@media (min-width: 1100px) and (max-width: 1399px) {
+  html[data-ui="command"] .nutri-meal-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+/* Layar pendek: perkecil lebih agresif */
+@media (min-width: 1100px) and (max-height: 800px) {
+  html[data-ui="command"] .nutri-stack-desc {
+    -webkit-line-clamp: 1;
+  }
+  html[data-ui="command"] .nutri-meal-hint {
+    display: none;
+  }
+  html[data-ui="command"] .nutri-tile-big .portal-tile-value {
+    font-size: 1.35rem !important;
+  }
+}
+
+/* Sumber nutrisi: satu blok, teks penuh (tanpa clamp) */
+.nutri-source-block {
+  margin-top: 0.85rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+}
+.nutri-source-block .nutri-citation {
+  margin: 0 0 0.5rem;
+}
+.nutri-source-block .nutri-citation p {
+  display: block !important;
+  -webkit-line-clamp: unset !important;
+  overflow: visible !important;
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+.nutri-source-block .nutri-sumber-line {
+  margin: 0;
+  font-size: 0.75rem;
+  line-height: 1.4;
+}
+
+@media (min-width: 1100px) {
+  html[data-ui="command"] .nutri-citation p {
+    display: block !important;
+    -webkit-line-clamp: unset !important;
+    overflow: visible !important;
+  }
+  /* Sembunyikan baris history kosong di tab nutrisi (tidak ada footer card) */
+  html[data-ui="command"] .mod-panels.tile-layout:has(.nutri-source-block) {
+    grid-template-rows: minmax(0, 1fr) !important;
+  }
+  html[data-ui="command"] .mod-panels.tile-layout:has(.nutri-source-block) .mod-panel-history:empty,
+  html[data-ui="command"] .mod-panels.tile-layout:has(.nutri-source-block) .mod-panel-history:not(:has(*)) {
+    display: none !important;
+    height: 0 !important;
+    min-height: 0 !important;
+  }
+}
+@media (min-width: 1100px) {
+  html[data-ui="command"] .mod-panels.tile-layout:has(.nutri-source-block) .mod-panel-history {
+    display: none !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    max-height: 0 !important;
+    overflow: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+}
+
+/* Kutipan nutrisi: SELALU teks penuh, tanpa ellipsis/clamp */
+.nutri-citation-text,
+.nutri-source-block .nutri-citation p,
+html[data-ui="command"] .nutri-citation p,
+html[data-ui="command"] .nutri-citation-text {
+  display: block !important;
+  -webkit-line-clamp: unset !important;
+  line-clamp: unset !important;
+  max-height: none !important;
+  overflow: visible !important;
+  text-overflow: unset !important;
+  white-space: normal !important;
+  font-size: 0.8rem !important;
+  line-height: 1.5 !important;
+}
+.nutri-citation-attr {
+  display: flex !important;
+  margin-top: 0.4rem;
+  font-size: 0.75rem;
+}
+/* Jangan tampilkan baris history di tab nutrisi */
+html[data-ui="command"] .mod-panels.tile-layout:has(.nutri-source-block) .mod-panel-history,
+.mod-panels.tile-layout:has(.nutri-source-block) .mod-panel-history {
+  display: none !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  max-height: 0 !important;
+  overflow: hidden !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* ============================================================
+   FIX FINAL — kartu mengisi penuh tinggi sidebar kiri (viewport),
+   scroll di DALAM tiap panel, bukan di seluruh halaman.
+
+   Ditambahkan paling akhir file + memakai selector
+   ":has(.page-body.mini-win)" supaya HANYA berlaku pada 5 tab
+   detail atlet (Jadwal, Tes, Monitor, Feed, Nutrisi) — TIDAK
+   menyentuh dashboard Markas (.coach-portal) atau form ubah atlet
+   (renderAthleteForm), karena keduanya secara struktur tidak
+   punya elemen .page-body.mini-win sebagai anak.
+
+   Blok-blok sebelumnya di file ini ("PHASE-1 FIX", "PATCH HP",
+   "Nutrisi PC: layout dinamis") sengaja mengembalikan
+   height:auto/overflow:visible untuk menghindari bug lama (konten
+   tersembunyi tanpa scrollbar). Mekanisme ini menggantikannya
+   dengan overflow:auto (BUKAN hidden) di titik akhir setiap panel
+   (form, chart/side, history) — kalau isinya lebih tinggi dari
+   jatahnya, panel itu sendiri yang scroll, bukan halaman penuh,
+   dan tidak ada konten yang diam-diam terpotong. Ukuran font TIDAK
+   diubah di sini.
+   ============================================================ */
+@media (min-width: 1100px) {
+  html[data-ui="command"] .cmd-stage-body:has(.page-body.mini-win) {
+    display: flex !important;
+    flex-direction: column !important;
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    height: 0 !important;
+    max-height: none !important;
+    overflow: hidden !important;
+    padding: 0.85rem 1.25rem 0.5rem !important;
+    box-sizing: border-box !important;
+  }
+
+  html[data-ui="command"] .cmd-stage-body:has(.page-body.mini-win) > .page-frame.athlete-detail-fit {
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    height: 100% !important;
+    max-height: none !important;
+    overflow: hidden !important;
+    display: flex !important;
+    flex-direction: column !important;
+    box-sizing: border-box !important;
+  }
+
+  html[data-ui="command"] .page-frame.athlete-detail-fit:has(.page-body.mini-win) > .page-body.mini-win {
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    height: 100% !important;
+    max-height: none !important;
+    overflow: hidden !important;
+    display: flex !important;
+    flex-direction: column !important;
+    box-sizing: border-box !important;
+  }
+
+  /* --- Jadwal/Program: 1/3 form | 2/3 kalender, tinggi penuh --- */
+  html[data-ui="command"] .page-body.mini-win > .program-fit,
+  html[data-ui="command"] .page-body.mini-win > .program-fit.tile-jadwal {
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    height: 100% !important;
+    max-height: none !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+  }
+  html[data-ui="command"] .page-body.mini-win .program-fit-left,
+  html[data-ui="command"] .page-body.mini-win .program-fit-right {
+    min-height: 0 !important;
+    height: 100% !important;
+    max-height: none !important;
+    overflow: auto !important;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+  }
+  html[data-ui="command"] .page-body.mini-win .calendar-fit,
+  html[data-ui="command"] .page-body.mini-win .calendar-wrap,
+  html[data-ui="command"] .page-body.mini-win .athlete-list-fit,
+  html[data-ui="command"] .page-body.mini-win .table-wrap {
+    max-height: none;
+    overflow: auto;
+  }
+
+  /* --- Tes / Monitor / Feed / Nutrisi: form|chart atas, history 25vh bawah --- */
+  html[data-ui="command"] .page-body.mini-win > .module-scroll:has(.mod-panels) {
+    display: flex !important;
+    flex-direction: column !important;
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    height: 100% !important;
+    max-height: none !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Fungsi renderTestsTab/renderMonitoringTab/renderNutritionTab/
+     renderAthleteFeedTab semua memakai pola "const wrap = el('div');
+     ... wrap.appendChild(assembleModPanels(...)); return wrap;" — jadi
+     .mod-panels.tile-layout selalu bersarang SATU div polos (tanpa
+     class) di dalam .module-scroll, bukan langsung jadi anaknya.
+     Div polos itu yang perlu dijadikan flex-column pengisi tinggi di
+     sini supaya height:100% pada .mod-panels di bawah punya acuan
+     tinggi yang pasti (definite), bukan mengacu ke div kosong yang
+     tingginya ikut isi (0/seadanya). */
+  html[data-ui="command"] .page-body.mini-win .module-scroll:has(.mod-panels) > div {
+    display: flex !important;
+    flex-direction: column !important;
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    height: 100% !important;
+    max-height: none !important;
+    overflow: hidden !important;
+  }
+
+  html[data-ui="command"] .page-body.mini-win .module-scroll:has(.mod-panels) > div > .mod-panels {
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    height: 100% !important;
+    max-height: none !important;
+    overflow: hidden !important;
+  }
+
+  /* Pakai flexbox (bukan grid rows) untuk pembagian tinggi
+     atas/bawah — grid "minmax(0,1fr)" untuk BARIS vertikal ternyata
+     tidak selalu dianggap "definite" oleh mesin render saat bersarang
+     dalam beberapa lapis flex (isi form/side yang panjang membuat
+     baris 1fr ikut melebar mengikuti konten, persis bug lama yang
+     sudah didokumentasikan di komentar sekitar baris ~4230). Flexbox
+     dengan flex:1 1 0 + min-height:0 terbukti konsisten bekerja di
+     semua level lain pada rantai ini (module-scroll, page-body, dst),
+     jadi dipakai juga di sini. */
+  html[data-ui="command"] .page-body.mini-win .mod-panels.tile-layout {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: var(--grid-gap, 0.5rem) !important;
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    height: 100% !important;
+    max-height: none !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+  }
+
+  html[data-ui="command"] .page-body.mini-win .tile-layout .mod-panels-top {
+    display: grid !important;
+    grid-template-columns: var(--form-col, minmax(240px, 1fr)) var(--chart-col, minmax(0, 2fr));
+    gap: var(--grid-gap, 0.5rem);
+    flex: 1 1 0 !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+  }
+
+  html[data-ui="command"] .page-body.mini-win .tile-layout .mod-panel-form {
+    min-width: 0;
+    min-height: 0 !important;
+    height: 100% !important;
+    max-height: none !important;
+    overflow: auto !important;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+  }
+
+  html[data-ui="command"] .page-body.mini-win .tile-layout .mod-panel-side {
+    display: flex !important;
+    flex-direction: column !important;
+    min-width: 0;
+    min-height: 0 !important;
+    height: 100% !important;
+    max-height: none !important;
+    overflow: auto !important;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+  }
+
+  /* Nutrisi tidak punya baris history terpisah — sembunyikan supaya
+     kolom atas (form/side) memakai seluruh tinggi yang ada. */
+  html[data-ui="command"] .page-body.mini-win .mod-panels.tile-layout:has(.nutri-source-block) .mod-panel-history {
+    display: none !important;
+  }
+
+  html[data-ui="command"] .page-body.mini-win .tile-layout .mod-panel-history {
+    flex: 0 0 auto !important;
+    height: var(--history-h, 25vh) !important;
+    min-height: 0 !important;
+    max-height: var(--history-h, 25vh) !important;
+    overflow: hidden !important;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box !important;
+  }
+  html[data-ui="command"] .page-body.mini-win .tile-layout .mod-panel-history > .card {
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: hidden !important;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box !important;
+  }
+  html[data-ui="command"] .page-body.mini-win .mod-history-scroll {
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    height: auto !important;
+    overflow: auto !important;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+  }
+
+  /* --- Isi sisa ruang kosong di kolom kanan (Monitor/Tes/Feed) ---
+     Sebelumnya tiap kartu di .mod-panel-side tingginya cuma mengikuti
+     isi (flex:0 0 auto) — kalau totalnya lebih pendek dari kolom, sisa
+     ruang di bawah kartu terakhir jadi kosong (lihat screenshot "Tren
+     ACWR"). Kartu TERAKHIR di kolom sekarang ikut melar mengisi sisa
+     ruang; kalau kartu itu berisi grafik, grafiknya sendiri yang
+     dibesarkan (bukan cuma jadi kotak putih kosong di bawah grafik).
+     Nutrisi dikecualikan (:not) karena kolom kanannya sudah pas persis
+     lewat clamp() sendiri dan punya banyak override khusus lain. */
+  html[data-ui="command"] .page-body.mini-win .mod-panels.tile-layout:not(:has(.nutri-source-block)) .mod-panel-side > .mod-chart-card:last-child {
+    /* flex-basis:auto (bukan 0) + min-height default "auto" (BUKAN 0) di
+       sini disengaja: kalau ruang di kolom masih lebih dari cukup, kartu
+       ini melar mengisi sisa ruang (flex-grow:1) — tapi kalau total isi
+       kolom sudah lebih panjang dari ruang tersedia (mis. tab Tes dengan
+       3 kartu), kartu ini TETAP tidak dipaksa menyusut di bawah tinggi
+       kontennya (itulah gunanya min-height default "auto", bukan 0) —
+       kelebihannya biarkan kolom .mod-panel-side yang scroll (overflow:
+       auto di atas), bukan kartu ini yang gepeng/konten tersembunyi. */
+    flex: 1 1 auto !important;
+    /* Lantai eksplisit (bukan cuma andalkan min-height:auto) — SVG grafik
+       di dalamnya sekarang tinggi fleksibel (bukan var(--chart-h) tetap),
+       dan grafik hampir tidak punya "tinggi minimum konten" alami, jadi
+       kalau diandalkan ke automatic-minimum-size saja kartu ini bisa
+       gepeng sampai cuma sisa judulnya saja saat kolom kekurangan ruang
+       (mis. tab Tes dengan 3 kartu di kolom kanan). */
+    min-height: 190px !important;
+    height: auto !important;
+    max-height: none !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  html[data-ui="command"] .page-body.mini-win .mod-panels.tile-layout:not(:has(.nutri-source-block)) .mod-panel-side > .mod-chart-card:last-child:has(.chart-scroll) .chart-scroll,
+  html[data-ui="command"] .page-body.mini-win .mod-panels.tile-layout:not(:has(.nutri-source-block)) .mod-panel-side > .mod-chart-card:last-child:has(.chart-scroll) .chart-plot-fill,
+  html[data-ui="command"] .page-body.mini-win .mod-panels.tile-layout:not(:has(.nutri-source-block)) .mod-panel-side > .mod-chart-card:last-child:has(.chart-scroll) .chart-wrap {
+    flex: 1 1 auto !important;
+    width: 100%;
+    min-width: 0;
+    min-height: 60px !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: hidden;
+  }
+  html[data-ui="command"] .page-body.mini-win .mod-panels.tile-layout:not(:has(.nutri-source-block)) .mod-panel-side > .mod-chart-card:last-child:has(.chart-scroll) .chart-svg {
+    width: 100%;
+    height: 100% !important;
+    display: block;
+  }
+
+  /* --- Jadwal/Program: mampatkan kolom kiri supaya lebih banyak muat
+     tanpa scroll (padding & jarak antar-kartu dikecilkan; grid stat
+     tile di kolom ini dikembalikan ke tata letak horizontal ikon-kiri-
+     teks-kanan yang lebih pendek daripada versi "stack" ikon-di-atas,
+     yang tadinya dipakai supaya muat di kolom sempit versi 4-kolom —
+     kolom kiri Jadwal cukup lebar untuk tata letak horizontal). Ukuran
+     font TIDAK diubah, hanya padding/gap/orientasi ikon. */
+  html[data-ui="command"] .page-body.mini-win .program-fit-left {
+    gap: 0.4rem !important;
+  }
+  html[data-ui="command"] .page-body.mini-win .program-fit-left > .card {
+    padding: 0.5rem 0.7rem !important;
+  }
+  html[data-ui="command"] .page-body.mini-win .program-fit-left .portal-tiles-stack {
+    gap: 0.45rem !important;
+  }
+  html[data-ui="command"] .page-body.mini-win .program-fit-left .portal-tiles-stack .portal-tile {
+    flex-direction: row !important;
+    align-items: center !important;
+    text-align: left !important;
+    gap: 0.55rem !important;
+    padding: 0.5rem 0.6rem !important;
+  }
+  html[data-ui="command"] .page-body.mini-win .program-fit-left .portal-tiles-stack .portal-tile-icon {
+    width: 32px !important;
+    height: 32px !important;
+  }
+  html[data-ui="command"] .page-body.mini-win .program-fit-left .portal-tiles-stack .portal-tile-icon .icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  /* --- Tes (varian dengan 2+ grafik, mis. Sprint/Lompat): dulu semua
+     kartu ditumpuk satu kolom (ringkasan "Tes terakhir" + tiap grafik)
+     — makin banyak grafik, makin ke bawah, dan grafik paling akhir
+     kepotong/butuh scroll jauh. Sekarang kolom kanan dipecah dua:
+     ringkasan "Tes terakhir" tetap di KIRI (tinggi penuh, tidak lagi
+     berbagi ruang vertikal dengan grafik), grafik-grafiknya pindah ke
+     KANAN dan ditumpuk di situ saja. Kalau protokolnya cuma py 1 grafik
+     (mis. Time Trial/VDOT) TIDAK kena aturan ini — satu grafik saja
+     sudah otomatis mengisi penuh lebar+tinggi kolom lewat aturan
+     ":last-child" di atas, jadi tidak perlu dipecah dua kolom.
+     Catatan: pakai class penanda ".mod-chart-graph" (ditambahkan lewat JS
+     di assembleModPanels(), bukan ":has(...:has(...))" bersarang) karena
+     :has() bersarang (":has() di dalam :has()") tidak didukung sebagian
+     versi browser. */
+  html[data-ui="command"] .page-body.mini-win .mod-panel-side.mod-side-test-split {
+    display: grid !important;
+    grid-template-columns: minmax(190px, 0.85fr) minmax(0, 1.3fr) !important;
+    grid-template-rows: repeat(2, minmax(160px, 1fr)) !important;
+    grid-auto-rows: minmax(160px, 1fr) !important;
+    gap: 0.5rem !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+  /* Kartu ringkasan (bukan grafik) — kiri, tinggi penuh (span semua baris) */
+  html[data-ui="command"] .page-body.mini-win .mod-panel-side.mod-side-test-split > .mod-chart-card:first-child:not(.mod-chart-graph) {
+    grid-column: 1;
+    grid-row: 1 / -1;
+    flex: none !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: auto !important;
+  }
+  /* Kartu grafik — kanan, ditumpuk otomatis satu di bawah satu (baris ke-2,
+     ke-3, dst kalau lebih dari 2 grafik — lihat grid-auto-rows di atas). */
+  html[data-ui="command"] .page-body.mini-win .mod-panel-side.mod-side-test-split > .mod-chart-graph {
+    grid-column: 2;
+    flex: none !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: hidden !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  html[data-ui="command"] .page-body.mini-win .mod-panel-side.mod-side-test-split > .mod-chart-graph .chart-scroll,
+  html[data-ui="command"] .page-body.mini-win .mod-panel-side.mod-side-test-split > .mod-chart-graph .chart-plot-fill,
+  html[data-ui="command"] .page-body.mini-win .mod-panel-side.mod-side-test-split > .mod-chart-graph .chart-wrap {
+    flex: 1 1 auto !important;
+    width: 100%;
+    min-width: 0;
+    min-height: 50px !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: hidden;
+  }
+  html[data-ui="command"] .page-body.mini-win .mod-panel-side.mod-side-test-split > .mod-chart-graph .chart-svg {
+    width: 100%;
+    height: 100% !important;
+    display: block;
+  }
+  html[data-ui="command"] .page-body.mini-win .mod-panel-side.mod-side-test-split:not(:has(> .mod-chart-graph ~ .mod-chart-graph)) > .mod-chart-graph {
+    grid-row: 1 / -1;
+  }
+
+  /* --- Feed: kartu "Ringkasan input atlet" di kolom kiri ditarik mengisi
+     sisa tinggi kolom (sebelumnya kartu cuma setinggi isinya, menyisakan
+     spasi kosong di bawahnya sebelum batas kolom). min-height:100% (BUKAN
+     height:100%) supaya kalau suatu saat isinya lebih panjang dari kolom,
+     kartu tetap boleh lebih tinggi dari itu (di-scroll oleh .mod-panel-form
+     di atasnya), bukan konten yang terpotong. !important perlu di sini
+     karena aturan lama (".tile-layout .mod-panel-form > .card { min-height:
+     0 !important }", dipakai untuk Nutrisi) sudah lebih dulu memakai
+     !important juga — tanpa !important di sini, aturan lama itu menang. */
+  html[data-ui="command"] .page-body.mini-win .tile-layout .mod-panel-form > .card {
+    min-height: 100% !important;
+    box-sizing: border-box !important;
+  }
+}
+
+
+/* ========== Responsif 2026-09-04: fluid + anti-clip ========== */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+img, svg, video, canvas { max-width: 100%; height: auto; }
+.table-wrap, .mod-history-scroll { max-width: 100%; overflow-x: auto; }
+
+.access-banner-row,
+.cmd-stage-header,
+.row-actions {
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+/* Tile portal: 4 → 2 → 1 */
+@media (max-width: 1099px) {
+  .portal-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+  .portal-tiles-3col { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+}
+@media (max-width: 560px) {
+  .portal-tiles,
+  .portal-tiles-2col,
+  .portal-tiles-3col,
+  .portal-tiles-4col { grid-template-columns: 1fr !important; }
+  .field-row { grid-template-columns: 1fr !important; }
+}
+
+/* Tablet: modul stack, history tampak, kartu tidak dikunci tinggi */
+@media (max-width: 1099px) {
+  .mod-panels.tile-layout,
+  .tile-layout .mod-panels-top {
+    display: flex !important;
+    flex-direction: column !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+  .tile-layout .mod-panel-form,
+  .tile-layout .mod-panel-side,
+  .tile-layout .mod-panel-history {
+    width: 100% !important;
+    max-height: none !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+  .tile-layout .mod-panel-history { display: block !important; }
+  .mod-panel-side.mod-side-test-split {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  html[data-ui="command"] .page-body.mini-win {
+    overflow: auto !important;
+    height: auto !important;
+    max-height: none !important;
+  }
+  .nutri-meal-grid {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+}
+
+/* PC sempit / zoom 90–110%: jangan potong footer kartu */
+@media (min-width: 1100px) {
+  html[data-ui="command"] .page-body.mini-win > .module-scroll:has(.mod-panels) {
+    overflow: auto !important;
+  }
+  html[data-ui="command"] .nutri-week-card,
+  html[data-ui="command"] .mod-panel-side > .mod-chart-card.nutri-week-card {
+    overflow: hidden !important;
+    min-height: 0 !important;
+  }
+  html[data-ui="command"] .nutri-week-card .nutri-meal-grid {
+    min-height: 0 !important;
+    overflow: auto !important;
+  }
+  html[data-ui="command"] .nutri-week-foot,
+  html[data-ui="command"] .nutri-week-preview {
+    display: block !important;
+    flex: 0 0 auto !important;
+  }
+}
+
+/* Laptop / zoom: viewport pendek — izinkan scroll stage */
+@media (min-width: 1100px) and (max-height: 860px) {
+  html[data-ui="command"] .page-frame.athlete-detail-fit:has(.page-body.mini-win) > .page-body.mini-win,
+  html[data-ui="command"] .cmd-stage-body:has(.page-body.mini-win) {
+    overflow: auto !important;
+  }
+  html[data-ui="command"] .nutri-meal-hint { display: none; }
+  html[data-ui="command"] .cairan-option .nutri-stack-desc {
+    -webkit-line-clamp: 2;
+  }
+}
+
+/* PC 1100–1399: menu 2×2, tes split lebih rapat */
+@media (min-width: 1100px) and (max-width: 1399px) {
+  html[data-ui="command"] .nutri-meal-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  html[data-ui="command"] .page-body.mini-win .mod-panel-side.mod-side-test-split {
+    grid-template-columns: minmax(168px, 0.9fr) minmax(0, 1.25fr) !important;
+    gap: 0.4rem !important;
+  }
+}
+
+/* PC lebar: 4 slot makan */
+@media (min-width: 1400px) {
+  html[data-ui="command"] .nutri-meal-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  }
+}
+
+/* Modal paket selalu muat di viewport */
+.plan-modal-overlay {
+  align-items: flex-start;
+  padding: 4vh 12px;
+  overflow: auto;
+}
+.plan-modal,
+.plan-modal.card {
+  max-width: min(480px, 100%);
+  max-height: min(88vh, 720px);
+  overflow: auto;
+}
+
+
+/* ========== Nutrisi: pratinjau selalu utuh, kolom tidak potong kanan ========== */
+@media (min-width: 1100px) {
+  html[data-ui="command"] .page-body.mini-win:has(.nutri-week-card),
+  html[data-ui="command"] .page-body.mini-win:has(.nutri-week-card) .module-scroll,
+  html[data-ui="command"] .page-body.mini-win:has(.nutri-week-card) .module-scroll > div,
+  html[data-ui="command"] .page-body.mini-win:has(.nutri-week-card) .mod-panels.tile-layout,
+  html[data-ui="command"] .page-body.mini-win:has(.nutri-week-card) .tile-layout .mod-panels-top {
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    min-width: 0 !important;
+  }
+
+  html[data-ui="command"] .tile-layout .mod-panel-side {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+  }
+
+  html[data-ui="command"] .mod-panel-side > .card,
+  html[data-ui="command"] .mod-panel-side > .mod-chart-card,
+  html[data-ui="command"] .mod-panel-side > .callout {
+    max-width: 100% !important;
+    min-width: 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
+  }
+
+  html[data-ui="command"] .nutri-week-card {
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: visible !important;
+    height: auto !important;
+    max-height: none !important;
+    flex: 0 0 auto !important;
+  }
+
+  html[data-ui="command"] .nutri-week-foot,
+  html[data-ui="command"] .nutri-week-preview {
+    display: block !important;
+    flex: 0 0 auto !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  html[data-ui="command"] .nutri-week-preview-title {
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin: 0.35rem 0 0.2rem;
+  }
+  html[data-ui="command"] .nutri-week-preview-list {
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 0.15rem 0.75rem;
+    font-size: 0.78rem;
+  }
+  html[data-ui="command"] .nutri-week-preview-list li {
+    margin: 0;
+  }
+}

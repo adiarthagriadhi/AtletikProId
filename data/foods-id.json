@@ -1,0 +1,50 @@
+{
+  "meta": {
+    "note": "Subset operasional pangan Indonesia. Nilai per 100 g mengacu pola TKPI/literatur gizi umum (estimasi). Bukan salinan resmi seluruh TKPI.",
+    "per": "100g"
+  },
+  "foods": [
+    { "id": "nasi-putih", "name": "Nasi putih", "tags": ["pokok", "karbo", "endurance", "sprint"], "kcal": 180, "p": 3, "f": 0.3, "c": 40 },
+    { "id": "nasi-merah", "name": "Nasi merah", "tags": ["pokok", "karbo", "recovery"], "kcal": 165, "p": 3.5, "f": 1, "c": 35 },
+    { "id": "ubi-rebus", "name": "Ubi rebus", "tags": ["pokok", "karbo", "endurance"], "kcal": 100, "p": 1.5, "f": 0.2, "c": 24 },
+    { "id": "kentang-rebus", "name": "Kentang rebus", "tags": ["pokok", "karbo"], "kcal": 87, "p": 2, "f": 0.1, "c": 20 },
+    { "id": "roti-tawar", "name": "Roti tawar", "tags": ["pokok", "karbo", "pre", "low-fiber"], "kcal": 265, "p": 9, "f": 3, "c": 49 },
+    { "id": "oatmeal", "name": "Oatmeal dimasak", "tags": ["pokok", "karbo", "recovery"], "kcal": 71, "p": 2.5, "f": 1.5, "c": 12 },
+    { "id": "mie-basah", "name": "Mie basah", "tags": ["pokok", "karbo"], "kcal": 110, "p": 3, "f": 1, "c": 22 },
+
+    { "id": "telur-rebus", "name": "Telur ayam rebus", "tags": ["lauk", "protein", "sprint", "recovery"], "kcal": 155, "p": 13, "f": 11, "c": 1.1 },
+    { "id": "telur-orak", "name": "Telur orak-arik", "tags": ["lauk", "protein", "sprint"], "kcal": 170, "p": 12, "f": 13, "c": 1 },
+    { "id": "ayam-dada", "name": "Ayam dada tanpa kulit", "tags": ["lauk", "protein", "sprint", "recovery"], "kcal": 165, "p": 31, "f": 3.6, "c": 0 },
+    { "id": "ayam-bakar", "name": "Ayam bakar", "tags": ["lauk", "protein"], "kcal": 180, "p": 27, "f": 7, "c": 0 },
+    { "id": "ikan-kukus", "name": "Ikan kukus", "tags": ["lauk", "protein", "recovery", "endurance"], "kcal": 120, "p": 22, "f": 3, "c": 0 },
+    { "id": "ikan-bakar", "name": "Ikan bakar", "tags": ["lauk", "protein", "endurance"], "kcal": 140, "p": 24, "f": 4, "c": 0 },
+    { "id": "tempe-goreng", "name": "Tempe goreng", "tags": ["lauk", "protein", "lokal"], "kcal": 200, "p": 14, "f": 12, "c": 10 },
+    { "id": "tempe-kukus", "name": "Tempe kukus", "tags": ["lauk", "protein", "recovery", "lokal"], "kcal": 150, "p": 14, "f": 8, "c": 9 },
+    { "id": "tahu-goreng", "name": "Tahu goreng", "tags": ["lauk", "protein", "lokal"], "kcal": 180, "p": 10, "f": 12, "c": 8 },
+    { "id": "tahu-kukus", "name": "Tahu kukus", "tags": ["lauk", "protein", "recovery"], "kcal": 80, "p": 8, "f": 4, "c": 2 },
+    { "id": "daging-sapi-santai", "name": "Daging sapi sans lemak", "tags": ["lauk", "protein", "sprint"], "kcal": 170, "p": 26, "f": 7, "c": 0 },
+    { "id": "susu-cair", "name": "Susu cair full cream", "tags": ["minuman", "protein", "recovery", "pre"], "kcal": 60, "p": 3.2, "f": 3.3, "c": 4.8 },
+    { "id": "yogurt", "name": "Yogurt plain", "tags": ["minuman", "protein", "recovery"], "kcal": 60, "p": 5, "f": 1.5, "c": 7 },
+
+    { "id": "bayam-tumis", "name": "Bayam tumis", "tags": ["sayur"], "kcal": 40, "p": 3, "f": 2, "c": 4 },
+    { "id": "kangkung-tumis", "name": "Kangkung tumis", "tags": ["sayur", "lokal"], "kcal": 35, "p": 2.5, "f": 2, "c": 3 },
+    { "id": "sop-sayur", "name": "Sop sayur", "tags": ["sayur", "recovery"], "kcal": 30, "p": 1.5, "f": 1, "c": 4 },
+    { "id": "urap", "name": "Urap", "tags": ["sayur", "lokal"], "kcal": 80, "p": 3, "f": 5, "c": 6 },
+    { "id": "tumis-buncis", "name": "Tumis buncis", "tags": ["sayur"], "kcal": 45, "p": 2, "f": 2, "c": 5 },
+    { "id": "salad-tomat-mentimun", "name": "Tomat & mentimun", "tags": ["sayur", "recovery"], "kcal": 20, "p": 1, "f": 0.2, "c": 4 },
+
+    { "id": "pisang", "name": "Pisang", "tags": ["buah", "karbo", "pre", "recovery", "endurance"], "kcal": 90, "p": 1.1, "f": 0.3, "c": 23 },
+    { "id": "pepaya", "name": "Pepaya", "tags": ["buah", "recovery"], "kcal": 40, "p": 0.5, "f": 0.2, "c": 10 },
+    { "id": "jeruk", "name": "Jeruk", "tags": ["buah", "recovery"], "kcal": 45, "p": 0.9, "f": 0.1, "c": 11 },
+    { "id": "apel", "name": "Apel", "tags": ["buah"], "kcal": 52, "p": 0.3, "f": 0.2, "c": 14 },
+    { "id": "semangka", "name": "Semangka", "tags": ["buah", "recovery"], "kcal": 30, "p": 0.6, "f": 0.2, "c": 8 },
+    { "id": "kurma", "name": "Kurma", "tags": ["buah", "karbo", "pre", "endurance"], "kcal": 280, "p": 2, "f": 0.4, "c": 75 },
+
+    { "id": "air-kelapa", "name": "Air kelapa", "tags": ["minuman", "recovery", "endurance"], "kcal": 19, "p": 0.7, "f": 0.2, "c": 3.7 },
+    { "id": "air-mineral", "name": "Air mineral", "tags": ["minuman"], "kcal": 0, "p": 0, "f": 0, "c": 0 },
+    { "id": "teh-manis-sedang", "name": "Teh manis sedang", "tags": ["minuman", "karbo", "pre"], "kcal": 40, "p": 0, "f": 0, "c": 10 },
+
+    { "id": "selai-kacang", "name": "Selai kacang (oles)", "tags": ["lauk", "protein", "pre"], "kcal": 590, "p": 25, "f": 50, "c": 20 },
+    { "id": "keju-slice", "name": "Keju slice", "tags": ["lauk", "protein"], "kcal": 350, "p": 22, "f": 28, "c": 2 }
+  ]
+}

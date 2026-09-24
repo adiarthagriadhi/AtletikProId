@@ -1,0 +1,61 @@
+Atletik Pro Id — paket final 4 Sep 2026
+=======================================
+
+Isi: kode awal + semua patch sesi ini + data/db.json hipotetik.
+
+Extract ke folder Node yang berisi server.js
+(contoh live: domains/atletikpro.id/hbuilds/versions/<id>/nodejs/)
+
+JANGAN extract sebagai pengganti folder lib/ saja.
+Harus terlihat: server.js, package.json, lib/access.js, public/, routes/, data/
+
+Data
+----
+data/db.json = database DEMO hipotetik (12 atlet, tes, ACWR, cedera, portal).
+Password semua akun demo: Demo1234!
+
+  admin@demo.local              Admin
+  pelatih.dewi@demo.local       Pelatih lifetime
+  pelatih.rian@demo.local       Pelatih trial
+  eka.wulandari@demo.local      Portal atlet
+  nadia.permatasari@demo.local  Portal atlet
+  salsabila.putri@demo.local    Portal atlet
+
+Jika akun produksi sudah ada: CADANGKAN data/db.json lama dulu.
+File ini akan menimpa database live.
+
+.env / Environment Variables
+----------------------------
+Jangan timpa JWT_SECRET / Midtrans yang sudah jalan.
+SMTP (opsional):
+  APP_PUBLIC_URL=https://atletikpro.id
+  SMTP_HOST=smtp.hostinger.com
+  SMTP_PORT=465
+  SMTP_SECURE=true
+  SMTP_USER=admin@atletikpro.id
+  SMTP_PASS=...
+  SMTP_FROM=Atletik Pro Id <admin@atletikpro.id>
+  HIDE_RESET_LINK=true
+  NODE_ENV=production
+Harga tahunan (opsional):
+  ANNUAL_PRICE_IDR=299000
+
+Setelah upload
+--------------
+1. npm install
+2. Rebuild / Restart di hPanel
+3. Hard refresh browser (Ctrl+F5)
+4. Login ulang
+
+Perubahan utama di paket ini
+----------------------------
+- Filter atlet per pelatih
+- Jadwal tes berikutnya + tes terlewat
+- JWT / cascade / rate limit / same-origin
+- SMTP reset password + tautan ?reset= buka form
+- Paket lifetime di UI = tahunan 365 hari (grant admin tetap lifetime)
+- Tab Tes non-sprint: layout kartu seperti sprint
+- Tooltip grafik ringkas tembus pandang
+- Nutrisi: pratinjau sisa minggu tampil, kartu tidak terpotong,
+  paket cedera tidak dipakai untuk hari yang sudah lewat
+- Layout responsif PC / tablet / HP

@@ -1,0 +1,10 @@
+Atletik Pro — SQLite (4 Sep 2026)
+
+Default: data/app.sqlite (Node 22+).
+db.json tetap ada sebagai sumber impor / cadangan.
+
+Hostinger: pilih Node 22 atau 24.
+Jika Node < 22, set DB_BACKEND=json di Environment Variables.
+
+npm run migrate-sqlite   # ulang impor dari db.json
+

@@ -1,0 +1,39 @@
+Atletik Pro — MySQL Hostinger
+=============================
+
+1. hPanel → Website → atletikpro.id → Database → Manajemen
+   Buat database + user:
+
+   Nama database : atletikpro
+   Username      : atletikpro
+   Password      : (buat kuat, simpan)
+
+   Hostinger menambah awalan, hasilnya mirip:
+     nama_database
+
+2. Environment Variables aplikasi Node (bukan hanya .env di zip):
+
+   DB_BACKEND=mysql
+   MYSQL_HOST=localhost
+   MYSQL_PORT=3306
+   MYSQL_DATABASE=nama_database
+   MYSQL_USER=nama_database
+   MYSQL_PASSWORD=...password yang Anda buat...
+
+   Host: biasanya localhost. Jika gagal konek, lihat hostname
+   di halaman database Hostinger.
+
+3. Extract zip ini ke folder server.js. Jangan ganti hanya db.js.
+
+4. npm install  (ada paket baru: mysql2)
+   Restart / Rebuild.
+
+5. Log yang benar:
+   [db] backend= mysql nama_database
+   [db] Impor db.json → MySQL selesai   (hanya jika tabel masih kosong)
+
+6. Cadangkan database dari panel Hostinger / phpMyAdmin.
+   data/db.json di zip hanya sumber impor pertama + demo.
+
+Kalau MySQL gagal, aplikasi otomatis jatuh ke JSON agar tidak 503.
+Perbaiki ENV lalu restart.

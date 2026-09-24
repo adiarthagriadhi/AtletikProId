@@ -1,0 +1,78 @@
+Atletik Pro Id — Patch lengkap 2026-09-04
+=========================================
+
+Jangan timpa data/db.json.
+
+Pasang
+------
+1. Backup folder production + data/db.json
+2. Extract zip ini di root aplikasi (timpa file yang sama)
+3. WAJIB: npm install
+   (ada dependensi baru: nodemailer)
+4. Isi SMTP di .env server (lihat bawah)
+5. Restart Node
+6. Hard refresh browser (Ctrl+F5)
+   cache: ?v=20260904audit
+
+Pelatih DAN atlet yang sedang login perlu MASUK ULANG
+(token JWT atlet sekarang memakai secret terpisah).
+
+.env yang ditambah (Hostinger)
+------------------------------
+APP_PUBLIC_URL=https://atletikpro.id
+SMTP_HOST=smtp.hostinger.com
+SMTP_PORT=465
+SMTP_SECURE=true
+SMTP_USER=admin@atletikpro.id
+SMTP_PASS=isi-password-email
+SMTP_FROM=Atletik Pro Id <admin@atletikpro.id>
+HIDE_RESET_LINK=true
+
+Kalau port 465 gagal: SMTP_PORT=587 dan SMTP_SECURE=false.
+
+Isi patch
+---------
+BARU
+  lib/testSchedule.js
+  lib/injuryStatus.js
+  lib/mailer.js
+  middleware/sameOrigin.js
+  PATCH-20260904-LENGKAP.txt
+
+DIUBAH
+  lib/nutritionWeekPlan.js
+  routes/program.js
+  routes/athletes.js
+  routes/athleteApp.js
+  routes/athleteAuth.js
+  routes/auth.js
+  routes/payments.js
+  routes/sessionOverrides.js
+  middleware/auth.js
+  middleware/athleteAuth.js
+  middleware/rateLimit.js
+  public/app.js
+  public/style.css
+  public/index.html
+  server.js
+  package.json
+  .env.example
+
+Perbaikan fitur
+---------------
+- Filter atlet admin sesuai pelatih
+- Jadwal tes berikutnya di program/kalender/tab Tes
+  (tes terlewat tampil redup, bukan alarm)
+- Menu nutrisi pemulihan: status active/aktif/improving
+
+Perbaikan audit
+---------------
+- JWT pelatih tidak menerima token atlet
+- Hapus atlet menghapus data terkait
+- Portal atlet menolak tanggal masa depan
+- trust proxy + rate limit undangan & reset password
+- Webhook Midtrans cek gross_amount
+- Satu helper status cedera
+- Cek Origin (bukan webhook Midtrans)
+- Cookie path=/
+- Reset password lewat SMTP Hostinger

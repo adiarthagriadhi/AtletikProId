@@ -1,0 +1,40 @@
+Atletik Pro Id — paket lengkap 4 Sep 2026
+==========================================
+
+Ini APLIKASI UTUH (kode awal + semua patch).
+Extract ke folder Node yang dijalankan Hostinger.
+
+Folder tujuan yang benar (dari log 503):
+  domains/atletikpro.id/hbuilds/versions/<versi-baru>/nodejs/
+atau lewat tombol Deploy/Upload di Web Apps (lebih aman).
+
+JANGAN extract hanya isinya lib/ sebagai pengganti lib lama.
+Harus terlihat: server.js, package.json, lib/, routes/, public/, middleware/
+
+Data production
+---------------
+Zip ini TIDAK berisi data/db.json.
+Setelah extract:
+  - Salin data/db.json dari backup / versi lama yang masih jalan
+  - Salin .env lama, lalu TAMBAH baris SMTP (jangan ganti JWT_SECRET)
+
+Kalau db.json hilang, server membuat database kosong — akun lama hilang.
+
+Setelah upload
+--------------
+1. npm install
+2. Restart / Rebuild di hPanel
+3. Hard refresh browser
+4. Login ulang (token JWT berubah)
+
+SMTP (.env atau Environment Variables)
+--------------------------------------
+APP_PUBLIC_URL=https://atletikpro.id
+SMTP_HOST=smtp.hostinger.com
+SMTP_PORT=465
+SMTP_SECURE=true
+SMTP_USER=admin@atletikpro.id
+SMTP_PASS=...password email...
+SMTP_FROM=Atletik Pro Id <admin@atletikpro.id>
+HIDE_RESET_LINK=true
+NODE_ENV=production
